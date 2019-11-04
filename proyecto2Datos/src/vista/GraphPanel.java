@@ -3,6 +3,9 @@ package vista;
 import logica.graphs.Graph;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class GraphPanel<V, E> extends JPanel {
@@ -13,7 +16,16 @@ public class GraphPanel<V, E> extends JPanel {
     }
 
     private void configurar() {
-        setBackground(Color.LIGHT_GRAY);
+        setBackground(new Color(64, 120, 48));
+        insertarImagen("mapas/mapa1.jpg");
+    }
+
+    private void insertarImagen(String nombreImagen) {
+        try {
+            bkgnd = ImageIO.read(getClass().getResourceAsStream(nombreImagen));
+        } catch (IOException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
     }
 
     public void init() {
@@ -38,9 +50,19 @@ public class GraphPanel<V, E> extends JPanel {
         super.paintComponent(bg);
 
         g.paint(bg, getBounds());
+        paintImage(bg);
     }
 
+    private void paintImage(Graphics bg) {
+        if (bkgnd != null) {
+            bg.drawImage(bkgnd, 0, 0, this);
+        }
+        g.paint(bg, getBounds());
+    }
+    
+    
     private static final int MAX_WAIT = 35;
     private Thread runner;
-    private Graph<V, E> g;
+    private final Graph<V, E> g;
+    private Image bkgnd = null;
 }

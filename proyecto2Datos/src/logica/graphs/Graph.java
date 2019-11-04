@@ -158,7 +158,7 @@ public class Graph<V, E> {
                 (int) (x0), (int) (y0),
                 (int) (x1 - x0), (int) (y1 - y0)
         );
-        r.grow(S0 / 2, S0 / 2);
+        r.grow(diamentroVertice / 2, diamentroVertice / 2);
         return r;
     }
 
@@ -181,9 +181,10 @@ public class Graph<V, E> {
         Iterator<Edge<V, E>> i = edges.getIterator();
         while (i.hasNext()) {
             Edge<V, E> e = i.getNext();
+            
+            /*dibuja el trazo que une cada vertice*/
             g.setStroke(TRAZO_BASE);
             g.setColor(Color.WHITE);
-
             g.drawLine(
                     (int) e.getTail().getPosition().x,
                     (int) e.getTail().getPosition().y,
@@ -191,9 +192,10 @@ public class Graph<V, E> {
                     (int) e.getHead().getPosition().y
             );
 
+            
+             /*Dibuja una linea al centro del trazo que une cada vertice*/
             g.setStroke(new BasicStroke(1f));
             g.setColor(Color.BLACK);
-
             g.drawLine(
                     (int) e.getTail().getPosition().x,
                     (int) e.getTail().getPosition().y,
@@ -208,22 +210,22 @@ public class Graph<V, E> {
             GVertex<V> v = j.getNext();
 
             g.setColor(Color.GRAY);
-            g.fillOval((int) v.getPosition().x - S0 / 2 + 4,
-                    (int) v.getPosition().y - S0 / 2 + 4,
-                    S0, S0);
+            g.fillOval((int) v.getPosition().x - diamentroVertice / 2 + 4,
+                    (int) v.getPosition().y - diamentroVertice / 2 + 4,
+                    diamentroVertice, diamentroVertice);
             g.setColor(Color.WHITE);
-            g.fillOval((int) v.getPosition().x - S0 / 2,
-                    (int) v.getPosition().y - S0 / 2,
-                    S0, S0);
-            g.setColor(Color.BLACK);
-            g.drawOval((int) v.getPosition().x - S0 / 2,
-                    (int) v.getPosition().y - S0 / 2,
-                    S0, S0);
+            g.fillOval((int) v.getPosition().x - diamentroVertice / 2,
+                    (int) v.getPosition().y - diamentroVertice / 2,
+                    diamentroVertice, diamentroVertice);
+//            g.setColor(Color.BLACK);
+//            g.drawOval((int) v.getPosition().x - S0 / 2,
+//                    (int) v.getPosition().y - S0 / 2,
+//                    S0, S0);
 
-            String t = String.format("%s", v.getInfo());
+            String tt = String.format("%s", v.getInfo());
             g.setColor(Color.GRAY);
-            g.drawString(t,
-                    v.getPosition().x - fm.stringWidth(t) / 2,
+            g.drawString(tt,
+                    v.getPosition().x - fm.stringWidth(tt) / 2,
                     v.getPosition().y + fm.getAscent() / 2);
         }
 
@@ -278,14 +280,14 @@ public class Graph<V, E> {
     private static final Font TIPO_BASE
             = new Font(Font.SANS_SERIF, Font.PLAIN, 24);
 
-    private static final int S0 = 48;
+    private static final int diamentroVertice = 25;
     private static final int S1 = 56;
 
     private static final int DX = 72;
     private static final int DY = 64;
     private static final int MX = 6;
     private int px = 0;
-    private Point2D.Float df = new Point2D.Float(0, 0);
+    private final Point2D.Float df = new Point2D.Float(0, 0);
 
     private final List<GVertex<V>> vertices;
     private final List<Edge<V, E>> edges;

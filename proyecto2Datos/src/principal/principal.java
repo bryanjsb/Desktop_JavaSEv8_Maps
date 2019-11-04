@@ -1,6 +1,6 @@
 package principal;
 
-import vista.VentanaEjemplo;
+import vista.VentanaPrincipal;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -24,7 +24,7 @@ public class principal {
 
     public void inicializar() {
         SwingUtilities.invokeLater(() -> {
-            new VentanaEjemplo("Ejemplo G0").init();
+            new VentanaPrincipal("Ejemplo G0").init();
         });
     }
 

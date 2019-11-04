@@ -10,16 +10,16 @@ import java.awt.event.WindowEvent;
 import java.awt.geom.Point2D;
 import javax.swing.JFrame;
 
-public final class VentanaEjemplo extends JFrame {
+public final class VentanaPrincipal extends JFrame {
     
-    public VentanaEjemplo(String titulo, Graph<Integer, Double> g)
+    public VentanaPrincipal(String titulo, Graph<Integer, Double> g)
             throws HeadlessException {
         super(titulo);
         this.g = g;
         configurar();
     }
     
-     public VentanaEjemplo(String titulo) {
+     public VentanaPrincipal(String titulo) {
         super(titulo);
         this.g = inicializar();
         configurar();
