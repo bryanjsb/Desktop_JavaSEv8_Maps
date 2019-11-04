@@ -27,9 +27,9 @@ public class Graph<V, E> {
         GVertex<V> r = null;
         Iterator<GVertex<V>> i = vertices.getIterator();
         while (i.hasNext()) {
-            GVertex<V> t = i.getNext();
-            if (t.getInfo().equals(v)) {
-                r = t;
+            GVertex<V> ptr = i.getNext();
+            if (ptr.getInfo().equals(v)) {
+                r = ptr;
                 break;
             }
         }
