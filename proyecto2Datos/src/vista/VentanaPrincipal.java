@@ -70,19 +70,21 @@ public final class VentanaPrincipal extends JFrame {
         g0.add(5, new Point2D.Float(350, 350));
         g0.add(6, new Point2D.Float(600, 450));
 
-        g0.add(1, 3);
-        g0.add(1, 2);
-        g0.add(2, 5);
-        g0.add(5, 3);
-        g0.add(2, 4);
-        g0.add(4, 5);
-        g0.add(5, 6);
-        g0.add(6,3);
+        g0.add(1, 3,4.6);
+        g0.add(1, 2,5.0);
+        g0.add(2, 5,2.7);
+        g0.add(5, 3,8.9);
+        g0.add(2, 4,1.1);
+        g0.add(4, 5,5.3);
+        g0.add(5, 6,2.7);
+        g0.add(6,3,9.9);
+        
+     
 
-//        System.out.printf("%s%n%n", g0);
-//        System.out.println();
-//        System.out.println(g0.getAdjacencyInfo());
-//        System.out.println();
+        System.out.printf("%s%n%n", g0);
+        System.out.println();
+        System.out.println(g0.getAdjacencyInfo());
+        System.out.println();
 
        return g0;
     }
