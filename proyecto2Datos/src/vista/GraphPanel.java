@@ -59,8 +59,7 @@ public class GraphPanel<V, E> extends JPanel {
         }
         g.paint(bg, getBounds());
     }
-    
-    
+
     private static final int MAX_WAIT = 35;
     private Thread runner;
     private final Graph<V, E> g;

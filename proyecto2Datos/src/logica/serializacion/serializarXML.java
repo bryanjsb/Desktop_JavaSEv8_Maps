@@ -9,7 +9,7 @@ package logica.serializacion;
  *
  * @author Bryan
  */
-public class serializarXML implements Iserializacion{
+public class serializarXML implements Iserializacion {
 
     @Override
     public boolean guardar() {
@@ -20,5 +20,5 @@ public class serializarXML implements Iserializacion{
     public boolean cargar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

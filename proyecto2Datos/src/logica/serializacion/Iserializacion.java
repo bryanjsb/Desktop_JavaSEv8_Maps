@@ -10,8 +10,9 @@ package logica.serializacion;
  * @author Bryan
  */
 public interface Iserializacion {
-    
+
     public boolean guardar();
+
     public boolean cargar();
-    
+
 }

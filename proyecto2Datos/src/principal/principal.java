@@ -18,7 +18,7 @@ public class principal {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
-        principal p=new principal();
+        principal p = new principal();
         p.inicializar();
     }
 

@@ -181,7 +181,7 @@ public class Graph<V, E> {
         Iterator<Edge<V, E>> i = edges.getIterator();
         while (i.hasNext()) {
             Edge<V, E> e = i.getNext();
-            
+
             /*dibuja el trazo que une cada vertice*/
             g.setStroke(TRAZO_BASE);
             g.setColor(Color.WHITE);
@@ -192,8 +192,7 @@ public class Graph<V, E> {
                     (int) e.getHead().getPosition().y
             );
 
-            
-             /*Dibuja una linea al centro del trazo que une cada vertice*/
+            /*Dibuja una linea al centro del trazo que une cada vertice*/
             g.setStroke(new BasicStroke(1f));
             g.setColor(Color.BLACK);
             g.drawLine(
@@ -264,6 +263,10 @@ public class Graph<V, E> {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public List<Edge<V, E>> getEdges() {
+        return edges;
     }
 
     private static final float[] DASHES = {4f, 4f};
