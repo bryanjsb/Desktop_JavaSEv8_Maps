@@ -5,8 +5,6 @@
  */
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
@@ -23,34 +21,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form ventana1
+     *
      * @param titulo
      * @param g
      */
-
-
     public VentanaPrincipal(String titulo, Graph<Integer, Double> g)
             throws HeadlessException {
         super(titulo);
         this.g = g;
-         initComponents();
-       configurar();
+        initComponents();
+        configurar();
     }
-    
+
     public VentanaPrincipal(String titulo) {
         super(titulo);
         this.g = inicializar();
-         initComponents();
-         configurar();
+        initComponents();
+        configurar();
     }
-    
-     public VentanaPrincipal() {
+
+    public VentanaPrincipal() {
         this("");
     }
-    
-     private void configurar() {
+
+    private void configurar() {
 //        ajustarComponentes(getContentPane());
 //        setResizable(true);
-        setSize(1024, 900);
+        
+Dimension panelOpcion = this.jPanelVistaOpcion.getSize();
+        Dimension panelHerra = this.jMenuBarraHerramienta.getSize();
+        int anchuraPanelOpcion = (int) panelOpcion.getWidth();
+        int alturaHerramienta = (int) panelHerra.getHeight();        
+        setSize(648 + anchuraPanelOpcion, 500 + alturaHerramienta);
 //        setMinimumSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
 
@@ -66,19 +68,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
 
+
 //    private void ajustarComponentes(Container c) {
 //        c.setLayout(new BorderLayout());
 //        c.add(this.jPanelVistaMapa);
 //    }
-
+    
     public void init() {
         setVisible(true);
-        GraphPanel ptr=(GraphPanel)this.jPanelVistaMapa;
+        GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
         ptr.init();
         g.init();
     }
-    
-        public final Graph<Integer, Double> inicializar() {
+
+    public final Graph<Integer, Double> inicializar() {
         Graph<Integer, Double> g0 = new Graph<>();
 
         int mx = 64;
@@ -109,6 +112,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         return g0;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,7 +132,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTextFieldPSalida = new javax.swing.JTextField();
         jTextFieldPLlegada = new javax.swing.JTextField();
         jButtonAgregarRepartidor = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuBarraHerramienta = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMenuItemMapHeredia = new javax.swing.JMenuItem();
         jMenuItemMapCartago = new javax.swing.JMenuItem();
@@ -211,12 +215,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItemMapSJ.setText("Cargar Mapa San Jose");
         jMenuArchivo.add(jMenuItemMapSJ);
 
-        jMenuBar1.add(jMenuArchivo);
+        jMenuBarraHerramienta.add(jMenuArchivo);
 
         jMenuAcercaDe.setText("Acerca De");
-        jMenuBar1.add(jMenuAcercaDe);
+        jMenuBarraHerramienta.add(jMenuAcercaDe);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBarraHerramienta);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,8 +246,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
- 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregarRepartidor;
     private javax.swing.JLabel jLabel1;
@@ -251,7 +253,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenuAcercaDe;
     private javax.swing.JMenu jMenuArchivo;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBarraHerramienta;
     private javax.swing.JMenuItem jMenuItemMapCartago;
     private javax.swing.JMenuItem jMenuItemMapHeredia;
     private javax.swing.JMenuItem jMenuItemMapSJ;
@@ -263,7 +265,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
-
     private final Graph<Integer, Double> g;
-
 }
