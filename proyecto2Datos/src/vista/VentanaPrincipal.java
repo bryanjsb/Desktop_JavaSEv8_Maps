@@ -47,11 +47,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void configurar() {
 //        ajustarComponentes(getContentPane());
 //        setResizable(true);
-        
-Dimension panelOpcion = this.jPanelVistaOpcion.getSize();
+
+        Dimension panelOpcion = this.jPanelVistaOpcion.getSize();
         Dimension panelHerra = this.jMenuBarraHerramienta.getSize();
         int anchuraPanelOpcion = (int) panelOpcion.getWidth();
-        int alturaHerramienta = (int) panelHerra.getHeight();        
+        int alturaHerramienta = (int) panelHerra.getHeight();
         setSize(648 + anchuraPanelOpcion, 500 + alturaHerramienta);
 //        setMinimumSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
@@ -68,12 +68,10 @@ Dimension panelOpcion = this.jPanelVistaOpcion.getSize();
         });
     }
 
-
 //    private void ajustarComponentes(Container c) {
 //        c.setLayout(new BorderLayout());
 //        c.add(this.jPanelVistaMapa);
 //    }
-    
     public void init() {
         setVisible(true);
         GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
@@ -105,6 +103,7 @@ Dimension panelOpcion = this.jPanelVistaOpcion.getSize();
         g0.add(5, 6, 2.7);
         g0.add(6, 3, 9.9);
 
+        g0.calcularRutasMinimas();
         System.out.printf("%s%n%n", g0);
         System.out.println();
         System.out.println(g0.getAdjacencyInfo());

@@ -112,7 +112,7 @@
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldAgregarRepartidor" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTextFieldPSalida" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldPLlegada" pref="92" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldPLlegada" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>

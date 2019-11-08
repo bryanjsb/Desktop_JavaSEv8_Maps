@@ -1,63 +1,38 @@
 package logica.graphs.Floyd;
 
-import java.awt.geom.Point2D;
 import java.util.Arrays;
 import lists.Iterator;
 import lists.List;
 import lists.SimpleLinkedList;
 import logica.graphs.Edge;
-import logica.graphs.Graph;
 
-public class AlgoritmoFloydWarshall {
+public class AlgoritmoFloydWarshall<V,E> {
 
-    public static void main(String[] args) {
-//        double[][] weights = {{1, 3, 4.6}, {1, 2, 5.1}, {2, 5, 2.5},
-//        {3, 2, 1.1}, {5, 3, 8.9}, {2, 4, 1.7}, {4, 5, 5.4}, {5, 6, 2.4},
-//        {6, 3, 9.9}};
-//        int numVertices = 6;
-//        floydWarshall(weights, numVertices);
-        Graph<Integer, Double> g0 = new Graph<>();
-        g0.add(1, new Point2D.Float(400, 100));
-        g0.add(2, new Point2D.Float(250, 250));
-        g0.add(3, new Point2D.Float(550, 250));
-        g0.add(4, new Point2D.Float(250, 400));
-        g0.add(5, new Point2D.Float(350, 350));
-        g0.add(6, new Point2D.Float(600, 450));
-
-        g0.add(1, 3, 4.6);
-        g0.add(1, 2, 5.0);
-        g0.add(2, 5, 2.7);
-        g0.add(5, 3, 8.9);
-        g0.add(2, 4, 1.1);
-        g0.add(4, 5, 5.3);
-        g0.add(5, 6, 2.7);
-        g0.add(6, 3, 9.9);
-
-        algoritmoFloydWarshall(g0.getEdges());
+    public AlgoritmoFloydWarshall() {
     }
 
-    static void algoritmoFloydWarshall(List<Edge<Integer, Double>> edge) {
+    
+     public List<camino> algoritmoFloydWarshall(List<Edge<V, E>> edge) {
         int numVertices = edge.count();
-        System.out.println(numVertices);
-        double[][] weights = new double[numVertices][3];
+        Object[][] weights = new Object[numVertices][3];
         for (int i = 0; i < numVertices; i++) {
 
-            weights[i][0] = (int) edge.get(i).getHead().getInfo();
-            weights[i][1] = (int) edge.get(i).getTail().getInfo();
-            weights[i][2] = (double) edge.get(i).getInfo();
+            weights[i][0] =  edge.get(i).getHead().getInfo();
+            weights[i][1] =  edge.get(i).getTail().getInfo();
+            weights[i][2] =  edge.get(i).getInfo();
 
         }
 
-        floydWarshall(weights, numVertices);
+        return floydWarshall(weights, numVertices);
     }
 
-    static void floydWarshall(double[][] weights, int numVertices) {
+     List<camino> floydWarshall(Object[][] weights, int numVertices) {
         double[][] dist = new double[numVertices][numVertices];
         for (double[] row : dist) {
             Arrays.fill(row, Double.POSITIVE_INFINITY);
         }
 
-        for (double[] w : weights) {
+        for (Object[] w : weights) {
             dist[(int) w[0] - 1][(int) w[1] - 1] = (double) w[2];
         }
 
@@ -81,10 +56,10 @@ public class AlgoritmoFloydWarshall {
             }
         }
 
-        printResult(dist, next);
+        return agregandoCaminos(dist, next);
     }
 
-    static List<camino> printResult(double[][] dist, int[][] next) {
+     List<camino> agregandoCaminos(double[][] dist, int[][] next) {
         List<camino> caminosPosibles = new SimpleLinkedList<>();
         camino caminoptr = new camino();
         List<Integer> listaRuta = new SimpleLinkedList<>();
