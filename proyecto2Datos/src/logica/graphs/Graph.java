@@ -24,7 +24,7 @@ public class Graph<V, E> {
     public Graph() {
         vertices = new SimpleLinkedList<>();
         edges = new SimpleLinkedList<>();
-        this.caminosPosibles= new SimpleArray<>();
+        this.caminosPosibles = new SimpleArray<>();
     }
 
     public GVertex<V> getVertex(V v) {
@@ -273,12 +273,12 @@ public class Graph<V, E> {
         return edges;
     }
 
-    public void calcularRutasMinimas(){
-        AlgoritmoFloydWarshall floyd= new AlgoritmoFloydWarshall();
-    
-        this.caminosPosibles=floyd.algoritmoFloydWarshall(edges);
+    public void calcularRutasMinimas() {
+        AlgoritmoFloydWarshall floyd = new AlgoritmoFloydWarshall();
+
+        this.caminosPosibles = floyd.algoritmoFloydWarshall(edges);
     }
-    
+
     private static final float[] DASHES = {4f, 4f};
     private static final Stroke TRAZO_BASE
             = new BasicStroke(12f,

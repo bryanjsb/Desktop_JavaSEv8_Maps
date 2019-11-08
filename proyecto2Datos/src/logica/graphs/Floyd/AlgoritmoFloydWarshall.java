@@ -6,27 +6,26 @@ import lists.List;
 import lists.SimpleLinkedList;
 import logica.graphs.Edge;
 
-public class AlgoritmoFloydWarshall<V,E> {
+public class AlgoritmoFloydWarshall<V, E> {
 
     public AlgoritmoFloydWarshall() {
     }
 
-    
-     public List<camino> algoritmoFloydWarshall(List<Edge<V, E>> edge) {
+    public List<camino> algoritmoFloydWarshall(List<Edge<V, E>> edge) {
         int numVertices = edge.count();
         Object[][] weights = new Object[numVertices][3];
         for (int i = 0; i < numVertices; i++) {
 
-            weights[i][0] =  edge.get(i).getHead().getInfo();
-            weights[i][1] =  edge.get(i).getTail().getInfo();
-            weights[i][2] =  edge.get(i).getInfo();
+            weights[i][0] = edge.get(i).getHead().getInfo();
+            weights[i][1] = edge.get(i).getTail().getInfo();
+            weights[i][2] = edge.get(i).getInfo();
 
         }
 
         return floydWarshall(weights, numVertices);
     }
 
-     List<camino> floydWarshall(Object[][] weights, int numVertices) {
+    List<camino> floydWarshall(Object[][] weights, int numVertices) {
         double[][] dist = new double[numVertices][numVertices];
         for (double[] row : dist) {
             Arrays.fill(row, Double.POSITIVE_INFINITY);
@@ -59,7 +58,7 @@ public class AlgoritmoFloydWarshall<V,E> {
         return agregandoCaminos(dist, next);
     }
 
-     List<camino> agregandoCaminos(double[][] dist, int[][] next) {
+    List<camino> agregandoCaminos(double[][] dist, int[][] next) {
         List<camino> caminosPosibles = new SimpleLinkedList<>();
         camino caminoptr = new camino();
         List<Integer> listaRuta = new SimpleLinkedList<>();

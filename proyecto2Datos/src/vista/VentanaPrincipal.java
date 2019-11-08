@@ -7,6 +7,7 @@ package vista;
 
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.Point2D;
@@ -46,14 +47,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void configurar() {
 //        ajustarComponentes(getContentPane());
-//        setResizable(true);
+        setResizable(true);
 
-        Dimension panelOpcion = this.jPanelVistaOpcion.getSize();
-        Dimension panelHerra = this.jMenuBarraHerramienta.getSize();
-        int anchuraPanelOpcion = (int) panelOpcion.getWidth();
-        int alturaHerramienta = (int) panelHerra.getHeight();
-        setSize(648 + anchuraPanelOpcion, 500 + alturaHerramienta);
-//        setMinimumSize(new Dimension(640, 480));
+        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        setSize(ancho, alto);
+        setMinimumSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -87,21 +86,98 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int sx = 72;
         int sy = 96;
 
-        g0.add(1, new Point2D.Float(400, 100));
-        g0.add(2, new Point2D.Float(250, 250));
-        g0.add(3, new Point2D.Float(550, 250));
-        g0.add(4, new Point2D.Float(250, 400));
-        g0.add(5, new Point2D.Float(350, 350));
-        g0.add(6, new Point2D.Float(600, 450));
-
-        g0.add(1, 3, 4.6);
-        g0.add(1, 2, 5.0);
-        g0.add(2, 5, 2.7);
-        g0.add(5, 3, 8.9);
-        g0.add(2, 4, 1.1);
-        g0.add(4, 5, 5.3);
-        g0.add(5, 6, 2.7);
-        g0.add(6, 3, 9.9);
+        g0.add(1, new Point2D.Float(98, 80));
+        g0.add(2, new Point2D.Float(225, 85));
+        g0.add(3, new Point2D.Float(340, 95));
+        g0.add(4, new Point2D.Float(460, 105));
+        g0.add(5, new Point2D.Float(583, 120));
+        g0.add(6, new Point2D.Float(693, 125));
+        g0.add(7, new Point2D.Float(812, 135));
+        
+        int n = 12;
+        g0.add(8, new Point2D.Float(98, 180 + n));
+        g0.add(9, new Point2D.Float(225, 185 + n));
+        g0.add(10, new Point2D.Float(340, 195 + n));
+        g0.add(11, new Point2D.Float(460, 205 + n));
+        g0.add(12, new Point2D.Float(583, 220 + n));
+        g0.add(13, new Point2D.Float(693, 225 + n));
+        g0.add(14, new Point2D.Float(812, 235 + n));
+        
+        n = 142;
+        g0.add(15, new Point2D.Float(98, 180 + n));
+        g0.add(16, new Point2D.Float(225, 185 + n));
+        g0.add(17, new Point2D.Float(340, 195 + n));
+        g0.add(18, new Point2D.Float(460, 205 + n));
+        g0.add(19, new Point2D.Float(583, 220 + n));
+        g0.add(20, new Point2D.Float(693, 225 + n));
+        g0.add(21, new Point2D.Float(812, 235 + n));
+        
+        n = 270;
+        g0.add(22, new Point2D.Float(98, 160 + n));
+        g0.add(23, new Point2D.Float(225, 175 + n));
+        g0.add(24, new Point2D.Float(340, 195 + n));
+        g0.add(25, new Point2D.Float(460, 205 + n));
+        g0.add(26, new Point2D.Float(583, 220 + n));
+        g0.add(27, new Point2D.Float(693, 225 + n));
+        g0.add(28, new Point2D.Float(812, 235 + n));
+        
+        n = 390;
+        g0.add(29, new Point2D.Float(98, 160 + n));
+        g0.add(39, new Point2D.Float(225, 175 + n));
+        g0.add(31, new Point2D.Float(340, 195 + n));
+        g0.add(32, new Point2D.Float(460, 205 + n));
+        g0.add(33, new Point2D.Float(583, 220 + n));
+        g0.add(34, new Point2D.Float(693, 225 + n));
+        g0.add(35, new Point2D.Float(812, 235 + n));
+        
+        
+        g0.add(1, 2, 4.6);
+        g0.add(2, 3, 5.0);
+        g0.add(3, 4, 2.7);
+        g0.add(4, 5, 8.9);
+        g0.add(5, 6, 1.1);
+        g0.add(6, 7, 1.1);
+        
+        g0.add(7, 14, 1.1);
+        g0.add(14, 13, 4.6);
+        g0.add(13, 12, 5.0);
+        g0.add(12, 11, 2.7);
+        g0.add(11, 10, 8.9);
+        g0.add(10, 9, 1.1);
+        g0.add(9, 8, 1.1);
+        
+        
+        g0.add(15, 16, 4.6);
+        g0.add(16, 17, 5.0);
+        g0.add(17, 18, 2.7);
+         g0.add(18, 19, 2.7);
+        g0.add(19, 20, 8.9);
+        g0.add(20, 21, 1.1);
+        g0.add(14, 21, 1.1);
+        
+        
+        g0.add(14, 13, 4.6);
+        g0.add(13, 12, 5.0);
+        g0.add(12, 11, 2.7);
+        g0.add(11, 10, 8.9);
+        g0.add(10, 9, 1.1);
+        g0.add(9, 8, 1.1);
+        
+        
+        
+        g0.add(1, 2, 4.6);
+        g0.add(2, 3, 5.0);
+        g0.add(3, 4, 2.7);
+        g0.add(4, 5, 8.9);
+        g0.add(5, 6, 1.1);
+        
+        
+        g0.add(14, 13, 4.6);
+        g0.add(13, 12, 5.0);
+        g0.add(12, 11, 2.7);
+        g0.add(11, 10, 8.9);
+        g0.add(10, 9, 1.1);
+        g0.add(9, 8, 1.1);
 
         g0.calcularRutasMinimas();
         System.out.printf("%s%n%n", g0);
@@ -140,6 +216,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Mapa"); // NOI18N
+        setResizable(false);
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("Mapa"), this, org.jdesktop.beansbinding.BeanProperty.create("title"));
         bindingGroup.addBinding(binding);
@@ -148,11 +225,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanelVistaMapa.setLayout(jPanelVistaMapaLayout);
         jPanelVistaMapaLayout.setHorizontalGroup(
             jPanelVistaMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
         jPanelVistaMapaLayout.setVerticalGroup(
             jPanelVistaMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 511, Short.MAX_VALUE)
         );
 
         jLabel1.setText("Agregar Repartidor:");
@@ -170,7 +247,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelVistaOpcionLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, Short.MAX_VALUE)
                     .addGroup(jPanelVistaOpcionLayout.createSequentialGroup()
                         .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonAgregarRepartidor)
@@ -179,7 +256,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addComponent(jTextFieldAgregarRepartidor)
                                 .addComponent(jTextFieldPSalida)
-                                .addComponent(jTextFieldPLlegada, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)))
+                                .addComponent(jTextFieldPLlegada)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -227,7 +304,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelVistaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelVistaMapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
