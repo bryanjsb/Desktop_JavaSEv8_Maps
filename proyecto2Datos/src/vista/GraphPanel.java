@@ -17,7 +17,9 @@ public class GraphPanel<V, E> extends JPanel {
 
     private void configurar() {
         setBackground(new Color(64, 120, 48));
-        insertarImagen("mapas/Heredia (centro - satélite).png");
+        insertarImagen("mapas/heredia.png");
+//          insertarImagen("mapas/mapa2 (1).jpg");
+          
     }
 
     private void insertarImagen(String nombreImagen) {
