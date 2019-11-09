@@ -122,9 +122,9 @@ public class crearMapas {
         g0.add(8, 1, 4.4);
 
 
-        System.out.printf("%s%n%n", g0);
-        System.out.println();
-        System.out.println(g0.getAdjacencyInfo());
+//        System.out.printf("%s%n%n", g0);
+//        System.out.println();
+//        System.out.printf("Lista de adyacencia: %s%n",g0.getAdjacencyInfo());
         System.out.println();
 
          mapa<Integer,Double> mapita=new mapa(g0);

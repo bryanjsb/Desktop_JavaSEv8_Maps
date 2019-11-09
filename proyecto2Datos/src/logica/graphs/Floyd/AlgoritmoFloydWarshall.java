@@ -12,9 +12,10 @@ public class AlgoritmoFloydWarshall<V, E> {
     }
 
     public List<camino> algoritmoFloydWarshall(List<Edge<V, E>> edge) {
-        int numVertices = edge.count();
-        Object[][] weights = new Object[numVertices][3];
-        for (int i = 0; i < numVertices; i++) {
+        int numAristas = edge.count();
+        System.out.printf("numero de aristas: %d %n",numAristas);
+        Object[][] weights = new Object[numAristas][3];
+        for (int i = 0; i < numAristas; i++) {
 
             weights[i][0] = edge.get(i).getHead().getInfo();
             weights[i][1] = edge.get(i).getTail().getInfo();
@@ -22,7 +23,7 @@ public class AlgoritmoFloydWarshall<V, E> {
 
         }
 
-        return floydWarshall(weights, numVertices);
+        return floydWarshall(weights, numAristas);
     }
 
     List<camino> floydWarshall(Object[][] weights, int numVertices) {
@@ -37,7 +38,7 @@ public class AlgoritmoFloydWarshall<V, E> {
 
         int[][] next = new int[numVertices][numVertices];
         for (int i = 0; i < next.length; i++) {
-            for (int j = 0; j < next.length; j++) {
+            for (int j = 0; j <next.length; j++) {
                 if (i != j) {
                     next[i][j] = j + 1;
                 }
@@ -65,15 +66,15 @@ public class AlgoritmoFloydWarshall<V, E> {
 
         System.out.println("Par     Peso    Camino");
         for (int i = 0; i < next.length; i++) {
-            for (int j = 0; j < next.length; j++) {
+            for (int j = 0; j <= i; j++) {
                 if (i != j) {
                     int u = i + 1;
                     int v = j + 1;
                     if (dist[i][j] != Double.POSITIVE_INFINITY) {
 //                        String path = format("%d -> %d    %.2f     %s", u, v,
 //                                dist[i][j], u);
-                        caminoptr.setVerticeInicio(u);
-                        caminoptr.setVerticeDestino(v);
+                        caminoptr.setVerticeInicio(v);
+                        caminoptr.setVerticeDestino(u);
                         String num = String.format("%.2f", dist[i][j]);
                         caminoptr.setPeso(Double.parseDouble(num));
 
@@ -81,7 +82,7 @@ public class AlgoritmoFloydWarshall<V, E> {
                         do {
                             u = next[u - 1][v - 1];
 //                            path += " -> " + u;
-                            listaRuta.addLast(u);
+                            listaRuta.addFirst(u);
                         } while (u != v);
 
                         Iterator<Integer> a = listaRuta.getIterator();
