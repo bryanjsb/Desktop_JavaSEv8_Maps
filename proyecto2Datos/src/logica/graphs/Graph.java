@@ -14,17 +14,13 @@ import java.util.Observable;
 import java.util.Random;
 import lists.Iterator;
 import lists.List;
-import lists.SimpleArray;
 import lists.SimpleLinkedList;
-import logica.graphs.Floyd.AlgoritmoFloydWarshall;
-import logica.graphs.Floyd.camino;
 
 public class Graph<V, E> {
 
     public Graph() {
         vertices = new SimpleLinkedList<>();
         edges = new SimpleLinkedList<>();
-        this.caminosPosibles = new SimpleArray<>();
     }
 
     public GVertex<V> getVertex(V v) {
@@ -273,11 +269,7 @@ public class Graph<V, E> {
         return edges;
     }
 
-    public void calcularRutasMinimas() {
-        AlgoritmoFloydWarshall floyd = new AlgoritmoFloydWarshall();
-
-        this.caminosPosibles = floyd.algoritmoFloydWarshall(edges);
-    }
+    
 
     private static final float[] DASHES = {4f, 4f};
     private static final Stroke TRAZO_BASE
@@ -304,7 +296,7 @@ public class Graph<V, E> {
 
     private final List<GVertex<V>> vertices;
     private final List<Edge<V, E>> edges;
-    private List<camino> caminosPosibles;
+
     private static final int MAX_WAIT = 25;
     private boolean active = false;
     private Point2D.Float p0;
