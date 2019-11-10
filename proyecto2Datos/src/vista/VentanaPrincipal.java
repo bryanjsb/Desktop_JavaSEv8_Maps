@@ -7,11 +7,8 @@ package vista;
 
 import java.awt.Dimension;
 import java.awt.HeadlessException;
-import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.geom.Point2D;
-import static java.lang.Math.E;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import logica.graphs.Graph;
 import logica.mapa.crearMapas;

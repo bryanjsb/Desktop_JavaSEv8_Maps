@@ -26,7 +26,7 @@ public class camino<V> {
         this.peso = peso;
         this.ruta = ruta;
     }
-
+    
     public camino() {
         this(null, null, .0, null);
     }

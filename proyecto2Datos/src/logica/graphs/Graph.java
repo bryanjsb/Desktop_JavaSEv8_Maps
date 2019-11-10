@@ -104,8 +104,8 @@ public class Graph<V, E> {
                     GVertex<V> v1 = vs.get(r.nextInt(vs.count()));
                     p1 = v1.getPosition();
 
-                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
-                    System.out.printf("v(%s): %s%n", v1.getInfo(), p1);
+//                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
+//                    System.out.printf("v(%s): %s%n", v1.getInfo(), p1);
 
                     t = 0.0;
                     while (t <= 1.0) {

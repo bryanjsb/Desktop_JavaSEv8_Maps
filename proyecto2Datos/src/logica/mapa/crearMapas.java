@@ -128,6 +128,7 @@ public class crearMapas {
 
         mapa<Integer, Double> mapita = new mapa(g0);
         mapita.calcularRutasMinimas();
+        mapita.crearRepartidores();
         return mapita.getGrafo();
 
     }

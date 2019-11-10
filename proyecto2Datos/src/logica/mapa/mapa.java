@@ -7,6 +7,7 @@ package logica.mapa;
 
 import java.awt.geom.Point2D;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
+import logica.graphs.Floyd.camino;
 import logica.graphs.Floyd.coleccionCamino;
 import logica.graphs.Graph;
 import logica.repartidor.coleccionRepartidor;
@@ -56,8 +57,11 @@ public class mapa<V, E> {
         }
     }
 
-    private void crearRepartidores() {
-        repartidor ptr = new repartidor();
+    public void crearRepartidores() {
+       camino ptrCamino= caminosPosibles.buscarRuta("2", "7");
+       System.out.printf("info camino: %s",ptrCamino);
+        repartidor ptr = new repartidor("001",ptrCamino);
+        System.out.printf("info repartidor: %s",ptr);
     }
 
     public Graph<V, E> getGrafo() {

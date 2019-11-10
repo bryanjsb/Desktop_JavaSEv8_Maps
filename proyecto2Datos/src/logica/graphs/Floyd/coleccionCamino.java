@@ -5,8 +5,10 @@
  */
 package logica.graphs.Floyd;
 
+import lists.Iterator;
 import lists.List;
 import lists.SimpleLinkedList;
+import logica.graphs.GVertex;
 
 /**
  *
@@ -35,6 +37,24 @@ public class coleccionCamino {
             caminosPosibles.addLast(camino);
         }
     }
+
+    public List<camino> getCaminosPosibles() {
+        return caminosPosibles;
+    }
+    
+    public camino buscarRuta(String inicio, String llegada){
+        camino ptr = null;
+         Iterator<camino> i = caminosPosibles.getIterator();
+         while(i.hasNext()){
+             ptr = i.getNext();
+             if(ptr.verticeDestino.getInfo().toString().equals(llegada) && 
+                     ptr.verticeInicio.getInfo().toString().equals(inicio)){
+                 System.out.println(ptr);
+                 break;
+             }   
+         }
+      return ptr;
+    } 
 
     @Override
     public String toString() {
