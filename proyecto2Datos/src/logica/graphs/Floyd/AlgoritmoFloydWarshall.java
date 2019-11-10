@@ -12,24 +12,24 @@ import logica.graphs.Graph;
 public class AlgoritmoFloydWarshall {
 
     public AlgoritmoFloydWarshall() {
-    
+
     }
 
-    public List<camino> algoritmoFloydWarshall(Graph g) {
-        List<Edge> edge=g.getEdges();
+    public coleccionCamino algoritmoFloydWarshall(Graph g) {
+        List<Edge> edge = g.getEdges();
         int numAristas = edge.count();
-        
-        System.out.printf("numero de aristas: %d %n",numAristas);
+
+        System.out.printf("numero de aristas: %d %n", numAristas);
         Object[][] weights = new Object[numAristas][3];
         for (int i = 0; i < numAristas; i++) {
             weights[i][0] = edge.get(i).getHead().getInfo();
             weights[i][1] = edge.get(i).getTail().getInfo();
             weights[i][2] = edge.get(i).getInfo();
         }
-        return floydWarshall(weights, numAristas,g);
+        return floydWarshall(weights, numAristas, g);
     }
 
-    List<camino> floydWarshall(Object[][] weights, int numVertices,Graph g) {
+    coleccionCamino floydWarshall(Object[][] weights, int numVertices, Graph g) {
         double[][] dist = new double[numVertices][numVertices];
         for (double[] row : dist) {
             Arrays.fill(row, Double.POSITIVE_INFINITY);
@@ -41,7 +41,7 @@ public class AlgoritmoFloydWarshall {
 
         int[][] next = new int[numVertices][numVertices];
         for (int i = 0; i < next.length; i++) {
-            for (int j = 0; j <next.length; j++) {
+            for (int j = 0; j < next.length; j++) {
                 if (i != j) {
                     next[i][j] = j + 1;
                 }
@@ -59,11 +59,12 @@ public class AlgoritmoFloydWarshall {
             }
         }
 
-        return agregandoCaminos(dist, next,g);
+        return agregandoCaminos(dist, next, g);
     }
 
-    List<camino> agregandoCaminos(double[][] dist, int[][] next,Graph g) {
-        List<camino> caminosPosibles = new SimpleLinkedList<>();
+    coleccionCamino agregandoCaminos(double[][] dist, int[][] next, Graph g) {
+//        List<camino> caminosPosibles = new SimpleLinkedList<>();
+        coleccionCamino caminosPosibles = new coleccionCamino();
         camino caminoptr = new camino();
         List<GVertex> listaRuta = new SimpleLinkedList<>();
 

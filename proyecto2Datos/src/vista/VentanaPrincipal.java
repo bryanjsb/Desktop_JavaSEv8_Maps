@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.Point2D;
+import static java.lang.Math.E;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import logica.graphs.Graph;
 import logica.mapa.crearMapas;
@@ -143,7 +144,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelVistaOpcionLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                     .addGroup(jPanelVistaOpcionLayout.createSequentialGroup()
                         .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonAgregarRepartidor)
@@ -179,6 +180,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuArchivo.setText("Archivo");
 
         jMenuItemMapHeredia.setText("Cargar Mapa Heredia");
+        jMenuItemMapHeredia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMapHerediaActionPerformed(evt);
+            }
+        });
         jMenuArchivo.add(jMenuItemMapHeredia);
 
         jMenuItemMapCartago.setText("Cargar Mapa Cartago");
@@ -214,6 +220,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemMapHerediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapHerediaActionPerformed
+//        gp.insertarImagen("mapas/heredia.png");
+    }//GEN-LAST:event_jMenuItemMapHerediaActionPerformed
 
     /**
      * @param args the command line arguments

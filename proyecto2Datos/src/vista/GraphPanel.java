@@ -19,10 +19,9 @@ public class GraphPanel<V, E> extends JPanel {
         setBackground(new Color(64, 120, 48));
         insertarImagen("mapas/heredia.png");
 //          insertarImagen("mapas/mapa2 (1).jpg");
-
     }
 
-    private void insertarImagen(String nombreImagen) {
+    public void insertarImagen(String nombreImagen) {
         try {
             bkgnd = ImageIO.read(getClass().getResourceAsStream(nombreImagen));
         } catch (IOException ex) {

@@ -9,7 +9,6 @@ import java.awt.geom.Point2D;
  */
 public class GVertex<V> {
 
-
     public GVertex(V info, Point2D.Float position) {
         this.info = info;
         this.position = position;

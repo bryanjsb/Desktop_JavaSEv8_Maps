@@ -269,8 +269,6 @@ public class Graph<V, E> {
         return edges;
     }
 
-    
-
     private static final float[] DASHES = {4f, 4f};
     private static final Stroke TRAZO_BASE
             = new BasicStroke(12f,

@@ -7,11 +7,11 @@ package logica.graphs.Floyd;
 
 import java.util.Arrays;
 import logica.graphs.GVertex;
-import sun.security.provider.certpath.Vertex;
 
 /**
  *
  * @author Bryan
+ * @param <V>
  */
 public class camino<V> {
 
