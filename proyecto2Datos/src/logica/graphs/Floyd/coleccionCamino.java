@@ -8,7 +8,6 @@ package logica.graphs.Floyd;
 import lists.Iterator;
 import lists.List;
 import lists.SimpleLinkedList;
-import logica.graphs.GVertex;
 
 /**
  *

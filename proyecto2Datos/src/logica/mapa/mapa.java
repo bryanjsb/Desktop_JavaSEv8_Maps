@@ -59,9 +59,9 @@ public class mapa<V, E> {
 
     public void crearRepartidores() {
        camino ptrCamino= caminosPosibles.buscarRuta("2", "7");
-       System.out.printf("info camino: %s",ptrCamino);
+       
         repartidor ptr = new repartidor("001",ptrCamino);
-        System.out.printf("info repartidor: %s",ptr);
+        this.add(ptr);
     }
 
     public Graph<V, E> getGrafo() {

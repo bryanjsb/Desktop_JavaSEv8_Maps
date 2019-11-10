@@ -4,6 +4,7 @@ import java.util.Arrays;
 import javax.xml.bind.ParseConversionEvent;
 import lists.Iterator;
 import lists.List;
+import lists.SimpleArray;
 import lists.SimpleLinkedList;
 import logica.graphs.Edge;
 import logica.graphs.GVertex;
@@ -91,10 +92,11 @@ public class AlgoritmoFloydWarshall {
                         } while (u != v);
 
                         Iterator<GVertex> a = listaRuta.getIterator();
-                        GVertex[] camino = new GVertex[listaRuta.count()];
+                        List<GVertex> camino = new SimpleLinkedList<>();
                         int cont = 0;
                         while (a.hasNext()) {
-                            camino[cont++] = a.getNext();
+//                            camino[cont++] = a.getNext();
+                            camino.addLast((GVertex)a.getNext());
                         }
                         cont = 0;
                         caminoptr.setRuta(camino);

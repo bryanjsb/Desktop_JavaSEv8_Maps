@@ -6,6 +6,7 @@
 package logica.graphs.Floyd;
 
 import java.util.Arrays;
+import lists.List;
 import logica.graphs.GVertex;
 
 /**
@@ -18,9 +19,10 @@ public class camino<V> {
     GVertex<V> verticeInicio;
     GVertex<V> verticeDestino;
     double peso;
-    GVertex<V>[] ruta;
+//    GVertex<V>[] ruta;
+    List<GVertex<V>> ruta;
 
-    public camino(GVertex<V> verticeInicio, GVertex<V> verticeDestino, double peso, GVertex<V>[] ruta) {
+    public camino(GVertex<V> verticeInicio, GVertex<V> verticeDestino, double peso, List<GVertex<V>> ruta) {
         this.verticeInicio = verticeInicio;
         this.verticeDestino = verticeDestino;
         this.peso = peso;
@@ -55,17 +57,17 @@ public class camino<V> {
         this.peso = peso;
     }
 
-    public GVertex<V>[] getRuta() {
+    public List<GVertex<V>> getRuta() {
         return ruta;
     }
 
-    public void setRuta(GVertex<V>[] ruta) {
+    public void setRuta(List<GVertex<V>> ruta) {
         this.ruta = ruta;
     }
 
     @Override
     public String toString() {
         return verticeInicio + "->" + verticeDestino
-                + "    " + peso + "       " + Arrays.toString(ruta) + " \n ";
+                + "    " + peso + "       " + ruta + " \n ";
     }
 }
