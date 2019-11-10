@@ -13,6 +13,7 @@ import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
+import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -84,6 +85,9 @@ public class repartidor {
         }
     }
 
+     public void update(Observable obs, Object evt) {
+        throw new UnsupportedOperationException();
+    }
  
       private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);
      private Point2D.Float p0;

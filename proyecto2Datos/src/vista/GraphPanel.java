@@ -1,16 +1,16 @@
 package vista;
 
-import logica.graphs.Graph;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import logica.mapa.mapa;
 
-public class GraphPanel<V, E> extends JPanel {
+public class GraphPanel extends JPanel {
 
-    public GraphPanel(Graph<V, E> g) {
+    public GraphPanel(mapa g) {
         this.g = g;
         configurar();
     }
@@ -50,7 +50,7 @@ public class GraphPanel<V, E> extends JPanel {
     public void paintComponent(Graphics bg) {
         super.paintComponent(bg);
 
-        g.paint(bg, getBounds());
+        g.paint(bg,null);
         paintImage(bg);
     }
 
@@ -58,11 +58,11 @@ public class GraphPanel<V, E> extends JPanel {
         if (bkgnd != null) {
             bg.drawImage(bkgnd, 0, 0, this);
         }
-        g.paint(bg, getBounds());
+        g.paint(bg, null);
     }
 
     private static final int MAX_WAIT = 35;
     private Thread runner;
-    private final Graph<V, E> g;
+    private final mapa g;
     private Image bkgnd = null;
 }

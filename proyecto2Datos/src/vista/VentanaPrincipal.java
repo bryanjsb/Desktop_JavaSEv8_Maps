@@ -10,8 +10,8 @@ import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
-import logica.graphs.Graph;
 import logica.mapa.crearMapas;
+import logica.mapa.mapa;
 
 /**
  *
@@ -25,7 +25,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * @param titulo
      * @param g
      */
-    public VentanaPrincipal(String titulo, Graph<Integer, Double> g)
+    public VentanaPrincipal(String titulo, mapa<Integer, Double> g)
             throws HeadlessException {
         super(titulo);
         this.g = g;
@@ -77,7 +77,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         g.init();
     }
 
-    public final Graph<Integer, Double> inicializar() {
+    public final mapa<Integer, Double> inicializar() {
 
         return crearMapas.posicionarNodosMapaI();
     }
@@ -244,5 +244,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
-    private final Graph<Integer, Double> g;
+    private final mapa<Integer, Double> g;
 }

@@ -3,9 +3,13 @@ package logica.mapa;
 import java.awt.geom.Point2D;
 import logica.graphs.Graph;
 
-public class crearMapas {
+public class crearMapas<V,E> {
 
-    public static Graph<Integer, Double> posicionarNodosMapaI() {
+    /**
+     *
+     * @return
+     */
+    public static mapa posicionarNodosMapaI() {
 
         Graph<Integer, Double> g0 = new Graph<>();
         g0.add(1, new Point2D.Float(98, 80));
@@ -124,12 +128,12 @@ public class crearMapas {
 //        System.out.printf("%s%n%n", g0);
 //        System.out.println();
 //        System.out.printf("Lista de adyacencia: %s%n",g0.getAdjacencyInfo());
-        System.out.println();
+//        System.out.println();
 
         mapa<Integer, Double> mapita = new mapa(g0);
         mapita.calcularRutasMinimas();
         mapita.crearRepartidores();
-        return mapita.getGrafo();
+        return mapita;
 
     }
 
