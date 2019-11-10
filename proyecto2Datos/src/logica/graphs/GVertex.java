@@ -2,7 +2,13 @@ package logica.graphs;
 
 import java.awt.geom.Point2D;
 
+/**
+ *
+ * @author Bryan
+ * @param <V>
+ */
 public class GVertex<V> {
+
 
     public GVertex(V info, Point2D.Float position) {
         this.info = info;

@@ -1,32 +1,35 @@
 package logica.graphs.Floyd;
 
 import java.util.Arrays;
+import javax.xml.bind.ParseConversionEvent;
 import lists.Iterator;
 import lists.List;
 import lists.SimpleLinkedList;
 import logica.graphs.Edge;
+import logica.graphs.GVertex;
+import logica.graphs.Graph;
 
-public class AlgoritmoFloydWarshall<V, E> {
+public class AlgoritmoFloydWarshall {
 
     public AlgoritmoFloydWarshall() {
+    
     }
 
-    public List<camino> algoritmoFloydWarshall(List<Edge<V, E>> edge) {
+    public List<camino> algoritmoFloydWarshall(Graph g) {
+        List<Edge> edge=g.getEdges();
         int numAristas = edge.count();
+        
         System.out.printf("numero de aristas: %d %n",numAristas);
         Object[][] weights = new Object[numAristas][3];
         for (int i = 0; i < numAristas; i++) {
-
             weights[i][0] = edge.get(i).getHead().getInfo();
             weights[i][1] = edge.get(i).getTail().getInfo();
             weights[i][2] = edge.get(i).getInfo();
-
         }
-
-        return floydWarshall(weights, numAristas);
+        return floydWarshall(weights, numAristas,g);
     }
 
-    List<camino> floydWarshall(Object[][] weights, int numVertices) {
+    List<camino> floydWarshall(Object[][] weights, int numVertices,Graph g) {
         double[][] dist = new double[numVertices][numVertices];
         for (double[] row : dist) {
             Arrays.fill(row, Double.POSITIVE_INFINITY);
@@ -56,13 +59,13 @@ public class AlgoritmoFloydWarshall<V, E> {
             }
         }
 
-        return agregandoCaminos(dist, next);
+        return agregandoCaminos(dist, next,g);
     }
 
-    List<camino> agregandoCaminos(double[][] dist, int[][] next) {
+    List<camino> agregandoCaminos(double[][] dist, int[][] next,Graph g) {
         List<camino> caminosPosibles = new SimpleLinkedList<>();
         camino caminoptr = new camino();
-        List<Integer> listaRuta = new SimpleLinkedList<>();
+        List<GVertex> listaRuta = new SimpleLinkedList<>();
 
         System.out.println("Par     Peso    Camino");
         for (int i = 0; i < next.length; i++) {
@@ -73,20 +76,21 @@ public class AlgoritmoFloydWarshall<V, E> {
                     if (dist[i][j] != Double.POSITIVE_INFINITY) {
 //                        String path = format("%d -> %d    %.2f     %s", u, v,
 //                                dist[i][j], u);
-                        caminoptr.setVerticeInicio(v);
-                        caminoptr.setVerticeDestino(u);
+
+                        caminoptr.setVerticeInicio(g.getVertex(v));
+                        caminoptr.setVerticeDestino(g.getVertex(u));
                         String num = String.format("%.2f", dist[i][j]);
                         caminoptr.setPeso(Double.parseDouble(num));
 
-                        listaRuta.addLast(u);
+                        listaRuta.addLast(g.getVertex(u));
                         do {
                             u = next[u - 1][v - 1];
 //                            path += " -> " + u;
-                            listaRuta.addFirst(u);
+                            listaRuta.addFirst(g.getVertex(u));
                         } while (u != v);
 
-                        Iterator<Integer> a = listaRuta.getIterator();
-                        int[] camino = new int[listaRuta.count()];
+                        Iterator<GVertex> a = listaRuta.getIterator();
+                        GVertex[] camino = new GVertex[listaRuta.count()];
                         int cont = 0;
                         while (a.hasNext()) {
                             camino[cont++] = a.getNext();

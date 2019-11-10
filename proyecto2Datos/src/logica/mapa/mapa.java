@@ -28,7 +28,7 @@ public class mapa<V, E> {
 
 
 
-       public mapa( Graph<V, E> grafo) {
+       public mapa(Graph<V, E> grafo) {
         this.grafo=grafo;        
         this.caminosPosibles = new SimpleArray<>();
     }
@@ -62,7 +62,6 @@ public class mapa<V, E> {
 
     public void calcularRutasMinimas() {
         AlgoritmoFloydWarshall floyd = new AlgoritmoFloydWarshall();
-
-        this.caminosPosibles = floyd.algoritmoFloydWarshall(grafo.getEdges());
+        this.caminosPosibles = floyd.algoritmoFloydWarshall(grafo);
     }
 }

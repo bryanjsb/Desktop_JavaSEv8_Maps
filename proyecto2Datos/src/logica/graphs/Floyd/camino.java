@@ -7,19 +7,20 @@ package logica.graphs.Floyd;
 
 import java.util.Arrays;
 import logica.graphs.GVertex;
+import sun.security.provider.certpath.Vertex;
 
 /**
  *
  * @author Bryan
  */
-public class camino {
+public class camino<V> {
 
-    int verticeInicio;
-    int verticeDestino;
+    GVertex<V> verticeInicio;
+    GVertex<V> verticeDestino;
     double peso;
-    int[] ruta;
+    GVertex<V>[] ruta;
 
-    public camino(int verticeInicio, int verticeDestino, double peso, int[] ruta) {
+    public camino(GVertex<V> verticeInicio, GVertex<V> verticeDestino, double peso, GVertex<V>[] ruta) {
         this.verticeInicio = verticeInicio;
         this.verticeDestino = verticeDestino;
         this.peso = peso;
@@ -27,22 +28,22 @@ public class camino {
     }
 
     public camino() {
-        this(0, 0, 0.0, null);
+        this(null, null, .0, null);
     }
 
-    public int getVerticeInicio() {
+    public GVertex<V> getVerticeInicio() {
         return verticeInicio;
     }
 
-    public void setVerticeInicio(int verticeInicio) {
+    public void setVerticeInicio(GVertex<V> verticeInicio) {
         this.verticeInicio = verticeInicio;
     }
 
-    public int getVerticeDestino() {
+    public GVertex<V> getVerticeDestino() {
         return verticeDestino;
     }
 
-    public void setVerticeDestino(int verticeDestino) {
+    public void setVerticeDestino(GVertex<V> verticeDestino) {
         this.verticeDestino = verticeDestino;
     }
 
@@ -54,11 +55,11 @@ public class camino {
         this.peso = peso;
     }
 
-    public int[] getRuta() {
+    public GVertex<V>[] getRuta() {
         return ruta;
     }
 
-    public void setRuta(int[] ruta) {
+    public void setRuta(GVertex<V>[] ruta) {
         this.ruta = ruta;
     }
 

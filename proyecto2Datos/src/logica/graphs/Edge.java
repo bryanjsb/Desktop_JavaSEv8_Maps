@@ -1,5 +1,11 @@
 package logica.graphs;
 
+/**
+ *
+ * @author Bryan
+ * @param <V>
+ * @param <E>
+ */
 public class Edge<V, E> {
 
     public Edge(GVertex<V> tail, GVertex<V> head, E info) {
