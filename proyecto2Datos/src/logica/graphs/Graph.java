@@ -180,60 +180,60 @@ public class Graph<V, E> {
         g.setColor(Color.DARK_GRAY);
         g.setStroke(TRAZO_GUIA);
         Rectangle b = getBounds();
-        g.drawRect(b.x, b.y, b.width, b.height);
+//        g.drawRect(b.x, b.y, b.width, b.height);
 
         g.setFont(TIPO_BASE);
         FontMetrics fm = g.getFontMetrics();
 
-        Iterator<Edge<V, E>> i = edges.getIterator();
-        while (i.hasNext()) {
-            Edge<V, E> e = i.getNext();
+//        Iterator<Edge<V, E>> i = edges.getIterator();
+//        while (i.hasNext()) {
+//            Edge<V, E> e = i.getNext();
 
             /*dibuja el trazo que une cada vertice*/
-            g.setStroke(TRAZO_BASE);
-            g.setColor(Color.WHITE);
-            g.drawLine(
-                    (int) e.getTail().getPosition().x,
-                    (int) e.getTail().getPosition().y,
-                    (int) e.getHead().getPosition().x,
-                    (int) e.getHead().getPosition().y
-            );
+//            g.setStroke(TRAZO_BASE);
+//            g.setColor(Color.WHITE);
+//            g.drawLine(
+//                    (int) e.getTail().getPosition().x,
+//                    (int) e.getTail().getPosition().y,
+//                    (int) e.getHead().getPosition().x,
+//                    (int) e.getHead().getPosition().y
+//            );
 
             /*Dibuja una linea al centro del trazo que une cada vertice*/
-            g.setStroke(new BasicStroke(1f));
-            g.setColor(Color.BLACK);
-            g.drawLine(
-                    (int) e.getTail().getPosition().x,
-                    (int) e.getTail().getPosition().y,
-                    (int) e.getHead().getPosition().x,
-                    (int) e.getHead().getPosition().y
-            );
-        }
+//            g.setStroke(new BasicStroke(1f));
+//            g.setColor(Color.BLACK);
+//            g.drawLine(
+//                    (int) e.getTail().getPosition().x,
+//                    (int) e.getTail().getPosition().y,
+//                    (int) e.getHead().getPosition().x,
+//                    (int) e.getHead().getPosition().y
+//            );
+//        }
 
-        g.setStroke(TRAZO_VERTICE);
-        Iterator<GVertex<V>> j = vertices.getIterator();
-        while (j.hasNext()) {
-            GVertex<V> v = j.getNext();
+//        g.setStroke(TRAZO_VERTICE);
+//        Iterator<GVertex<V>> j = vertices.getIterator();
+//        while (j.hasNext()) {
+//            GVertex<V> v = j.getNext();
 
-            g.setColor(Color.GRAY);
-            g.fillOval((int) v.getPosition().x - diamentroVertice / 2 + 4,
-                    (int) v.getPosition().y - diamentroVertice / 2 + 4,
-                    diamentroVertice, diamentroVertice);
-            g.setColor(Color.WHITE);
-            g.fillOval((int) v.getPosition().x - diamentroVertice / 2,
-                    (int) v.getPosition().y - diamentroVertice / 2,
-                    diamentroVertice, diamentroVertice);
+//            g.setColor(Color.GRAY);
+//            g.fillOval((int) v.getPosition().x - diamentroVertice / 2 + 4,
+//                    (int) v.getPosition().y - diamentroVertice / 2 + 4,
+//                    diamentroVertice, diamentroVertice);
+//            g.setColor(Color.WHITE);
+//            g.fillOval((int) v.getPosition().x - diamentroVertice / 2,
+//                    (int) v.getPosition().y - diamentroVertice / 2,
+//                    diamentroVertice, diamentroVertice);
 //            g.setColor(Color.BLACK);
 //            g.drawOval((int) v.getPosition().x - S0 / 2,
 //                    (int) v.getPosition().y - S0 / 2,
 //                    S0, S0);
 
-            String tt = String.format("%s", v.getInfo());
-            g.setColor(Color.GRAY);
-            g.drawString(tt,
-                    v.getPosition().x - fm.stringWidth(tt) / 2,
-                    v.getPosition().y + fm.getAscent() / 2);
-        }
+//            String tt = String.format("%s", v.getInfo());
+//            g.setColor(Color.GRAY);
+//            g.drawString(tt,
+//                    v.getPosition().x - fm.stringWidth(tt) / 2,
+//                    v.getPosition().y + fm.getAscent() / 2);
+//        }
 
         if (p0 != null) {
             g.setStroke(TRAZO_MARCADOR);
@@ -246,6 +246,8 @@ public class Graph<V, E> {
                 Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
             }
      
+            g.drawString("111111",(int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
+                    (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2));
             g.drawImage(bkgnd, (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
                     (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2), (ImageObserver) null);
 //            g.drawOval(
