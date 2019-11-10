@@ -5,8 +5,11 @@
  */
 package logica.repartidor;
 
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import lists.Iterator;
 import lists.List;
-import lists.SimpleArray;
+import lists.SimpleLinkedList;
 
 /**
  *
@@ -17,7 +20,7 @@ public class coleccionRepartidor {
     List<repartidor> coleccionRepartidor;
 
     public coleccionRepartidor() {
-        coleccionRepartidor = new SimpleArray<>();
+        coleccionRepartidor = new SimpleLinkedList<>();
     }
 
     public void add(repartidor repartidor) {
@@ -26,4 +29,13 @@ public class coleccionRepartidor {
         }
     }
 
+    
+    public void paint(Graphics bg, Rectangle bounds) {
+         
+        Iterator<repartidor> i;
+        i = coleccionRepartidor.getIterator();
+        while(i.hasNext()){
+            repartidor ptr=i.getNext();
+            ptr.paint(bg, bounds);
+        }}
 }
