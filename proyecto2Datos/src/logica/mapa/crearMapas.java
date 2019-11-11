@@ -11,8 +11,7 @@ public class crearMapas<V, E> {
      */
     public static mapa posicionarNodosMapaI() {
 
-         mapa<Integer, Double> mapita = new mapa();
-//        Graph<Integer, Double> mapita = new Graph<>();
+        mapa<Integer, Double> mapita = new mapa();
         mapita.add(1, new Point2D.Float(98, 80));
         mapita.add(2, new Point2D.Float(225, 85));
         mapita.add(3, new Point2D.Float(340, 95));
@@ -136,9 +135,9 @@ public class crearMapas<V, E> {
 
     }
 
-    public static  mapa<Integer, Double> posicionarNodosMapaII() {
+    public static mapa<Integer, Double> posicionarNodosMapaII() {
 
-         mapa<Integer, Double> mapita = new mapa();
+        mapa<Integer, Double> mapita = new mapa();
         mapita.add(1, new Point2D.Float(98, 80));
         mapita.add(2, new Point2D.Float(225, 85));
         mapita.add(3, new Point2D.Float(340, 95));
