@@ -19,6 +19,10 @@ public class coleccionRepartidor {
 
     List<repartidor> coleccionRepartidor;
 
+    public List<repartidor> getColeccionRepartidor() {
+        return coleccionRepartidor;
+    }
+
     public coleccionRepartidor() {
         coleccionRepartidor = new SimpleLinkedList<>();
     }
@@ -29,13 +33,20 @@ public class coleccionRepartidor {
         }
     }
 
-    
-    public void paint(Graphics bg, Rectangle bounds) {
-         
+    public void init() {
         Iterator<repartidor> i;
         i = coleccionRepartidor.getIterator();
-        while(i.hasNext()){
-            repartidor ptr=i.getNext();
-            ptr.paint(bg, bounds);
-        }}
+        while (i.hasNext()) {
+            i.getNext().init();
+        }
+    }
+
+    public void paint(Graphics bg, Rectangle bounds) {
+
+        Iterator<repartidor> i;
+        i = coleccionRepartidor.getIterator();
+        while (i.hasNext()) {
+            i.getNext().paint(bg, bounds);
+        }
+    }
 }

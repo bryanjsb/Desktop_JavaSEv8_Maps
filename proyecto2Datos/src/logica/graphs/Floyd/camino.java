@@ -5,7 +5,6 @@
  */
 package logica.graphs.Floyd;
 
-import java.util.Arrays;
 import lists.List;
 import logica.graphs.GVertex;
 
@@ -28,7 +27,7 @@ public class camino<V> {
         this.peso = peso;
         this.ruta = ruta;
     }
-    
+
     public camino() {
         this(null, null, .0, null);
     }

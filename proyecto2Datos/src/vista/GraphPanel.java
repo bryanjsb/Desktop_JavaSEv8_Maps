@@ -49,7 +49,7 @@ public class GraphPanel extends JPanel {
     public void paintComponent(Graphics bg) {
         super.paintComponent(bg);
 
-        g.paint(bg,null);
+        g.paint(bg, null);
         paintImage(bg);
     }
 

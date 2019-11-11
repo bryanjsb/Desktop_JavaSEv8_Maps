@@ -111,7 +111,6 @@ public class Graph<V, E> {
 //        r.grow(diamentroVertice / 2, diamentroVertice / 2);
 //        return r;
 //    }
-
 //    public void paint(Graphics bg, Rectangle bounds) {
 //        Graphics2D g = (Graphics2D) bg;
 //
@@ -203,27 +202,24 @@ public class Graph<V, E> {
 //    public void update(Observable obs, Object evt) {
 //        throw new UnsupportedOperationException();
 //    }
-
-    public String getAdjacencyInfo() {
-        StringBuilder r = new StringBuilder();
-        Iterator<GVertex<V>> i = vertices.getIterator();
-        while (i.hasNext()) {
-            GVertex<V> v = i.getNext();
-            r.append(String.format("%s: ", v.getInfo()));
-            Iterator<GVertex<V>> j = getAdjacent(v).getIterator();
-            while (j.hasNext()) {
-                r.append(String.format("%s, ", j.getNext().getInfo()));
-            }
-            r.append("\n");
-        }
-        return r.toString();
-    }
-
-   
+//    public String getAdjacencyInfo() {
+//        StringBuilder r = new StringBuilder();
+//        Iterator<GVertex<V>> i = vertices.getIterator();
+//        while (i.hasNext()) {
+//            GVertex<V> v = i.getNext();
+//            r.append(String.format("%s: ", v.getInfo()));
+//            Iterator<GVertex<V>> j = getAdjacent(v).getIterator();
+//            while (j.hasNext()) {
+//                r.append(String.format("%s, ", j.getNext().getInfo()));
+//            }
+//            r.append("\n");
+//        }
+//        return r.toString();
+//    }
     public List<Edge<V, E>> getEdges() {
         return edges;
     }
-    
+
     public List<GVertex<V>> getVertex() {
         return vertices;
     }

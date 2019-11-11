@@ -40,26 +40,24 @@ public class coleccionCamino {
     public List<camino> getCaminosPosibles() {
         return caminosPosibles;
     }
-    
-    public camino buscarRuta(String inicio, String llegada){
+
+    public camino buscarRuta(String inicio, String llegada) {
         camino ptr = null;
-         Iterator<camino> i = caminosPosibles.getIterator();
-         while(i.hasNext()){
-             ptr = i.getNext();
-             if(ptr.verticeDestino.getInfo().toString().equals(llegada) && 
-                     ptr.verticeInicio.getInfo().toString().equals(inicio)){
-                 System.out.println(ptr);
-                 break;
-             }   
-         }
-      return ptr;
-    } 
+        Iterator<camino> i = caminosPosibles.getIterator();
+        while (i.hasNext()) {
+            ptr = i.getNext();
+            if (ptr.verticeDestino.getInfo().toString().equals(llegada)
+                    && ptr.verticeInicio.getInfo().toString().equals(inicio)) {
+                System.out.println(ptr);
+                break;
+            }
+        }
+        return ptr;
+    }
 
     @Override
     public String toString() {
         return caminosPosibles.toString();
     }
 
-    
-     
 }

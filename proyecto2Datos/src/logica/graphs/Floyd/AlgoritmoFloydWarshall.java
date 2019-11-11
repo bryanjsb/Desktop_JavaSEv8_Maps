@@ -1,10 +1,8 @@
 package logica.graphs.Floyd;
 
 import java.util.Arrays;
-import javax.xml.bind.ParseConversionEvent;
 import lists.Iterator;
 import lists.List;
-import lists.SimpleArray;
 import lists.SimpleLinkedList;
 import logica.graphs.Edge;
 import logica.graphs.GVertex;
@@ -96,7 +94,7 @@ public class AlgoritmoFloydWarshall {
                         int cont = 0;
                         while (a.hasNext()) {
 //                            camino[cont++] = a.getNext();
-                            camino.addLast((GVertex)a.getNext());
+                            camino.addLast((GVertex) a.getNext());
                         }
                         cont = 0;
                         caminoptr.setRuta(camino);
