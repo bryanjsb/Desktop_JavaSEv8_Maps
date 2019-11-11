@@ -80,13 +80,37 @@ public class mapa<V, E> {
         camino ptrCamino = null;
         repartidor ptr = null;
         ptrCamino = caminosPosibles.buscarRuta("2", "7");
-
         ptr = new repartidor("001", ptrCamino);
         this.add(ptr);
 
         ptrCamino = caminosPosibles.buscarRuta("23", "35");
-
         ptr = new repartidor("002", ptrCamino);
+        this.add(ptr);
+        
+        ptrCamino = caminosPosibles.buscarRuta("18", "1");
+        ptr = new repartidor("003", ptrCamino);
+        this.add(ptr);
+        
+        
+        ptrCamino = caminosPosibles.buscarRuta("1", "35");
+        ptr = new repartidor("004", ptrCamino);
+        this.add(ptr);        
+        
+        ptrCamino = caminosPosibles.buscarRuta("12", "20");
+        ptr = new repartidor("005", ptrCamino);
+        this.add(ptr);
+        
+        
+        ptrCamino = caminosPosibles.buscarRuta("20", "12");
+        ptr = new repartidor("006", ptrCamino);
+        this.add(ptr);
+        
+        ptrCamino = caminosPosibles.buscarRuta("8", "24");
+        ptr = new repartidor("007", ptrCamino);
+        this.add(ptr);
+        
+        ptrCamino = caminosPosibles.buscarRuta("30", "2");
+        ptr = new repartidor("008", ptrCamino);
         this.add(ptr);
     }
 
@@ -115,48 +139,50 @@ public class mapa<V, E> {
     }
 
     public void init() {
-//        init(grafo.getVertex().getFirst());
-        init(colRepartidor.getColeccionRepartidor().
-                getLast().getCaminoRepartidor().getVerticeInicio());
+////        init(grafo.getVertex().getFirst());
+//        init(colRepartidor.getColeccionRepartidor().
+//                getLast().getCaminoRepartidor().getVerticeInicio());
+
+        colRepartidor.init();
     }
 
-    public void init(GVertex<V> pathStart) {
-
-        new Thread() {
-            @Override
-            public void run() {
-                GVertex<V> v0 = pathStart;
-                List<GVertex<V>> vs = colRepartidor.getColeccionRepartidor().
-                getLast().getCaminoRepartidor().getRuta();
-                
-                Iterator<GVertex<V>> i=vs.getIterator();
-                while (i.hasNext()) {
-                    
-                    p0 = v0.getPosition();
-
-                    // Se define el criterio para seleccionar
-                    // el siguiente vértice.
-                    GVertex<V> v1 = i.getNext();
-                    p1 = v1.getPosition();
-
-                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
-                    System.out.printf("v(%s): %s%n", v1.getInfo(), p1);
-                    t = 0.0;
-                    while (t <= 1.0) {
-                        t += DT;
-                        try {
-                            Thread.sleep(MAX_WAIT);
-                        } catch (InterruptedException ex) {
-                        }
-                    }
-                    v0 = v1;
-                }
-            }
-
-        }.start();
-
-//        colRepartidor.init();
-    }
+//    public void init(GVertex<V> pathStart) {
+//
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                GVertex<V> v0 = pathStart;
+//                List<GVertex<V>> vs = colRepartidor.getColeccionRepartidor().
+//                getLast().getCaminoRepartidor().getRuta();
+//                
+//                Iterator<GVertex<V>> i=vs.getIterator();
+//                while (i.hasNext()) {
+//                    
+//                    p0 = v0.getPosition();
+//
+//                    // Se define el criterio para seleccionar
+//                    // el siguiente vértice.
+//                    GVertex<V> v1 = i.getNext();
+//                    p1 = v1.getPosition();
+//
+//                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
+//                    System.out.printf("v(%s): %s%n", v1.getInfo(), p1);
+//                    t = 0.0;
+//                    while (t <= 1.0) {
+//                        t += DT;
+//                        try {
+//                            Thread.sleep(MAX_WAIT);
+//                        } catch (InterruptedException ex) {
+//                        }
+//                    }
+//                    v0 = v1;
+//                }
+//            }
+//
+//        }.start();
+//
+//
+//    }
 
     public void paint(Graphics bg, Rectangle bounds) {
         Graphics2D g = (Graphics2D) bg;
@@ -222,27 +248,28 @@ public class mapa<V, E> {
 //                    v.getPosition().x - fm.stringWidth(tt) / 2,
 //                    v.getPosition().y + fm.getAscent() / 2);
 //        }
-//        colRepartidor.paint(bg, bounds);
+
+//        if (p0 != null) {
+//            g.setStroke(TRAZO_MARCADOR);
+//            g.setColor(Color.RED);
+//
+//            Image bkgnd = null;
+//            try {
+//                bkgnd = ImageIO.read(getClass().getResourceAsStream("imaRepartidor/repartidor2.png"));
+//            } catch (IOException ex) {
+//                Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//
+//            g.drawString(colRepartidor.getColeccionRepartidor().
+//                getLast().getIdentificador(), (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
+//                    (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2));
+//            g.drawImage(bkgnd, (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
+//                    (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2), null);
+//
+//        }
+
+        colRepartidor.paint(bg, bounds);
       
-
-        if (p0 != null) {
-            g.setStroke(TRAZO_MARCADOR);
-            g.setColor(Color.RED);
-
-            Image bkgnd = null;
-            try {
-                bkgnd = ImageIO.read(getClass().getResourceAsStream("imaRepartidor/repartidor2.png"));
-            } catch (IOException ex) {
-                Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            g.drawString(colRepartidor.getColeccionRepartidor().
-                getLast().getIdentificador(), (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
-                    (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2));
-            g.drawImage(bkgnd, (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
-                    (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2), null);
-
-        }
     }
 
     public void update(Observable obs, Object evt) {

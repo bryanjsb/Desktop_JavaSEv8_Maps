@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import lists.Iterator;
+import lists.List;
 import logica.graphs.Floyd.camino;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
@@ -54,20 +55,30 @@ public class repartidor {
         return "repartidor{" + "identificador=" + identificador + ", caminoRepartidor=" + caminoRepartidor + '}';
     }
 
-    public void init() {
+     public void init() {
+        init(caminoRepartidor.getVerticeInicio());
+    }
+
+    public void init(GVertex pathStart) {
 
         new Thread() {
-
             @Override
             public void run() {
-                GVertex v0 = caminoRepartidor.getVerticeInicio();
-                Iterator<GVertex> i = caminoRepartidor.getRuta().getIterator();
-
+                GVertex v0 = pathStart;
+                List<GVertex> vs = caminoRepartidor.getRuta();
+                
+                Iterator<GVertex> i=vs.getIterator();
                 while (i.hasNext()) {
+                    
                     p0 = v0.getPosition();
 
+                    // Se define el criterio para seleccionar
+                    // el siguiente vértice.
                     GVertex v1 = i.getNext();
                     p1 = v1.getPosition();
+
+//                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
+//                    System.out.printf("v(%s): %s%n", v1.getInfo(), p1);
                     t = 0.0;
                     while (t <= 1.0) {
                         t += DT;
@@ -78,10 +89,10 @@ public class repartidor {
                     }
                     v0 = v1;
                 }
-
             }
 
         }.start();
+
     }
 
     public void paint(Graphics bg, Rectangle bounds) {
@@ -93,7 +104,7 @@ public class repartidor {
 
             Image bkgnd = null;
             try {
-                bkgnd = ImageIO.read(getClass().getResourceAsStream("imaRepartidor/repartidor2.png"));
+                bkgnd = ImageIO.read(getClass().getResourceAsStream("imaRepartidor/repartidor1.png"));
             } catch (IOException ex) {
                 Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
             }
