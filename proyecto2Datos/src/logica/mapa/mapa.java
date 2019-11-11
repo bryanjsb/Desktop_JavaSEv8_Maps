@@ -156,13 +156,13 @@ public class mapa<V, E> {
     }
 
     public void paint(Graphics bg, Rectangle bounds) {
-//        Graphics2D g = (Graphics2D) bg;
-//
-//        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//                RenderingHints.VALUE_ANTIALIAS_ON);
-//        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-//                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-//
+        Graphics2D g = (Graphics2D) bg;
+
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+
 //        g.setColor(Color.DARK_GRAY);
 //        g.setStroke(TRAZO_GUIA);
 ////        Rectangle b = getBounds();
@@ -220,12 +220,7 @@ public class mapa<V, E> {
 //                    v.getPosition().y + fm.getAscent() / 2);
 //        }
 //        colRepartidor.paint(bg, bounds);
-        Graphics2D g = (Graphics2D) bg;
-
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+      
 
         if (p0 != null) {
             g.setStroke(TRAZO_MARCADOR);

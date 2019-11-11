@@ -87,12 +87,7 @@ public class repartidor {
 
     public void paint(Graphics bg, Rectangle bounds) {
         Graphics2D g = (Graphics2D) bg;
-
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-
+        
         if (p0 != null) {
             g.setStroke(TRAZO_MARCADOR);
             g.setColor(Color.RED);
