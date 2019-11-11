@@ -21,6 +21,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import lists.Iterator;
 import lists.List;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
 import logica.graphs.Floyd.camino;
@@ -120,24 +121,26 @@ public class mapa<V, E> {
     }
 
     public void init(GVertex<V> pathStart) {
-        Random r = new Random();
 
-        setActive(true);
         new Thread() {
             @Override
             public void run() {
                 GVertex<V> v0 = pathStart;
-                while (isActive()) {
-                    List<GVertex<V>> vs = grafo.getAdjacent(v0);
+                List<GVertex<V>> vs = colRepartidor.getColeccionRepartidor().
+                getLast().getCaminoRepartidor().getRuta();
+                
+                Iterator<GVertex<V>> i=vs.getIterator();
+                while (i.hasNext()) {
+                    
                     p0 = v0.getPosition();
 
                     // Se define el criterio para seleccionar
                     // el siguiente vértice.
-                    GVertex<V> v1 = vs.get(r.nextInt(vs.count()));
+                    GVertex<V> v1 = i.getNext();
                     p1 = v1.getPosition();
 
-//                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
-//                    System.out.printf("v(%s): %s%n", v1.getInfo(), p1);
+                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
+                    System.out.printf("v(%s): %s%n", v1.getInfo(), p1);
                     t = 0.0;
                     while (t <= 1.0) {
                         t += DT;
