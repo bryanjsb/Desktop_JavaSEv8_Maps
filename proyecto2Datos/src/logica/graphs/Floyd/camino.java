@@ -13,7 +13,7 @@ import logica.graphs.GVertex;
  * @author Priscilla
  * @param <V>
  */
-public class camino<V,E> {
+public class camino<V, E> {
 
     GVertex<V> verticeInicio;
     GVertex<V> verticeDestino;

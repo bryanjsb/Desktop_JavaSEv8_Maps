@@ -14,7 +14,7 @@ import lists.SimpleLinkedList;
 public class Graph<V, E> {
 
     public Graph() {
-        this(new SimpleLinkedList<>(),new SimpleLinkedList<>());
+        this(new SimpleLinkedList<>(), new SimpleLinkedList<>());
     }
 
     public Graph(List<GVertex<V>> vertices, List<Edge<V, E>> edges) {
@@ -22,7 +22,6 @@ public class Graph<V, E> {
         this.edges = edges;
     }
 
-    
     public GVertex<V> getVertex(V v) {
         GVertex<V> r = null;
         Iterator<GVertex<V>> i = vertices.getIterator();

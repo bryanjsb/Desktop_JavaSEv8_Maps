@@ -8,16 +8,17 @@ package logica.graphs.Floyd;
 import lists.Iterator;
 import lists.List;
 import lists.SimpleLinkedList;
+import logica.graphs.GVertex;
 
 /**
  *
  * @author Priscilla
  */
-public class coleccionCamino<V,E> {
+public class coleccionCamino<V, E> {
 
-    private List<camino<V,E>> caminosPosibles;
+    private List<camino<V, E>> caminosPosibles;
 
-    public coleccionCamino(List<camino<V,E>> caminosPosibles) {
+    public coleccionCamino(List<camino<V, E>> caminosPosibles) {
         this.caminosPosibles = caminosPosibles;
     }
 
@@ -25,25 +26,31 @@ public class coleccionCamino<V,E> {
         this(new SimpleLinkedList<>());
     }
 
-    public void addFirst(camino camino) {
+    public void addFirst(camino<V, E> camino) {
         if (camino != null) {
             caminosPosibles.addFirst(camino);
         }
     }
 
-    public void addLast(camino camino) {
+    public void addLast(camino<V, E> camino) {
         if (camino != null) {
             caminosPosibles.addLast(camino);
         }
     }
 
-    public List<camino<V,E>> getCaminosPosibles() {
+    public void addLast(GVertex<V> verticeInicio, GVertex<V> verticeDestino,
+            E peso, List<GVertex<V>> ruta) {
+        addLast(new camino<V, E>(verticeInicio, verticeDestino, peso, ruta));
+
+    }
+
+    public List<camino<V, E>> getCaminosPosibles() {
         return caminosPosibles;
     }
 
-    public camino<V,E> buscarRuta(V inicio, V llegada) {
+    public camino<V, E> buscarRuta(V inicio, V llegada) {
         camino ptr = null;
-        Iterator<camino<V,E>> i = caminosPosibles.getIterator();
+        Iterator<camino<V, E>> i = caminosPosibles.getIterator();
         while (i.hasNext()) {
             ptr = i.getNext();
             if (ptr.verticeDestino.getInfo().toString().equals(llegada)

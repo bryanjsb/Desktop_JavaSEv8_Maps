@@ -20,14 +20,14 @@ import logica.graphs.Floyd.camino;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
 
-public class repartidor<V,E> {
+public class repartidor<V, E> {
 
     private String identificador;
-    private camino<V,E> caminoRepartidor;
+    private camino<V, E> caminoRepartidor;
     private String ubicacionParcialImagen;
     private final int cantidadImagen = 4;
 
-    public repartidor(String identificador, camino<V,E> caminoRepartidor) {
+    public repartidor(String identificador, camino<V, E> caminoRepartidor) {
         this.identificador = identificador;
         this.caminoRepartidor = caminoRepartidor;
         Random r = new Random();
@@ -47,11 +47,11 @@ public class repartidor<V,E> {
         this.identificador = identificador;
     }
 
-    public camino<V,E> getCaminoRepartidor() {
+    public camino<V, E> getCaminoRepartidor() {
         return caminoRepartidor;
     }
 
-    public void setCaminoRepartidor(camino<V,E> caminoRepartidor) {
+    public void setCaminoRepartidor(camino<V, E> caminoRepartidor) {
         this.caminoRepartidor = caminoRepartidor;
     }
 
@@ -101,7 +101,35 @@ public class repartidor<V,E> {
     }
 
     public void paint(Graphics bg, Rectangle bounds) {
+        
+        
         Graphics2D g = (Graphics2D) bg;
+        
+//                Iterator<Edge<V, E>> i = this.grafo.getEdges().getIterator();
+//        while (i.hasNext()) {
+//            Edge<V, E> e = i.getNext();
+//
+//        /*dibuja el trazo que une cada vertice*/
+//            g.setStroke(TRAZO_BASE);
+//            g.setColor(Color.WHITE);
+//            g.drawLine(
+//                    (int) e.getTail().getPosition().x,
+//                    (int) e.getTail().getPosition().y,
+//                    (int) e.getHead().getPosition().x,
+//                    (int) e.getHead().getPosition().y
+//            );
+//
+//        /*Dibuja una linea al centro del trazo que une cada vertice*/
+//            g.setStroke(new BasicStroke(1f));
+//            g.setColor(Color.BLACK);
+//            g.drawLine(
+//                    (int) e.getTail().getPosition().x,
+//                    (int) e.getTail().getPosition().y,
+//                    (int) e.getHead().getPosition().x,
+//                    (int) e.getHead().getPosition().y
+//            );
+//        }
+
         if (p0 != null) {
             g.setStroke(TRAZO_MARCADOR);
             g.setColor(Color.RED);
