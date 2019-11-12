@@ -17,7 +17,7 @@ import logica.mapa.mapa;
  *
  * @author Bryan
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaPrincipal<V, E> extends javax.swing.JFrame {
 
     /**
      * Creates new form ventana1
@@ -25,23 +25,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * @param titulo
      * @param g
      */
-    public VentanaPrincipal(String titulo, mapa<Integer, Double> g)
+    public VentanaPrincipal(String titulo, mapa<V, E> g)
             throws HeadlessException {
         super(titulo);
-        this.g = g;
+        this.g = this.inicializar();
         initComponents();
         configurar();
     }
 
-    public VentanaPrincipal(String titulo) {
-        super(titulo);
-        this.g = inicializar();
-        initComponents();
-        configurar();
-    }
-
-    public VentanaPrincipal() {
-        this("");
+    public VentanaPrincipal() throws HeadlessException {
+        this("Gestor de rutas minimas, para repartidores", null);
     }
 
     private void configurar() {
@@ -77,7 +70,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         g.init();
     }
 
-    public final mapa<Integer, Double> inicializar() {
+    public final mapa<V, E> inicializar() {
 
         return crearMapas.posicionarNodosMapaI();
     }
@@ -97,10 +90,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldAgregarRepartidor = new javax.swing.JTextField();
-        jTextFieldPSalida = new javax.swing.JTextField();
-        jTextFieldPLlegada = new javax.swing.JTextField();
-        jButtonAgregarRepartidor = new javax.swing.JButton();
+        jTextFieldIdRepatidor = new javax.swing.JTextField();
+        jTextFieldPuntoInicio = new javax.swing.JTextField();
+        jTextFieldPuntoDestino = new javax.swing.JTextField();
+        jButtonEmpezarRuta = new javax.swing.JButton();
         jMenuBarraHerramienta = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMenuItemMapHeredia = new javax.swing.JMenuItem();
@@ -109,6 +102,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuAcercaDe = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestor de rutas minimas, para repartidores");
         setName("Mapa"); // NOI18N
         setResizable(false);
 
@@ -119,38 +113,42 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanelVistaMapa.setLayout(jPanelVistaMapaLayout);
         jPanelVistaMapaLayout.setHorizontalGroup(
             jPanelVistaMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
         jPanelVistaMapaLayout.setVerticalGroup(
             jPanelVistaMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 511, Short.MAX_VALUE)
         );
 
-        jLabel1.setText("Agregar Repartidor:");
+        jLabel1.setText("Id Repartidor");
 
-        jLabel2.setText("Punto de salida");
+        jLabel2.setText("Inicio");
 
-        jLabel3.setText("Punto de llegada");
+        jLabel3.setText("Destino");
 
-        jButtonAgregarRepartidor.setText("Agregar");
+        jButtonEmpezarRuta.setText("Empezar ruta");
+        jButtonEmpezarRuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmpezarRutaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelVistaOpcionLayout = new javax.swing.GroupLayout(jPanelVistaOpcion);
         jPanelVistaOpcion.setLayout(jPanelVistaOpcionLayout);
         jPanelVistaOpcionLayout.setHorizontalGroup(
             jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelVistaOpcionLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelVistaOpcionLayout.createSequentialGroup()
-                        .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonAgregarRepartidor)
-                            .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jTextFieldAgregarRepartidor)
-                                .addComponent(jTextFieldPSalida)
-                                .addComponent(jTextFieldPLlegada)))
+                        .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonEmpezarRuta)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextFieldIdRepatidor)
+                            .addComponent(jTextFieldPuntoInicio)
+                            .addComponent(jTextFieldPuntoDestino))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -160,18 +158,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldAgregarRepartidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldIdRepatidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(jLabel2)
                 .addGap(8, 8, 8)
-                .addComponent(jTextFieldPSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldPuntoInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldPLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAgregarRepartidor)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addComponent(jTextFieldPuntoDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jButtonEmpezarRuta)
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         jMenuArchivo.setText("Archivo");
@@ -222,11 +220,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //        gp.insertarImagen("mapas/heredia.png");
     }//GEN-LAST:event_jMenuItemMapHerediaActionPerformed
 
+    private void jButtonEmpezarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarRutaActionPerformed
+        String id = this.jTextFieldIdRepatidor.getText();
+        V inicio = (V) this.jTextFieldPuntoInicio.getText();
+        V destino = (V) this.jTextFieldPuntoDestino.getText();
+
+        g.add(id, inicio, destino);
+
+        this.jTextFieldIdRepatidor.setName("");
+        this.jTextFieldPuntoInicio.setName("");
+        this.jTextFieldPuntoDestino.setName("");
+    }//GEN-LAST:event_jButtonEmpezarRutaActionPerformed
+
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAgregarRepartidor;
+    private javax.swing.JButton jButtonEmpezarRuta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -238,11 +248,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemMapSJ;
     private javax.swing.JPanel jPanelVistaMapa;
     private javax.swing.JPanel jPanelVistaOpcion;
-    private javax.swing.JTextField jTextFieldAgregarRepartidor;
-    private javax.swing.JTextField jTextFieldPLlegada;
-    private javax.swing.JTextField jTextFieldPSalida;
+    private javax.swing.JTextField jTextFieldIdRepatidor;
+    private javax.swing.JTextField jTextFieldPuntoDestino;
+    private javax.swing.JTextField jTextFieldPuntoInicio;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
-    private final mapa<Integer, Double> g;
+    private mapa<V, E> g;
 }

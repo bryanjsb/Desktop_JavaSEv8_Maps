@@ -101,10 +101,9 @@ public class repartidor<V, E> {
     }
 
     public void paint(Graphics bg, Rectangle bounds) {
-        
-        
+
         Graphics2D g = (Graphics2D) bg;
-        
+
 //                Iterator<Edge<V, E>> i = this.grafo.getEdges().getIterator();
 //        while (i.hasNext()) {
 //            Edge<V, E> e = i.getNext();
@@ -129,7 +128,6 @@ public class repartidor<V, E> {
 //                    (int) e.getHead().getPosition().y
 //            );
 //        }
-
         if (p0 != null) {
             g.setStroke(TRAZO_MARCADOR);
             g.setColor(Color.RED);

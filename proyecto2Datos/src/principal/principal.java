@@ -24,7 +24,7 @@ public class principal {
 
     public void inicializar() {
         SwingUtilities.invokeLater(() -> {
-            new VentanaPrincipal("Ejemplo G0").init();
+            new VentanaPrincipal().init();
         });
     }
 
