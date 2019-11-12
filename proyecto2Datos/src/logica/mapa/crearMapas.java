@@ -128,6 +128,7 @@ public class crearMapas<V, E> {
         mapita.add(15, 8, 4.4);
         mapita.add(8, 1, 4.4);
 
+        mapita.setUbicacionImagen("/ima/imaMapa/heredia.png");
         return mapita;
 
     }

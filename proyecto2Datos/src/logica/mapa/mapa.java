@@ -47,7 +47,7 @@ public class mapa<V, E> {
         this.grafo = grafo;
         this.caminosPosibles = new coleccionCamino();
         colRepartidor = new coleccionRepartidor();
-        ubicacionImagen = "/ima/imaMapa/heredia.png";
+        ubicacionImagen="";
         
     }
     
@@ -224,6 +224,12 @@ public class mapa<V, E> {
     public String getUbicacionImagen() {
         return ubicacionImagen;
     }
+
+    public void setUbicacionImagen(String ubicacionImagen) {
+        this.ubicacionImagen = ubicacionImagen;
+    }
+    
+    
     
     private static final float[] DASHES = {4f, 4f};
 //    private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);
