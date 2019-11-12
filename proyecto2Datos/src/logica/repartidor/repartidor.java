@@ -104,7 +104,7 @@ public class repartidor {
 
             Image bkgnd = null;
             try {
-                bkgnd = ImageIO.read(getClass().getResourceAsStream("imaRepartidor/repartidor1.png"));
+                bkgnd = ImageIO.read(getClass().getResourceAsStream("/ima/imaRepartidor/repartidor1.png"));
             } catch (IOException ex) {
                 Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
             }
