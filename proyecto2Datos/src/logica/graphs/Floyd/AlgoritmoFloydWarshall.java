@@ -14,7 +14,7 @@ public class AlgoritmoFloydWarshall<V, E> {
 
     }
 
-    public coleccionCamino algoritmoFloydWarshall(Graph<V, E> g) {
+    public coleccionCamino<V,E> algoritmoFloydWarshall(Graph<V, E> g) {
         List<Edge<V, E>> edge = g.getEdges();
         int numAristas = edge.count();
 
@@ -28,7 +28,7 @@ public class AlgoritmoFloydWarshall<V, E> {
         return floydWarshall(pesos, numAristas, g);
     }
 
-    coleccionCamino floydWarshall(Object[][] pesos, int numVertices, Graph<V, E> g) {
+    coleccionCamino<V,E> floydWarshall(Object[][] pesos, int numVertices, Graph<V, E> g) {
         double[][] dist = new double[numVertices][numVertices];
         for (double[] row : dist) {
             Arrays.fill(row, Double.POSITIVE_INFINITY);
@@ -61,9 +61,9 @@ public class AlgoritmoFloydWarshall<V, E> {
         return agregandoCaminos(dist, next, g);
     }
 
-    coleccionCamino agregandoCaminos(double[][] dist, int[][] next, Graph g) {
-        coleccionCamino caminosPosibles = new coleccionCamino();
-        camino caminoptr = new camino<>();
+    coleccionCamino<V,E> agregandoCaminos(double[][] dist, int[][] next, Graph g) {
+        coleccionCamino<V,E> caminosPosibles = new coleccionCamino();
+        camino<V,E> caminoptr = new camino<>();
         List<GVertex<V>> listaRuta = new SimpleLinkedList<>();
 
         System.out.println("Par         Peso        Camino");
@@ -77,7 +77,7 @@ public class AlgoritmoFloydWarshall<V, E> {
                         caminoptr.setVerticeInicio(g.getVertex(v));
                         caminoptr.setVerticeDestino(g.getVertex(u));
                         String num = String.format("%.2f", dist[i][j]);
-                        caminoptr.setPeso(Double.parseDouble(num));
+                        caminoptr.setPeso((E)(num));
 
                         listaRuta.addLast(g.getVertex(u));
                         do {

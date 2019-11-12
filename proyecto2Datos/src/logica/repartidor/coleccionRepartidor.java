@@ -15,11 +15,11 @@ import lists.SimpleLinkedList;
  *
  * @author Invitados1
  */
-public class coleccionRepartidor {
+public class coleccionRepartidor<V,E> {
 
-    List<repartidor> coleccionRepartidor;
+    List<repartidor<V,E>> coleccionRepartidor;
 
-    public List<repartidor> getColeccionRepartidor() {
+    public List<repartidor<V,E>> getColeccionRepartidor() {
         return coleccionRepartidor;
     }
 
@@ -27,15 +27,14 @@ public class coleccionRepartidor {
         coleccionRepartidor = new SimpleLinkedList<>();
     }
 
-    public void add(repartidor repartidor) {
+    public void add(repartidor<V,E> repartidor) {
         if (repartidor != null) {
             coleccionRepartidor.addLast(repartidor);
         }
     }
 
     public void init() {
-        Iterator<repartidor> i;
-        i = coleccionRepartidor.getIterator();
+        Iterator<repartidor<V,E>> i= coleccionRepartidor.getIterator();
         while (i.hasNext()) {
             i.getNext().init();
         }
@@ -43,8 +42,7 @@ public class coleccionRepartidor {
 
     public void paint(Graphics bg, Rectangle bounds) {
 
-        Iterator<repartidor> i;
-        i = coleccionRepartidor.getIterator();
+        Iterator<repartidor<V,E>> i = coleccionRepartidor.getIterator();
         while (i.hasNext()) {
             i.getNext().paint(bg, bounds);
         }

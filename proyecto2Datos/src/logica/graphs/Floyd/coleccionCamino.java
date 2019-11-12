@@ -13,11 +13,11 @@ import lists.SimpleLinkedList;
  *
  * @author Priscilla
  */
-public class coleccionCamino {
+public class coleccionCamino<V,E> {
 
-    private List<camino> caminosPosibles;
+    private List<camino<V,E>> caminosPosibles;
 
-    public coleccionCamino(List<camino> caminosPosibles) {
+    public coleccionCamino(List<camino<V,E>> caminosPosibles) {
         this.caminosPosibles = caminosPosibles;
     }
 
@@ -37,13 +37,13 @@ public class coleccionCamino {
         }
     }
 
-    public List<camino> getCaminosPosibles() {
+    public List<camino<V,E>> getCaminosPosibles() {
         return caminosPosibles;
     }
 
-    public camino buscarRuta(String inicio, String llegada) {
+    public camino<V,E> buscarRuta(V inicio, V llegada) {
         camino ptr = null;
-        Iterator<camino> i = caminosPosibles.getIterator();
+        Iterator<camino<V,E>> i = caminosPosibles.getIterator();
         while (i.hasNext()) {
             ptr = i.getNext();
             if (ptr.verticeDestino.getInfo().toString().equals(llegada)

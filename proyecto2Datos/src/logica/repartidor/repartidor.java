@@ -20,14 +20,14 @@ import logica.graphs.Floyd.camino;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
 
-public class repartidor {
+public class repartidor<V,E> {
 
     private String identificador;
-    private camino caminoRepartidor;
+    private camino<V,E> caminoRepartidor;
     private String ubicacionParcialImagen;
     private final int cantidadImagen = 4;
 
-    public repartidor(String identificador, camino caminoRepartidor) {
+    public repartidor(String identificador, camino<V,E> caminoRepartidor) {
         this.identificador = identificador;
         this.caminoRepartidor = caminoRepartidor;
         Random r = new Random();
@@ -47,11 +47,11 @@ public class repartidor {
         this.identificador = identificador;
     }
 
-    public camino getCaminoRepartidor() {
+    public camino<V,E> getCaminoRepartidor() {
         return caminoRepartidor;
     }
 
-    public void setCaminoRepartidor(camino caminoRepartidor) {
+    public void setCaminoRepartidor(camino<V,E> caminoRepartidor) {
         this.caminoRepartidor = caminoRepartidor;
     }
 
@@ -64,22 +64,22 @@ public class repartidor {
         init(caminoRepartidor.getVerticeInicio());
     }
 
-    public void init(GVertex pathStart) {
+    public void init(GVertex<V> pathStart) {
 
         new Thread() {
             @Override
             public void run() {
-                GVertex v0 = pathStart;
-                List<GVertex> vs = caminoRepartidor.getRuta();
+                GVertex<V> v0 = pathStart;
+                List<GVertex<V>> vs = caminoRepartidor.getRuta();
 
-                Iterator<GVertex> i = vs.getIterator();
+                Iterator<GVertex<V>> i = vs.getIterator();
                 while (i.hasNext()) {
 
                     p0 = v0.getPosition();
 
                     // Se define el criterio para seleccionar
                     // el siguiente vértice.
-                    GVertex v1 = i.getNext();
+                    GVertex<V> v1 = i.getNext();
                     p1 = v1.getPosition();
 
 //                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);

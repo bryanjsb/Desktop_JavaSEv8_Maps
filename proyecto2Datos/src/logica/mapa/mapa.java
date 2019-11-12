@@ -5,13 +5,10 @@
  */
 package logica.mapa;
 
-import java.awt.BasicStroke;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.util.Observable;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
@@ -24,12 +21,14 @@ import logica.repartidor.repartidor;
 /**
  *
  * @author Bryan
+ * @param <V>
+ * @param <E>
  */
 public class mapa<V, E> {
 
     private final Graph<V, E> grafo;
-    private coleccionCamino caminosPosibles;
-    private coleccionRepartidor colRepartidor;
+    private coleccionCamino<V,E> caminosPosibles;
+    private coleccionRepartidor<V,E> colRepartidor;
     private boolean active = false;
     private String ubicacionImagen;
 
@@ -83,7 +82,7 @@ public class mapa<V, E> {
     }
 
     private void calcularRutasMinimas() {
-        AlgoritmoFloydWarshall floyd = new AlgoritmoFloydWarshall();
+        AlgoritmoFloydWarshall<V,E> floyd = new AlgoritmoFloydWarshall();
         this.caminosPosibles = floyd.algoritmoFloydWarshall(grafo);
     }
 
@@ -224,7 +223,6 @@ public class mapa<V, E> {
 //
 //        }
         colRepartidor.paint(bg, bounds);
-
     }
 
     public void update(Observable obs, Object evt) {
@@ -235,17 +233,17 @@ public class mapa<V, E> {
         return ubicacionImagen;
     }
 
-    private static final float[] DASHES = {4f, 4f};
-    private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);
-    private Point2D.Float p0;
-    private Point2D.Float p1;
-    private double t = 0.0;
-    private static final int S1 = 56;
-    private static final Stroke TRAZO_GUIA
-            = new BasicStroke(1.0f, BasicStroke.CAP_BUTT,
-                    BasicStroke.JOIN_BEVEL, 0f, DASHES, 0f);
-    private static final Font TIPO_BASE
-            = new Font(Font.SANS_SERIF, Font.PLAIN, 24);
-    private static final int MAX_WAIT = 25;
-    private static final double DT = 0.035;
+//    private static final float[] DASHES = {4f, 4f};
+//    private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);
+//    private Point2D.Float p0;
+//    private Point2D.Float p1;
+//    private final double t = 0.0;
+//    private static final int S1 = 56;
+//    private static final Stroke TRAZO_GUIA
+//            = new BasicStroke(1.0f, BasicStroke.CAP_BUTT,
+//                    BasicStroke.JOIN_BEVEL, 0f, DASHES, 0f);
+//    private static final Font TIPO_BASE
+//            = new Font(Font.SANS_SERIF, Font.PLAIN, 24);
+//    private static final int MAX_WAIT = 25;
+//    private static final double DT = 0.035;
 }
