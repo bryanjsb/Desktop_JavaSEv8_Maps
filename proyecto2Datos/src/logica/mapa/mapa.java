@@ -6,29 +6,20 @@
 package logica.mapa;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.geom.Point2D;
-import java.io.IOException;
 import java.util.Observable;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import lists.Iterator;
-import lists.List;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
 import logica.graphs.Floyd.camino;
 import logica.graphs.Floyd.coleccionCamino;
-import logica.graphs.GVertex;
 import logica.graphs.Graph;
 import logica.repartidor.coleccionRepartidor;
+import logica.repartidor.crearRepartidor;
 import logica.repartidor.repartidor;
 
 /**
@@ -77,41 +68,7 @@ public class mapa<V, E> {
     }
 
     public void crearRepartidores() {
-        camino ptrCamino = null;
-        repartidor ptr = null;
-        ptrCamino = caminosPosibles.buscarRuta("2", "7");
-        ptr = new repartidor("001", ptrCamino);
-        this.add(ptr);
-
-        ptrCamino = caminosPosibles.buscarRuta("23", "35");
-        ptr = new repartidor("002", ptrCamino);
-        this.add(ptr);
-        
-        ptrCamino = caminosPosibles.buscarRuta("18", "1");
-        ptr = new repartidor("003", ptrCamino);
-        this.add(ptr);
-        
-        
-        ptrCamino = caminosPosibles.buscarRuta("1", "35");
-        ptr = new repartidor("004", ptrCamino);
-        this.add(ptr);        
-        
-        ptrCamino = caminosPosibles.buscarRuta("12", "20");
-        ptr = new repartidor("005", ptrCamino);
-        this.add(ptr);
-        
-        
-        ptrCamino = caminosPosibles.buscarRuta("20", "12");
-        ptr = new repartidor("006", ptrCamino);
-        this.add(ptr);
-        
-        ptrCamino = caminosPosibles.buscarRuta("8", "24");
-        ptr = new repartidor("007", ptrCamino);
-        this.add(ptr);
-        
-        ptrCamino = caminosPosibles.buscarRuta("30", "2");
-        ptr = new repartidor("008", ptrCamino);
-        this.add(ptr);
+        crearRepartidor.crearRepartidores(caminosPosibles, this);
     }
 
     public Graph<V, E> getGrafo() {
