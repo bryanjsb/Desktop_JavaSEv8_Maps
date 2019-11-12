@@ -15,7 +15,6 @@ import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.util.Observable;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
-import logica.graphs.Floyd.camino;
 import logica.graphs.Floyd.coleccionCamino;
 import logica.graphs.Graph;
 import logica.repartidor.coleccionRepartidor;
@@ -32,17 +31,18 @@ public class mapa<V, E> {
     private coleccionCamino caminosPosibles;
     private coleccionRepartidor colRepartidor;
     private boolean active = false;
+    private String ubicacionImagen;
 
     public mapa() {
-        grafo = new Graph<>();
-        this.caminosPosibles = new coleccionCamino();
-        colRepartidor = new coleccionRepartidor();
+        this(new Graph<>());
     }
 
     public mapa(Graph<V, E> grafo) {
         this.grafo = grafo;
         this.caminosPosibles = new coleccionCamino();
         colRepartidor = new coleccionRepartidor();
+        ubicacionImagen = "/ima/imaMapa/heredia.png";
+
     }
 
     public void add(V v, Point2D.Float position) {
@@ -67,7 +67,7 @@ public class mapa<V, E> {
         }
     }
 
-    public void crearRepartidores() {
+    private void crearRepartidores() {
         crearRepartidor.crearRepartidores(caminosPosibles, this);
     }
 
@@ -82,7 +82,7 @@ public class mapa<V, E> {
         return s.toString();
     }
 
-    public void calcularRutasMinimas() {
+    private void calcularRutasMinimas() {
         AlgoritmoFloydWarshall floyd = new AlgoritmoFloydWarshall();
         this.caminosPosibles = floyd.algoritmoFloydWarshall(grafo);
     }
@@ -100,6 +100,8 @@ public class mapa<V, E> {
 //        init(colRepartidor.getColeccionRepartidor().
 //                getLast().getCaminoRepartidor().getVerticeInicio());
 
+        calcularRutasMinimas();
+        crearRepartidores();
         colRepartidor.init();
     }
 
@@ -140,7 +142,6 @@ public class mapa<V, E> {
 //
 //
 //    }
-
     public void paint(Graphics bg, Rectangle bounds) {
         Graphics2D g = (Graphics2D) bg;
 
@@ -156,7 +157,6 @@ public class mapa<V, E> {
 //
 //        g.setFont(TIPO_BASE);
 //        FontMetrics fm = g.getFontMetrics();
-
 //        Iterator<Edge<V, E>> i = edges.getIterator();
 //        while (i.hasNext()) {
 //            Edge<V, E> e = i.getNext();
@@ -205,7 +205,6 @@ public class mapa<V, E> {
 //                    v.getPosition().x - fm.stringWidth(tt) / 2,
 //                    v.getPosition().y + fm.getAscent() / 2);
 //        }
-
 //        if (p0 != null) {
 //            g.setStroke(TRAZO_MARCADOR);
 //            g.setColor(Color.RED);
@@ -224,13 +223,16 @@ public class mapa<V, E> {
 //                    (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2), null);
 //
 //        }
-
         colRepartidor.paint(bg, bounds);
-      
+
     }
 
     public void update(Observable obs, Object evt) {
         throw new UnsupportedOperationException();
+    }
+
+    public String getUbicacionImagen() {
+        return ubicacionImagen;
     }
 
     private static final float[] DASHES = {4f, 4f};

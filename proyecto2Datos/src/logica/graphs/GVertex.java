@@ -32,11 +32,7 @@ public class GVertex<V> {
 
     @Override
     public String toString() {
-//        return String.format("{%s, (%4.2f, %4.2f)}",
-//                getInfo(), getPosition().getX(), getPosition().getY());
-//        
-        return String.format("|%s|",
-                getInfo());
+        return String.format("|%s|", getInfo());
     }
 
     private final V info;

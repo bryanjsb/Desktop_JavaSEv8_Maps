@@ -10,6 +10,7 @@ import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.Observable;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -23,15 +24,19 @@ public class repartidor {
 
     private String identificador;
     private camino caminoRepartidor;
+    private String ubicacionParcialImagen;
+    private final int cantidadImagen = 4;
 
     public repartidor(String identificador, camino caminoRepartidor) {
         this.identificador = identificador;
         this.caminoRepartidor = caminoRepartidor;
+        Random r = new Random();
+        int valorDado = r.nextInt(cantidadImagen) + 1;
+        ubicacionParcialImagen = "/ima/imaRepartidor/repartidor" + valorDado + ".png";
     }
 
     public repartidor() {
-        this.identificador = "";
-        this.caminoRepartidor = new camino();
+        this("", new camino());
     }
 
     public String getIdentificador() {
@@ -55,7 +60,7 @@ public class repartidor {
         return "repartidor{" + "identificador=" + identificador + ", caminoRepartidor=" + caminoRepartidor + '}';
     }
 
-     public void init() {
+    public void init() {
         init(caminoRepartidor.getVerticeInicio());
     }
 
@@ -66,10 +71,10 @@ public class repartidor {
             public void run() {
                 GVertex v0 = pathStart;
                 List<GVertex> vs = caminoRepartidor.getRuta();
-                
-                Iterator<GVertex> i=vs.getIterator();
+
+                Iterator<GVertex> i = vs.getIterator();
                 while (i.hasNext()) {
-                    
+
                     p0 = v0.getPosition();
 
                     // Se define el criterio para seleccionar
@@ -97,14 +102,13 @@ public class repartidor {
 
     public void paint(Graphics bg, Rectangle bounds) {
         Graphics2D g = (Graphics2D) bg;
-        
         if (p0 != null) {
             g.setStroke(TRAZO_MARCADOR);
             g.setColor(Color.RED);
 
             Image bkgnd = null;
             try {
-                bkgnd = ImageIO.read(getClass().getResourceAsStream("/ima/imaRepartidor/repartidor1.png"));
+                bkgnd = ImageIO.read(getClass().getResourceAsStream(ubicacionParcialImagen));
             } catch (IOException ex) {
                 Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
             }

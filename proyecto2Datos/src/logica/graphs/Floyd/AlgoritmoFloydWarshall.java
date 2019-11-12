@@ -8,33 +8,33 @@ import logica.graphs.Edge;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
 
-public class AlgoritmoFloydWarshall {
+public class AlgoritmoFloydWarshall<V, E> {
 
     public AlgoritmoFloydWarshall() {
 
     }
 
-    public coleccionCamino algoritmoFloydWarshall(Graph g) {
-        List<Edge> edge = g.getEdges();
+    public coleccionCamino algoritmoFloydWarshall(Graph<V, E> g) {
+        List<Edge<V, E>> edge = g.getEdges();
         int numAristas = edge.count();
 
 //        System.out.printf("numero de aristas: %d %n", numAristas);
-        Object[][] weights = new Object[numAristas][3];
+        Object[][] pesos = new Object[numAristas][3];
         for (int i = 0; i < numAristas; i++) {
-            weights[i][0] = edge.get(i).getHead().getInfo();
-            weights[i][1] = edge.get(i).getTail().getInfo();
-            weights[i][2] = edge.get(i).getInfo();
+            pesos[i][0] = edge.get(i).getHead().getInfo();
+            pesos[i][1] = edge.get(i).getTail().getInfo();
+            pesos[i][2] = edge.get(i).getInfo();
         }
-        return floydWarshall(weights, numAristas, g);
+        return floydWarshall(pesos, numAristas, g);
     }
 
-    coleccionCamino floydWarshall(Object[][] weights, int numVertices, Graph g) {
+    coleccionCamino floydWarshall(Object[][] pesos, int numVertices, Graph<V, E> g) {
         double[][] dist = new double[numVertices][numVertices];
         for (double[] row : dist) {
             Arrays.fill(row, Double.POSITIVE_INFINITY);
         }
 
-        for (Object[] w : weights) {
+        for (Object[] w : pesos) {
             dist[(int) w[0] - 1][(int) w[1] - 1] = (double) w[2];
         }
 
@@ -62,20 +62,17 @@ public class AlgoritmoFloydWarshall {
     }
 
     coleccionCamino agregandoCaminos(double[][] dist, int[][] next, Graph g) {
-//        List<camino> caminosPosibles = new SimpleLinkedList<>();
         coleccionCamino caminosPosibles = new coleccionCamino();
-        camino caminoptr = new camino();
-        List<GVertex> listaRuta = new SimpleLinkedList<>();
+        camino caminoptr = new camino<>();
+        List<GVertex<V>> listaRuta = new SimpleLinkedList<>();
 
-//        System.out.println("Par     Peso    Camino");
+        System.out.println("Par         Peso        Camino");
         for (int i = 0; i < next.length; i++) {
             for (int j = 0; j <= i; j++) {
                 if (i != j) {
                     int u = i + 1;
                     int v = j + 1;
                     if (dist[i][j] != Double.POSITIVE_INFINITY) {
-//                        String path = format("%d -> %d    %.2f     %s", u, v,
-//                                dist[i][j], u);
 
                         caminoptr.setVerticeInicio(g.getVertex(v));
                         caminoptr.setVerticeDestino(g.getVertex(u));
@@ -85,24 +82,22 @@ public class AlgoritmoFloydWarshall {
                         listaRuta.addLast(g.getVertex(u));
                         do {
                             u = next[u - 1][v - 1];
-//                            path += " -> " + u;
                             listaRuta.addFirst(g.getVertex(u));
                         } while (u != v);
 
-                        Iterator<GVertex> a = listaRuta.getIterator();
-                        List<GVertex> camino = new SimpleLinkedList<>();
-                        int cont = 0;
+                        Iterator<GVertex<V>> a = listaRuta.getIterator();
+                        List<GVertex<V>> camino = new SimpleLinkedList<>();
+
                         while (a.hasNext()) {
-//                            camino[cont++] = a.getNext();
                             camino.addLast((GVertex) a.getNext());
                         }
-                        cont = 0;
+
                         caminoptr.setRuta(camino);
                         caminosPosibles.addLast(new camino(caminoptr.getVerticeInicio(),
                                 caminoptr.getVerticeDestino(), caminoptr.getPeso(),
                                 caminoptr.getRuta()));
                         listaRuta.clear();
-//                        System.out.println(path);
+
                     }
                 }
             }

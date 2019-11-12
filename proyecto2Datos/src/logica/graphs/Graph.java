@@ -5,13 +5,24 @@ import lists.Iterator;
 import lists.List;
 import lists.SimpleLinkedList;
 
+/**
+ *
+ * @author Bryan
+ * @param <V>
+ * @param <E>
+ */
 public class Graph<V, E> {
 
     public Graph() {
-        vertices = new SimpleLinkedList<>();
-        edges = new SimpleLinkedList<>();
+        this(new SimpleLinkedList<>(),new SimpleLinkedList<>());
     }
 
+    public Graph(List<GVertex<V>> vertices, List<Edge<V, E>> edges) {
+        this.vertices = vertices;
+        this.edges = edges;
+    }
+
+    
     public GVertex<V> getVertex(V v) {
         GVertex<V> r = null;
         Iterator<GVertex<V>> i = vertices.getIterator();
@@ -246,7 +257,6 @@ public class Graph<V, E> {
     private static final int MX = 6;
     private int px = 0;
     private final Point2D.Float df = new Point2D.Float(0, 0);
-//
     private final List<GVertex<V>> vertices;
     private final List<Edge<V, E>> edges;
 //

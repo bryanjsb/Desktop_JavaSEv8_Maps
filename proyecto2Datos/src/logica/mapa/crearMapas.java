@@ -1,8 +1,11 @@
 package logica.mapa;
 
 import java.awt.geom.Point2D;
-import logica.graphs.Graph;
 
+/**
+ *
+ * @author Priscilla
+ */
 public class crearMapas<V, E> {
 
     /**
@@ -124,13 +127,7 @@ public class crearMapas<V, E> {
         mapita.add(22, 15, 4.1);
         mapita.add(15, 8, 4.4);
         mapita.add(8, 1, 4.4);
-
-//        System.out.printf("%s%n%n", mapita);
-//        System.out.println();
-//        System.out.printf("Lista de adyacencia: %s%n",mapita.getAdjacencyInfo());
-//        System.out.println();
-        mapita.calcularRutasMinimas();
-        mapita.crearRepartidores();
+        
         return mapita;
 
     }

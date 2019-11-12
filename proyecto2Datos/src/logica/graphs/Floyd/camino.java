@@ -10,18 +10,17 @@ import logica.graphs.GVertex;
 
 /**
  *
- * @author Bryan
+ * @author Priscilla
  * @param <V>
  */
-public class camino<V> {
+public class camino<V,E> {
 
     GVertex<V> verticeInicio;
     GVertex<V> verticeDestino;
-    double peso;
-//    GVertex<V>[] ruta;
+    E peso;
     List<GVertex<V>> ruta;
 
-    public camino(GVertex<V> verticeInicio, GVertex<V> verticeDestino, double peso, List<GVertex<V>> ruta) {
+    public camino(GVertex<V> verticeInicio, GVertex<V> verticeDestino, E peso, List<GVertex<V>> ruta) {
         this.verticeInicio = verticeInicio;
         this.verticeDestino = verticeDestino;
         this.peso = peso;
@@ -29,7 +28,7 @@ public class camino<V> {
     }
 
     public camino() {
-        this(null, null, .0, null);
+        this(null, null, null, null);
     }
 
     public GVertex<V> getVerticeInicio() {
@@ -48,11 +47,11 @@ public class camino<V> {
         this.verticeDestino = verticeDestino;
     }
 
-    public double getPeso() {
+    public E getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(E peso) {
         this.peso = peso;
     }
 

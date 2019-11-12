@@ -11,7 +11,7 @@ import lists.SimpleLinkedList;
 
 /**
  *
- * @author Invitados1
+ * @author Priscilla
  */
 public class coleccionCamino {
 
