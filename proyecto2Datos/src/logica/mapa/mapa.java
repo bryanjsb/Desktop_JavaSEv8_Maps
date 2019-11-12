@@ -77,6 +77,7 @@ public class mapa<V, E> {
         
         repartidor<V, E> ptr = new repartidor<>(id, this.caminosPosibles.buscarRuta(inicio, destino));        
         this.colRepartidor.add(ptr);
+        ptr.init();
     }
     
     private void crearRepartidores() {

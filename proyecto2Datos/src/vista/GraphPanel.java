@@ -4,12 +4,19 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import logica.mapa.mapa;
 
-public class GraphPanel extends JPanel {
+public class GraphPanel extends JPanel implements Observer {
 
+     private static final int MAX_WAIT = 35;
+    private Thread runner;
+    private final mapa g;
+    private Image bkgnd = null;
+    
     public GraphPanel(mapa g) {
         this.g = g;
         configurar();
@@ -60,8 +67,9 @@ public class GraphPanel extends JPanel {
         g.paint(bg, null);
     }
 
-    private static final int MAX_WAIT = 35;
-    private Thread runner;
-    private final mapa g;
-    private Image bkgnd = null;
+    @Override
+    public void update(Observable o, Object arg) {
+        repaint();
+    }
+       
 }

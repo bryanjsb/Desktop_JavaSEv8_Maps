@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import logica.mapa.crearMapas;
 import logica.mapa.mapa;
@@ -17,7 +18,7 @@ import logica.mapa.mapa;
  *
  * @author Bryan
  */
-public class VentanaPrincipal<V, E> extends javax.swing.JFrame {
+public class VentanaPrincipal<V, E> extends JFrame {
 
     /**
      * Creates new form ventana1
@@ -227,9 +228,11 @@ public class VentanaPrincipal<V, E> extends javax.swing.JFrame {
 
         g.add(id, inicio, destino);
 
+        
         this.jTextFieldIdRepatidor.setName("");
         this.jTextFieldPuntoInicio.setName("");
         this.jTextFieldPuntoDestino.setName("");
+        
     }//GEN-LAST:event_jButtonEmpezarRutaActionPerformed
 
     /**
