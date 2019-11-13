@@ -2,12 +2,16 @@ package logica.graphs;
 
 import java.awt.geom.Point2D;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Bryan
  * @param <V>
  */
+@XmlRootElement(name="GVertex")
+@XmlType(propOrder = {"info","posicion"})
 public class GVertex<V> {
 
     public GVertex(V info, Point2D.Float position) {
@@ -19,12 +23,12 @@ public class GVertex<V> {
         this(info, new Point2D.Float(0f, 0f));
     }
 
-//    @XmlElement(name = "info")
+    @XmlElement(name = "info")
     public V getInfo() {
         return info;
     }
 
-//    @XmlElement(name = "info")
+
     public void setInfo(V info) {
         this.info = info;
     }
@@ -34,7 +38,6 @@ public class GVertex<V> {
         return position;
     }
 
-    @XmlElement(name = "posicion")
     public void setPosition(Point2D.Float position) {
         this.position = position;
     }

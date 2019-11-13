@@ -18,6 +18,7 @@ import java.awt.geom.Point2D;
 import java.util.Observable;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import lists.Iterator;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
 import logica.graphs.Floyd.coleccionCamino;
@@ -35,12 +36,13 @@ import logica.serializacion.serializarXML;
  * @param <E>
  */
 @XmlRootElement(name = "mapa")
+//@XmlType(propOrder = {"ima","Graph"})
 public class mapa<V, E> {
 
     private Graph<V, E> grafo;
     private coleccionCamino<V, E> caminosPosibles;
     private coleccionRepartidor<V, E> colRepartidor;
-    private boolean active = false;
+//    private boolean active = false;
     private String ubicacionImagen;
 
     public mapa() {
@@ -55,7 +57,6 @@ public class mapa<V, E> {
 
     }
 
-//    @XmlElement(name = "grafo")
     public void setGrafo(Graph<V, E> grafo) {
         this.grafo = grafo;
     }
@@ -68,12 +69,16 @@ public class mapa<V, E> {
         this.colRepartidor = colRepartidor;
     }
 
-    @XmlElement(name = "ima")
     public void setUbicacionImagen(String ubicacionImagen) {
         this.ubicacionImagen = ubicacionImagen;
     }
 
-    @XmlElement(name = "grafo")
+    @XmlElement(name = "ima")
+    public String getUbicacionImagen() {
+        return ubicacionImagen;
+    }
+    
+    @XmlElement(name = "Graph")
     public Graph<V, E> getGrafo() {
         return grafo;
     }
@@ -84,11 +89,6 @@ public class mapa<V, E> {
 
     public coleccionRepartidor<V, E> getColRepartidor() {
         return colRepartidor;
-    }
-
-    @XmlElement(name = "ima")
-    public String getUbicacionImagen() {
-        return ubicacionImagen;
     }
 
     public void add(V v, Point2D.Float position) {
@@ -138,13 +138,13 @@ public class mapa<V, E> {
         this.caminosPosibles = floyd.algoritmoFloydWarshall(grafo);
     }
 
-    public boolean isActive() {
-        return active;
-    }
+//    public boolean isActive() {
+//        return active;
+//    }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
+//    public void setActive(boolean active) {
+//        this.active = active;
+//    }
 
     public void init() {
         calcularRutasMinimas();
@@ -259,6 +259,7 @@ public class mapa<V, E> {
         serializarXML guardar = new serializarXML();
         return guardar.guardar(this);
     }
+    
     private static final float[] DASHES = {4f, 4f};
 //    private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);
 //    private Point2D.Float p0;

@@ -52,7 +52,7 @@ public class VentanaPrincipal<V, E> extends JFrame {
 
             @Override
             public void windowClosing(WindowEvent e) {
-                g.setActive(false);
+//                g.setActive(false);
                 System.exit(0);
             }
 

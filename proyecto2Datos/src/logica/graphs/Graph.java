@@ -2,6 +2,8 @@ package logica.graphs;
 
 import java.awt.geom.Point2D;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import lists.Iterator;
 import lists.List;
 import lists.SimpleLinkedList;
@@ -12,6 +14,9 @@ import lists.SimpleLinkedList;
  * @param <V>
  * @param <E>
  */
+
+@XmlRootElement(name="Graph")
+@XmlType(propOrder = {"vertex","edges"})
 public class Graph<V, E> {
 
     public Graph() {
@@ -84,7 +89,6 @@ public class Graph<V, E> {
     }
 
     @Override
-
     public String toString() {
         return String.format("G: (%n   V: %s,%n   E: %s%n)",
                 vertex, edges);
@@ -228,22 +232,20 @@ public class Graph<V, E> {
 //        return r.toString();
 //    }
     
-    @XmlElement(name = "edges")
+    @XmlElement(name = "Vertex")
+    public List<GVertex<V>> getVertex() {
+        return vertex;
+    }
+    
+    @XmlElement(name = "Edges")
     public List<Edge<V, E>> getEdges() {
         return edges;
     }
 
-    @XmlElement(name = "vertex")
-    public List<GVertex<V>> getVertex() {
-        return vertex;
-    }
-
-//    @XmlElement(name = "edges")
     public void setEdges(List<Edge<V, E>> edges) {
         this.edges = edges;
     }
 
-//    @XmlElement(name = "vertex")
     public void setVertex(List<GVertex<V>> vertex) {
         this.vertex = vertex;
     }
