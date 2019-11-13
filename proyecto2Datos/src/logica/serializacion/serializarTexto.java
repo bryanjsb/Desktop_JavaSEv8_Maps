@@ -5,6 +5,8 @@
  */
 package logica.serializacion;
 
+import logica.mapa.mapa;
+
 /**
  *
  * @author Bryan
@@ -12,12 +14,12 @@ package logica.serializacion;
 public class serializarTexto implements Iserializacion {
 
     @Override
-    public boolean guardar() {
+    public boolean cargar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean cargar() {
+    public boolean guardar(mapa mapa) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

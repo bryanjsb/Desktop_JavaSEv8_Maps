@@ -227,24 +227,27 @@ public class Graph<V, E> {
 //        }
 //        return r.toString();
 //    }
+    
+    @XmlElement(name = "edges")
     public List<Edge<V, E>> getEdges() {
         return edges;
     }
-    
+
+    @XmlElement(name = "vertex")
     public List<GVertex<V>> getVertex() {
         return vertex;
     }
 
-    @XmlElement(name = "edges")
-    public void setEdges(List<Edge<V, E>> edges){
-        this.edges=edges;
+//    @XmlElement(name = "edges")
+    public void setEdges(List<Edge<V, E>> edges) {
+        this.edges = edges;
     }
-    
-    @XmlElement(name = "vertex")
-    public void setVertex(List<GVertex<V>> vertex){
-        this.vertex=vertex;
+
+//    @XmlElement(name = "vertex")
+    public void setVertex(List<GVertex<V>> vertex) {
+        this.vertex = vertex;
     }
-    
+
 //    private static final float[] DASHES = {4f, 4f};
 //    private static final Stroke TRAZO_BASE
 //            = new BasicStroke(12f,
@@ -267,8 +270,8 @@ public class Graph<V, E> {
     private static final int MX = 6;
     private int px = 0;
     private final Point2D.Float df = new Point2D.Float(0, 0);
-    private  List<GVertex<V>> vertex;
-    private  List<Edge<V, E>> edges;
+    private List<GVertex<V>> vertex;
+    private List<Edge<V, E>> edges;
 //
 //    private static final int MAX_WAIT = 25;
 //    private boolean active = false;

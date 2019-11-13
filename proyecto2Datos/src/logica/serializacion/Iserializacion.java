@@ -5,13 +5,17 @@
  */
 package logica.serializacion;
 
+import logica.mapa.mapa;
+
 /**
  *
  * @author Bryan
+ * @param <V>
+ * @param <E>
  */
-public interface Iserializacion {
+public interface Iserializacion<V, E> {
 
-    public boolean guardar();
+    public boolean guardar(mapa<V, E> mapa);
 
     public boolean cargar();
 

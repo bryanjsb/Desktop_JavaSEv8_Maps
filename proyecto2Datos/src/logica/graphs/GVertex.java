@@ -19,15 +19,17 @@ public class GVertex<V> {
         this(info, new Point2D.Float(0f, 0f));
     }
 
+//    @XmlElement(name = "info")
     public V getInfo() {
         return info;
     }
 
-    @XmlElement(name = "info")
+//    @XmlElement(name = "info")
     public void setInfo(V info) {
         this.info = info;
     }
 
+    @XmlElement(name = "posicion")
     public Point2D.Float getPosition() {
         return position;
     }
@@ -42,7 +44,6 @@ public class GVertex<V> {
         return String.format("|%s|", getInfo());
     }
 
-    
     private V info;
     private Point2D.Float position;
 }

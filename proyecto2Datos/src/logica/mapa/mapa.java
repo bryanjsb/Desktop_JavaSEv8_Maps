@@ -26,6 +26,7 @@ import logica.graphs.Graph;
 import logica.repartidor.coleccionRepartidor;
 import logica.repartidor.crearRepartidor;
 import logica.repartidor.repartidor;
+import logica.serializacion.serializarXML;
 
 /**
  *
@@ -54,7 +55,7 @@ public class mapa<V, E> {
 
     }
 
-    @XmlElement(name = "grafo")
+//    @XmlElement(name = "grafo")
     public void setGrafo(Graph<V, E> grafo) {
         this.grafo = grafo;
     }
@@ -72,6 +73,7 @@ public class mapa<V, E> {
         this.ubicacionImagen = ubicacionImagen;
     }
 
+    @XmlElement(name = "grafo")
     public Graph<V, E> getGrafo() {
         return grafo;
     }
@@ -84,6 +86,7 @@ public class mapa<V, E> {
         return colRepartidor;
     }
 
+    @XmlElement(name = "ima")
     public String getUbicacionImagen() {
         return ubicacionImagen;
     }
@@ -252,6 +255,10 @@ public class mapa<V, E> {
         throw new UnsupportedOperationException();
     }
 
+    public boolean guardarMapa() {
+        serializarXML guardar = new serializarXML();
+        return guardar.guardar(this);
+    }
     private static final float[] DASHES = {4f, 4f};
 //    private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);
 //    private Point2D.Float p0;

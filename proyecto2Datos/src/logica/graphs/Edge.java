@@ -16,34 +16,36 @@ public class Edge<V, E> {
         this.info = info;
     }
 
+    @XmlElement(name = "tail")
     public GVertex<V> getTail() {
         return tail;
     }
 
+    @XmlElement(name = "head")
     public GVertex<V> getHead() {
         return head;
     }
 
+    @XmlElement(name = "info")
     public E getInfo() {
         return info;
     }
 
-    @XmlElement(name = "tail")
+//    @XmlElement(name = "tail")
     public void setTail(GVertex<V> tail) {
         this.tail = tail;
     }
 
-    @XmlElement(name = "head")
+//    @XmlElement(name = "head")
     public void setHead(GVertex<V> head) {
         this.head = head;
     }
 
-    @XmlElement(name = "info")
+//    @XmlElement(name = "info")
     public void setInfo(E info) {
         this.info = info;
     }
 
-    
     @Override
     public String toString() {
         return String.format("{(%s, %s), %s}", getTail(), getHead(), getInfo());

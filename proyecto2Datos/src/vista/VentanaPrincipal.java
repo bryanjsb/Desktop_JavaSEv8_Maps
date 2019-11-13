@@ -90,6 +90,7 @@ public class VentanaPrincipal<V, E> extends JFrame {
         jTextFieldPuntoInicio = new javax.swing.JTextField();
         jTextFieldPuntoDestino = new javax.swing.JTextField();
         jButtonEmpezarRuta = new javax.swing.JButton();
+        jButtonGuardarMapa = new javax.swing.JButton();
         jMenuBarraHerramienta = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMenuItemMapHeredia = new javax.swing.JMenuItem();
@@ -98,7 +99,6 @@ public class VentanaPrincipal<V, E> extends JFrame {
         jMenuAcercaDe = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Gestor de rutas minimas, para repartidores");
         setName("Mapa"); // NOI18N
         setResizable(false);
 
@@ -129,6 +129,13 @@ public class VentanaPrincipal<V, E> extends JFrame {
             }
         });
 
+        jButtonGuardarMapa.setText("Guardar Mapa");
+        jButtonGuardarMapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarMapaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelVistaOpcionLayout = new javax.swing.GroupLayout(jPanelVistaOpcion);
         jPanelVistaOpcion.setLayout(jPanelVistaOpcionLayout);
         jPanelVistaOpcionLayout.setHorizontalGroup(
@@ -138,13 +145,15 @@ public class VentanaPrincipal<V, E> extends JFrame {
                 .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelVistaOpcionLayout.createSequentialGroup()
-                        .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonEmpezarRuta)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextFieldIdRepatidor)
-                            .addComponent(jTextFieldPuntoInicio)
-                            .addComponent(jTextFieldPuntoDestino))
+                        .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButtonEmpezarRuta)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2)
+                                .addComponent(jTextFieldIdRepatidor)
+                                .addComponent(jTextFieldPuntoInicio)
+                                .addComponent(jTextFieldPuntoDestino))
+                            .addComponent(jButtonGuardarMapa))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -165,7 +174,9 @@ public class VentanaPrincipal<V, E> extends JFrame {
                 .addComponent(jTextFieldPuntoDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jButtonEmpezarRuta)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGap(90, 90, 90)
+                .addComponent(jButtonGuardarMapa)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jMenuArchivo.setText("Archivo");
@@ -197,7 +208,7 @@ public class VentanaPrincipal<V, E> extends JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelVistaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(17, 17, 17)
                 .addComponent(jPanelVistaMapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
@@ -227,11 +238,16 @@ public class VentanaPrincipal<V, E> extends JFrame {
         this.jTextFieldPuntoDestino.setName("");
     }//GEN-LAST:event_jButtonEmpezarRutaActionPerformed
 
+    private void jButtonGuardarMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarMapaActionPerformed
+        g.guardarMapa();
+    }//GEN-LAST:event_jButtonGuardarMapaActionPerformed
+
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEmpezarRuta;
+    private javax.swing.JButton jButtonGuardarMapa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
