@@ -1,6 +1,7 @@
 package logica.graphs;
 
 import java.awt.geom.Point2D;
+import javax.xml.bind.annotation.XmlElement;
 
 /**
  *
@@ -22,10 +23,16 @@ public class GVertex<V> {
         return info;
     }
 
+    @XmlElement(name = "info")
+    public void setInfo(V info) {
+        this.info = info;
+    }
+
     public Point2D.Float getPosition() {
         return position;
     }
 
+    @XmlElement(name = "posicion")
     public void setPosition(Point2D.Float position) {
         this.position = position;
     }
@@ -35,6 +42,7 @@ public class GVertex<V> {
         return String.format("|%s|", getInfo());
     }
 
-    private final V info;
+    
+    private V info;
     private Point2D.Float position;
 }

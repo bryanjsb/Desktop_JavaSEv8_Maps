@@ -1,5 +1,7 @@
 package logica.graphs;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  *
  * @author Bryan
@@ -26,12 +28,28 @@ public class Edge<V, E> {
         return info;
     }
 
+    @XmlElement(name = "tail")
+    public void setTail(GVertex<V> tail) {
+        this.tail = tail;
+    }
+
+    @XmlElement(name = "head")
+    public void setHead(GVertex<V> head) {
+        this.head = head;
+    }
+
+    @XmlElement(name = "info")
+    public void setInfo(E info) {
+        this.info = info;
+    }
+
+    
     @Override
     public String toString() {
         return String.format("{(%s, %s), %s}", getTail(), getHead(), getInfo());
     }
 
-    private final GVertex<V> tail;
-    private final GVertex<V> head;
-    private final E info;
+    private GVertex<V> tail;
+    private GVertex<V> head;
+    private E info;
 }
