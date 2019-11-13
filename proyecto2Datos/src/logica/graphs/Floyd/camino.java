@@ -65,7 +65,7 @@ public class camino<V, E> {
 
     @Override
     public String toString() {
-        return verticeInicio + "->" + verticeDestino
-                + "    " + peso + "       " + ruta + " \n ";
+        return "{ inicio:" + verticeInicio + " destino:" + verticeDestino + "}"
+                + " peso: " + peso + " ruta minima: " + ruta;
     }
 }

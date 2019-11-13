@@ -55,7 +55,6 @@ public class coleccionCamino<V, E> {
             ptr = i.getNext();
             if (ptr.verticeDestino.getInfo().toString().equals(llegada)
                     && ptr.verticeInicio.getInfo().toString().equals(inicio)) {
-                System.out.println(ptr);
                 break;
             }
         }
@@ -64,7 +63,16 @@ public class coleccionCamino<V, E> {
 
     @Override
     public String toString() {
-        return caminosPosibles.toString();
+        StringBuilder s = new StringBuilder();
+        Iterator<camino<V, E>> i = caminosPosibles.getIterator();
+
+        while (i.hasNext()) {
+            camino<V, E> ptr = i.getNext();
+
+            s.append(String.format("%s%n", ptr.toString()));
+        }
+
+        return s.toString();
     }
 
 }

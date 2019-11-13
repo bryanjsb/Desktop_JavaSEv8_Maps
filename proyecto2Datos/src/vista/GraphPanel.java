@@ -12,11 +12,11 @@ import logica.mapa.mapa;
 
 public class GraphPanel extends JPanel implements Observer {
 
-     private static final int MAX_WAIT = 35;
+    private static final int MAX_WAIT = 35;
     private Thread runner;
     private final mapa g;
     private Image bkgnd = null;
-    
+
     public GraphPanel(mapa g) {
         this.g = g;
         configurar();
@@ -71,5 +71,5 @@ public class GraphPanel extends JPanel implements Observer {
     public void update(Observable o, Object arg) {
         repaint();
     }
-       
+
 }

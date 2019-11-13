@@ -18,7 +18,6 @@ public class AlgoritmoFloydWarshall<V, E> {
         List<Edge<V, E>> edge = g.getEdges();
         int numAristas = edge.count();
 
-//        System.out.printf("numero de aristas: %d %n", numAristas);
         Object[][] pesos = new Object[numAristas][3];
         for (int i = 0; i < numAristas; i++) {
             pesos[i][0] = edge.get(i).getHead().getInfo();
@@ -64,8 +63,7 @@ public class AlgoritmoFloydWarshall<V, E> {
     coleccionCamino<V, E> agregandoCaminos(double[][] dist, int[][] next, Graph g) {
         coleccionCamino<V, E> caminosPosibles = new coleccionCamino();
         List<GVertex<V>> listaRuta = new SimpleLinkedList<>();
-
-        System.out.println("Par         Peso        Camino");
+        
         for (int i = 0; i < next.length; i++) {
             for (int j = 0; j <= i; j++) {
                 if (i != j) {
@@ -97,7 +95,7 @@ public class AlgoritmoFloydWarshall<V, E> {
                 }
             }
         }
-        System.out.println(caminosPosibles);
+        
         return caminosPosibles;
     }
 }

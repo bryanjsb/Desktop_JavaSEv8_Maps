@@ -39,7 +39,6 @@ public class VentanaPrincipal<V, E> extends JFrame {
     }
 
     private void configurar() {
-//        ajustarComponentes(getContentPane());
         setResizable(true);
 
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -60,19 +59,15 @@ public class VentanaPrincipal<V, E> extends JFrame {
         });
     }
 
-//    private void ajustarComponentes(Container c) {
-//        c.setLayout(new BorderLayout());
-//        c.add(this.jPanelVistaMapa);
-//    }
     public void init() {
         setVisible(true);
         GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
         ptr.init();
         g.init();
+        System.out.println(g);
     }
 
     public final mapa<V, E> inicializar() {
-
         return crearMapas.posicionarNodosMapaI();
     }
 
@@ -218,7 +213,6 @@ public class VentanaPrincipal<V, E> extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemMapHerediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapHerediaActionPerformed
-//        gp.insertarImagen("mapas/heredia.png");
     }//GEN-LAST:event_jMenuItemMapHerediaActionPerformed
 
     private void jButtonEmpezarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarRutaActionPerformed
@@ -228,11 +222,9 @@ public class VentanaPrincipal<V, E> extends JFrame {
 
         g.add(id, inicio, destino);
 
-        
         this.jTextFieldIdRepatidor.setName("");
         this.jTextFieldPuntoInicio.setName("");
         this.jTextFieldPuntoDestino.setName("");
-        
     }//GEN-LAST:event_jButtonEmpezarRutaActionPerformed
 
     /**

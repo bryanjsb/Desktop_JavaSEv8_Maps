@@ -26,7 +26,7 @@ public class repartidor<V, E> {
     private camino<V, E> caminoRepartidor;
     private String ubicacionParcialImagen;
     private final int cantidadImagen = 4;
-
+    
     public repartidor(String identificador, camino<V, E> caminoRepartidor) {
         this.identificador = identificador;
         this.caminoRepartidor = caminoRepartidor;
@@ -57,7 +57,7 @@ public class repartidor<V, E> {
 
     @Override
     public String toString() {
-        return "repartidor{" + "identificador=" + identificador + ", caminoRepartidor=" + caminoRepartidor + '}';
+        return "repartidor"+ " id: " + identificador + " camino establecido " + caminoRepartidor;
     }
 
     public void init() {
@@ -151,6 +151,7 @@ public class repartidor<V, E> {
         throw new UnsupportedOperationException();
     }
 
+    
     private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);
     private Point2D.Float p0;
     private Point2D.Float p1;
