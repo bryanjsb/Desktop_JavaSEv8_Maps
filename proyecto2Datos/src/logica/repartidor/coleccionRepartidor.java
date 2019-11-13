@@ -50,13 +50,12 @@ public class coleccionRepartidor<V, E> {
 
     @Override
     public String toString() {
-        StringBuilder s=new StringBuilder();
-         Iterator<repartidor<V, E>> i = coleccionRepartidor.getIterator();
+        StringBuilder s = new StringBuilder();
+        Iterator<repartidor<V, E>> i = coleccionRepartidor.getIterator();
         while (i.hasNext()) {
-           s.append(String.format("%s%n", i.getNext().toString())) ;
+            s.append(String.format("%s%n", i.getNext().toString()));
         }
         return s.toString();
     }
-    
-    
+
 }

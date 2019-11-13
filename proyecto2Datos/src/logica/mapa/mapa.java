@@ -16,6 +16,8 @@ import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.util.Observable;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import lists.Iterator;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
 import logica.graphs.Floyd.coleccionCamino;
@@ -31,9 +33,10 @@ import logica.repartidor.repartidor;
  * @param <V>
  * @param <E>
  */
+@XmlRootElement(name = "mapa")
 public class mapa<V, E> {
 
-    private final Graph<V, E> grafo;
+    private Graph<V, E> grafo;
     private coleccionCamino<V, E> caminosPosibles;
     private coleccionRepartidor<V, E> colRepartidor;
     private boolean active = false;
@@ -49,6 +52,40 @@ public class mapa<V, E> {
         colRepartidor = new coleccionRepartidor();
         ubicacionImagen = "";
 
+    }
+
+    @XmlElement(name = "grafo")
+    public void setGrafo(Graph<V, E> grafo) {
+        this.grafo = grafo;
+    }
+
+    public void setCaminosPosibles(coleccionCamino<V, E> caminosPosibles) {
+        this.caminosPosibles = caminosPosibles;
+    }
+
+    public void setColRepartidor(coleccionRepartidor<V, E> colRepartidor) {
+        this.colRepartidor = colRepartidor;
+    }
+
+    @XmlElement(name = "ima")
+    public void setUbicacionImagen(String ubicacionImagen) {
+        this.ubicacionImagen = ubicacionImagen;
+    }
+
+    public Graph<V, E> getGrafo() {
+        return grafo;
+    }
+
+    public coleccionCamino<V, E> getCaminosPosibles() {
+        return caminosPosibles;
+    }
+
+    public coleccionRepartidor<V, E> getColRepartidor() {
+        return colRepartidor;
+    }
+
+    public String getUbicacionImagen() {
+        return ubicacionImagen;
     }
 
     public void add(V v, Point2D.Float position) {
@@ -74,7 +111,6 @@ public class mapa<V, E> {
     }
 
     public void add(String id, V inicio, V destino) {
-
         repartidor<V, E> ptr = new repartidor<>(id, this.caminosPosibles.buscarRuta(inicio, destino));
         this.colRepartidor.add(ptr);
         ptr.init();
@@ -82,10 +118,6 @@ public class mapa<V, E> {
 
     private void crearRepartidores() {
         crearRepartidor.crearRepartidores(caminosPosibles, this);
-    }
-
-    public Graph<V, E> getGrafo() {
-        return grafo;
     }
 
     @Override
@@ -218,14 +250,6 @@ public class mapa<V, E> {
 
     public void update(Observable obs, Object evt) {
         throw new UnsupportedOperationException();
-    }
-
-    public String getUbicacionImagen() {
-        return ubicacionImagen;
-    }
-
-    public void setUbicacionImagen(String ubicacionImagen) {
-        this.ubicacionImagen = ubicacionImagen;
     }
 
     private static final float[] DASHES = {4f, 4f};

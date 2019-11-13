@@ -63,7 +63,7 @@ public class AlgoritmoFloydWarshall<V, E> {
     coleccionCamino<V, E> agregandoCaminos(double[][] dist, int[][] next, Graph g) {
         coleccionCamino<V, E> caminosPosibles = new coleccionCamino();
         List<GVertex<V>> listaRuta = new SimpleLinkedList<>();
-        
+
         for (int i = 0; i < next.length; i++) {
             for (int j = 0; j <= i; j++) {
                 if (i != j) {
@@ -95,7 +95,7 @@ public class AlgoritmoFloydWarshall<V, E> {
                 }
             }
         }
-        
+
         return caminosPosibles;
     }
 }

@@ -1,6 +1,7 @@
 package logica.graphs;
 
 import java.awt.geom.Point2D;
+import javax.xml.bind.annotation.XmlElement;
 import lists.Iterator;
 import lists.List;
 import lists.SimpleLinkedList;
@@ -18,13 +19,13 @@ public class Graph<V, E> {
     }
 
     public Graph(List<GVertex<V>> vertices, List<Edge<V, E>> edges) {
-        this.vertices = vertices;
+        this.vertex = vertices;
         this.edges = edges;
     }
 
     public GVertex<V> getVertex(V v) {
         GVertex<V> r = null;
-        Iterator<GVertex<V>> i = vertices.getIterator();
+        Iterator<GVertex<V>> i = vertex.getIterator();
         while (i.hasNext()) {
             GVertex<V> ptr = i.getNext();
             if (ptr.getInfo().equals(v)) {
@@ -51,11 +52,11 @@ public class Graph<V, E> {
     }
 
     public void add(V v, Point2D.Float position) {
-        vertices.addLast(new GVertex<>(v, position));
+        vertex.addLast(new GVertex<>(v, position));
     }
 
     public void add(V v) {
-        vertices.addLast(new GVertex<>(v, new Point2D.Float(DX + df.x, DY + df.y)));
+        vertex.addLast(new GVertex<>(v, new Point2D.Float(DX + df.x, DY + df.y)));
 
         if (px < MX) {
             df.x += DX;
@@ -75,7 +76,7 @@ public class Graph<V, E> {
     }
 
     public void add(V t, V h, E w) {
-        add(getVertex(t), getVertex(h), w);
+        add(Graph.this.getVertex(t), Graph.this.getVertex(h), w);
     }
 
     public void add(V t, V h) {
@@ -86,7 +87,7 @@ public class Graph<V, E> {
 
     public String toString() {
         return String.format("G: (%n   V: %s,%n   E: %s%n)",
-                vertices, edges);
+                vertex, edges);
     }
 
 //    public Rectangle getBounds() {
@@ -94,7 +95,7 @@ public class Graph<V, E> {
 //        x0 = x1 = y0 = y1 = 0f;
 //        boolean f = false;
 //
-//        Iterator<GVertex<V>> i = vertices.getIterator();
+//        Iterator<GVertex<V>> i = vertex.getIterator();
 //        while (i.hasNext()) {
 //            GVertex<V> v = i.getNext();
 //
@@ -163,7 +164,7 @@ public class Graph<V, E> {
 ////        }
 //
 ////        g.setStroke(TRAZO_VERTICE);
-////        Iterator<GVertex<V>> j = vertices.getIterator();
+////        Iterator<GVertex<V>> j = vertex.getIterator();
 ////        while (j.hasNext()) {
 ////            GVertex<V> v = j.getNext();
 //
@@ -214,7 +215,7 @@ public class Graph<V, E> {
 //    }
 //    public String getAdjacencyInfo() {
 //        StringBuilder r = new StringBuilder();
-//        Iterator<GVertex<V>> i = vertices.getIterator();
+//        Iterator<GVertex<V>> i = vertex.getIterator();
 //        while (i.hasNext()) {
 //            GVertex<V> v = i.getNext();
 //            r.append(String.format("%s: ", v.getInfo()));
@@ -229,11 +230,21 @@ public class Graph<V, E> {
     public List<Edge<V, E>> getEdges() {
         return edges;
     }
-
+    
     public List<GVertex<V>> getVertex() {
-        return vertices;
+        return vertex;
     }
 
+    @XmlElement(name = "edges")
+    public void setEdges(List<Edge<V, E>> edges){
+        this.edges=edges;
+    }
+    
+    @XmlElement(name = "vertex")
+    public void setVertex(List<GVertex<V>> vertex){
+        this.vertex=vertex;
+    }
+    
 //    private static final float[] DASHES = {4f, 4f};
 //    private static final Stroke TRAZO_BASE
 //            = new BasicStroke(12f,
@@ -256,8 +267,8 @@ public class Graph<V, E> {
     private static final int MX = 6;
     private int px = 0;
     private final Point2D.Float df = new Point2D.Float(0, 0);
-    private final List<GVertex<V>> vertices;
-    private final List<Edge<V, E>> edges;
+    private  List<GVertex<V>> vertex;
+    private  List<Edge<V, E>> edges;
 //
 //    private static final int MAX_WAIT = 25;
 //    private boolean active = false;
