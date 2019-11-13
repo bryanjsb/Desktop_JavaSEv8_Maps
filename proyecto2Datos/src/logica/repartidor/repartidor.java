@@ -26,13 +26,41 @@ public class repartidor<V, E> {
     private camino<V, E> caminoRepartidor;
     private String ubicacionParcialImagen;
     private final int cantidadImagen = 4;
-
+    private Color color;
+     Image bkgnd=null;
+     Image ini;
+     Image fin;
+    
+    
     public repartidor(String identificador, camino<V, E> caminoRepartidor) {
         this.identificador = identificador;
         this.caminoRepartidor = caminoRepartidor;
         Random r = new Random();
         int valorDado = r.nextInt(cantidadImagen) + 1;
-        ubicacionParcialImagen = "/ima/imaRepartidor/repartidor" + valorDado + ".png";
+        ubicacionParcialImagen = "/ima/imaRepartidor/repartidor" + valorDado + ".png";         
+        iniciarImagen();
+        color=colorRepartidor();       
+    }
+    
+    private void iniciarImagen(){
+  
+    
+           try {
+                bkgnd = ImageIO.read(getClass().getResourceAsStream(ubicacionParcialImagen));
+                ini= ImageIO.read(getClass().getResourceAsStream("/ima/inicio.png"));
+                fin= ImageIO.read(getClass().getResourceAsStream("/ima/final.png"));
+            } catch (IOException ex) {
+                Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          
+           
+    }
+    private Color colorRepartidor(){
+        Random rand = new Random();
+    float r = rand.nextFloat();
+float g = rand.nextFloat();
+float b = rand.nextFloat();
+    return new Color(r,g,b);
     }
 
     public repartidor() {
@@ -104,40 +132,39 @@ public class repartidor<V, E> {
 
         Graphics2D g = (Graphics2D) bg;
 
-//                Iterator<Edge<V, E>> i = this.grafo.getEdges().getIterator();
-//        while (i.hasNext()) {
-//            Edge<V, E> e = i.getNext();
-//
-//        /*dibuja el trazo que une cada vertice*/
-//            g.setStroke(TRAZO_BASE);
-//            g.setColor(Color.WHITE);
-//            g.drawLine(
-//                    (int) e.getTail().getPosition().x,
-//                    (int) e.getTail().getPosition().y,
-//                    (int) e.getHead().getPosition().x,
-//                    (int) e.getHead().getPosition().y
-//            );
-//
-//        /*Dibuja una linea al centro del trazo que une cada vertice*/
+                Iterator<GVertex<V>> i = this.caminoRepartidor.getRuta().getIterator();
+                GVertex<V> tail = i.getNext();
+        while (i.hasNext()) {
+            
+            GVertex<V> head = i.getNext();
+        /*dibuja el trazo que une cada vertice*/
+            g.setStroke(TRAZO_BASE);
+            g.setColor(color.brighter());
+            g.drawLine(
+                    (int) tail.getPosition().x,
+                    (int) tail.getPosition().y,
+                    (int) head.getPosition().x,
+                    (int) head.getPosition().y
+            );
+
+        /*Dibuja una linea al centro del trazo que une cada vertice*/
 //            g.setStroke(new BasicStroke(1f));
 //            g.setColor(Color.BLACK);
-//            g.drawLine(
-//                    (int) e.getTail().getPosition().x,
-//                    (int) e.getTail().getPosition().y,
-//                    (int) e.getHead().getPosition().x,
-//                    (int) e.getHead().getPosition().y
+//           g.drawLine(
+//                    (int) tail.getPosition().x,
+//                    (int) tail.getPosition().y,
+//                    (int) head.getPosition().x,
+//                    (int) head.getPosition().y
 //            );
-//        }
+//           
+           tail=head;
+        }
         if (p0 != null) {
             g.setStroke(TRAZO_MARCADOR);
-            g.setColor(Color.RED);
+            g.setColor(color);
 
-            Image bkgnd = null;
-            try {
-                bkgnd = ImageIO.read(getClass().getResourceAsStream(ubicacionParcialImagen));
-            } catch (IOException ex) {
-                Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           
+         
 
             g.drawString(this.identificador, (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
                     (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2));
@@ -145,12 +172,21 @@ public class repartidor<V, E> {
                     (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2), null);
 
         }
+        
+         g.drawImage(ini, (int)caminoRepartidor.getVerticeInicio().getPosition().x,
+                   (int) caminoRepartidor.getVerticeInicio().getPosition().y, null);
+        
+        g.drawImage(fin, (int)caminoRepartidor.getVerticeDestino().getPosition().x,
+                   (int) caminoRepartidor.getVerticeDestino().getPosition().y, null);
     }
 
     public void update(Observable obs, Object evt) {
         throw new UnsupportedOperationException();
     }
 
+    private static final Stroke TRAZO_BASE
+            = new BasicStroke(12f,
+                    BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0f, null, 0f);
     private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);
     private Point2D.Float p0;
     private Point2D.Float p1;

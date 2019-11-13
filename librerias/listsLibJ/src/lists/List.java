@@ -6,6 +6,7 @@ package lists;
  *
  * @author Georges Alfaro S.
  * @version 1.0.3
+ * @param <T>
  * @since 2019-10-18
  */
 public interface List<T> {
