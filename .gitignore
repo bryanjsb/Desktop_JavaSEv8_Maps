@@ -25,3 +25,5 @@ hs_err_pid*
 /librerias/listsLibJ/dist/
 /proyecto2Datos/dist/
 /proyecto2Datos/build/
+
+!librerias/*.jar
