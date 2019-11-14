@@ -18,7 +18,6 @@ import java.awt.geom.Point2D;
 import java.util.Observable;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import lists.Iterator;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
 import logica.graphs.Floyd.coleccionCamino;
 import logica.graphs.GVertex;
@@ -231,9 +230,10 @@ public class mapa<V, E> {
 //            );
 //        }
         g.setStroke(TRAZO_VERTICE);
-        Iterator<GVertex<V>> j = grafo.getVertex().getIterator();
-        while (j.hasNext()) {
-            GVertex<V> v = j.getNext();
+//        Iterator<GVertex<V>> j = grafo.getVertex().getIterator();
+//        while (j.hasNext()) {
+            for(GVertex<V> v:grafo.getVertex()){
+//            GVertex<V> v = j.getNext();
 
 //            g.setColor(Color.GRAY);
 //            g.fillOval((int) v.getPosition().x - diamentroVertice / 2 + 4,

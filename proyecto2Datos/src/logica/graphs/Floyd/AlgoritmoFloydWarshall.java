@@ -1,8 +1,7 @@
 package logica.graphs.Floyd;
 
 import java.util.Arrays;
-import lists.Iterator;
-import lists.SimpleLinkedList;
+import java.util.LinkedList;
 import logica.graphs.Edge;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
@@ -14,8 +13,8 @@ public class AlgoritmoFloydWarshall<V, E> {
     }
 
     public coleccionCamino<V, E> algoritmoFloydWarshall(Graph<V, E> g) {
-        SimpleLinkedList<Edge<V, E>> edge = g.getEdges();
-        int numAristas = edge.count();
+        LinkedList<Edge<V, E>> edge = g.getEdges();
+        int numAristas = edge.size();
 
         Object[][] pesos = new Object[numAristas][3];
         for (int i = 0; i < numAristas; i++) {
@@ -61,7 +60,7 @@ public class AlgoritmoFloydWarshall<V, E> {
 
     coleccionCamino<V, E> agregandoCaminos(double[][] dist, int[][] next, Graph g) {
         coleccionCamino<V, E> caminosPosibles = new coleccionCamino();
-        SimpleLinkedList<GVertex<V>> listaRuta = new SimpleLinkedList<>();
+        LinkedList<GVertex<V>> listaRuta = new LinkedList<>();
 
         for (int i = 0; i < next.length; i++) {
             for (int j = 0; j <next.length; j++) {
@@ -80,12 +79,13 @@ public class AlgoritmoFloydWarshall<V, E> {
                             listaRuta.addFirst(g.getVertex(u));
                         } while (u != v);
 
-                        Iterator<GVertex<V>> a = listaRuta.getIterator();
-                        SimpleLinkedList<GVertex<V>> camino = new SimpleLinkedList<>();
+                       
+                        LinkedList<GVertex<V>> camino = new LinkedList<>();
 
-                        while (a.hasNext()) {
-                            camino.addLast((GVertex) a.getNext());
+                        for(GVertex<V> a:listaRuta){
+                        camino.addLast((GVertex) a);
                         }
+                      
                         caminosPosibles.addLast(vInicio, vDestino, peso, camino);
 
                         listaRuta.clear();

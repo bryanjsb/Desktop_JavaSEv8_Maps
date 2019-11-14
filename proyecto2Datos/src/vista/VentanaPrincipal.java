@@ -69,7 +69,7 @@ public class VentanaPrincipal<V, E> extends JFrame {
 
     public final mapa<V, E> inicializar() {
 //        return crearMapas.posicionarNodosMapaI();
-          return crearMapas.posicionarNodosMapaII();
+          return crearMapas.posicionarNodosMapaI();
     }
 
     /**

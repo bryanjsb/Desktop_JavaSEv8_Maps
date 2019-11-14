@@ -7,8 +7,8 @@ package logica.repartidor;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import lists.Iterator;
-import lists.SimpleLinkedList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  *
@@ -16,14 +16,14 @@ import lists.SimpleLinkedList;
  */
 public class coleccionRepartidor<V, E> {
 
-    SimpleLinkedList<repartidor<V, E>> coleccionRepartidor;
+    LinkedList<repartidor<V, E>> coleccionRepartidor;
 
-    public SimpleLinkedList<repartidor<V, E>> getColeccionRepartidor() {
+    public LinkedList<repartidor<V, E>> getColeccionRepartidor() {
         return coleccionRepartidor;
     }
 
     public coleccionRepartidor() {
-        coleccionRepartidor = new SimpleLinkedList<>();
+        coleccionRepartidor = new LinkedList<>();
     }
 
     public void add(repartidor<V, E> repartidor) {
@@ -33,26 +33,26 @@ public class coleccionRepartidor<V, E> {
     }
 
     public void init() {
-        Iterator<repartidor<V, E>> i = coleccionRepartidor.getIterator();
+        Iterator<repartidor<V, E>> i = coleccionRepartidor.iterator();
         while (i.hasNext()) {
-            i.getNext().init();
+            i.next().init();
         }
     }
 
     public void paint(Graphics bg, Rectangle bounds) {
 
-        Iterator<repartidor<V, E>> i = coleccionRepartidor.getIterator();
+        Iterator<repartidor<V, E>> i = coleccionRepartidor.iterator();
         while (i.hasNext()) {
-            i.getNext().paint(bg, bounds);
+            i.next().paint(bg, bounds);
         }
     }
 
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        Iterator<repartidor<V, E>> i = coleccionRepartidor.getIterator();
+        Iterator<repartidor<V, E>> i = coleccionRepartidor.iterator();
         while (i.hasNext()) {
-            s.append(String.format("%s%n", i.getNext().toString()));
+            s.append(String.format("%s%n", i.next().toString()));
         }
         return s.toString();
     }

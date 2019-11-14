@@ -5,8 +5,7 @@
  */
 package logica.graphs.Floyd;
 
-import lists.Iterator;
-import lists.SimpleLinkedList;
+import java.util.LinkedList;
 import logica.graphs.GVertex;
 
 /**
@@ -15,14 +14,14 @@ import logica.graphs.GVertex;
  */
 public class coleccionCamino<V, E> {
 
-    private SimpleLinkedList<camino<V, E>> caminosPosibles;
+    private LinkedList<camino<V, E>> caminosPosibles;
 
-    public coleccionCamino(SimpleLinkedList<camino<V, E>> caminosPosibles) {
+    public coleccionCamino(LinkedList<camino<V, E>> caminosPosibles) {
         this.caminosPosibles = caminosPosibles;
     }
 
     public coleccionCamino() {
-        this(new SimpleLinkedList<>());
+        this(new LinkedList<>());
     }
 
     public void addFirst(camino<V, E> camino) {
@@ -38,39 +37,38 @@ public class coleccionCamino<V, E> {
     }
 
     public void addLast(GVertex<V> verticeInicio, GVertex<V> verticeDestino,
-            E peso, SimpleLinkedList<GVertex<V>> ruta) {
+            E peso, LinkedList<GVertex<V>> ruta) {
         addLast(new camino<V, E>(verticeInicio, verticeDestino, peso, ruta));
 
     }
 
-    public SimpleLinkedList<camino<V, E>> getCaminosPosibles() {
+    public LinkedList<camino<V, E>> getCaminosPosibles() {
         return caminosPosibles;
     }
 
     public camino<V, E> buscarRuta(V inicio, V llegada) {
         camino ptr = null;
-        Iterator<camino<V, E>> i = caminosPosibles.getIterator();
-        while (i.hasNext()) {
-            ptr = i.getNext();
+       
+        for(camino<V,E> i:caminosPosibles){
+        
+            ptr = i;
             if (ptr.verticeDestino.getInfo().toString().equals(llegada)
                     && ptr.verticeInicio.getInfo().toString().equals(inicio)) {
                 break;
             }
         }
+        
         return ptr;
     }
 
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        Iterator<camino<V, E>> i = caminosPosibles.getIterator();
-
-        while (i.hasNext()) {
-            camino<V, E> ptr = i.getNext();
-
-            s.append(String.format("%s%n", ptr.toString()));
-        }
-
+        
+         for(camino<V,E> i:caminosPosibles){
+            s.append(String.format("%s%n", i.toString()));
+         }     
+         
         return s.toString();
     }
 

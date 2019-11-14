@@ -9,13 +9,13 @@ import java.awt.Rectangle;
 import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import lists.Iterator;
-import lists.SimpleLinkedList;
 import logica.graphs.Floyd.camino;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
@@ -98,16 +98,15 @@ float b = rand.nextFloat();
             @Override
             public void run() {
                 GVertex<V> v0 = pathStart;
-                SimpleLinkedList<GVertex<V>> vs = caminoRepartidor.getRuta();
+                LinkedList<GVertex<V>> vs = caminoRepartidor.getRuta();
 
-                Iterator<GVertex<V>> i = vs.getIterator();
-                while (i.hasNext()) {
+                for (GVertex<V> i:vs) {
 
                     p0 = v0.getPosition();
 
                     // Se define el criterio para seleccionar
                     // el siguiente vértice.
-                    GVertex<V> v1 = i.getNext();
+                    GVertex<V> v1 = i;
                     p1 = v1.getPosition();
 
 //                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
@@ -132,11 +131,11 @@ float b = rand.nextFloat();
 
         Graphics2D g = (Graphics2D) bg;
 
-                Iterator<GVertex<V>> i = this.caminoRepartidor.getRuta().getIterator();
-                GVertex<V> tail = i.getNext();
+                Iterator<GVertex<V>> i = this.caminoRepartidor.getRuta().iterator();
+                GVertex<V> tail = i.next();
         while (i.hasNext()) {
             
-            GVertex<V> head = i.getNext();
+            GVertex<V> head = i.next();
         /*dibuja el trazo que une cada vertice*/
             g.setStroke(TRAZO_BASE);
             g.setColor(color.brighter());

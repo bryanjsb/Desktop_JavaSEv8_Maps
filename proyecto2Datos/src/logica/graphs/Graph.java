@@ -1,11 +1,10 @@
 package logica.graphs;
 
 import java.awt.geom.Point2D;
+import java.util.LinkedList;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import lists.Iterator;
-import lists.SimpleLinkedList;
 
 /**
  *
@@ -13,38 +12,36 @@ import lists.SimpleLinkedList;
  * @param <V>
  * @param <E>
  */
-
 //@XmlRootElement(name="Graph")
 //@XmlType(propOrder = {"vertex","edges"})
 public class Graph<V, E> {
 
     public Graph() {
-        this(new SimpleLinkedList<>(), new SimpleLinkedList<>());
+        this(new LinkedList<>(), new LinkedList<>());
     }
 
-    public Graph(SimpleLinkedList<GVertex<V>> vertices, SimpleLinkedList<Edge<V, E>> edges) {
+    public Graph(LinkedList<GVertex<V>> vertices, LinkedList<Edge<V, E>> edges) {
         this.vertex = vertices;
         this.edges = edges;
     }
 
     public GVertex<V> getVertex(V v) {
         GVertex<V> r = null;
-        Iterator<GVertex<V>> i = vertex.getIterator();
-        while (i.hasNext()) {
-            GVertex<V> ptr = i.getNext();
-            if (ptr.getInfo().equals(v)) {
-                r = ptr;
+
+        for (GVertex<V> e : vertex) {
+
+            if (e.getInfo().equals(v)) {
+                r = e;
                 break;
             }
         }
+
         return r;
     }
 
-    public SimpleLinkedList<GVertex<V>> getAdjacent(GVertex<V> v) {
-        SimpleLinkedList<GVertex<V>> r = new SimpleLinkedList<>();
-        Iterator<Edge<V, E>> i = edges.getIterator();
-        while (i.hasNext()) {
-            Edge<V, E> e = i.getNext();
+    public LinkedList<GVertex<V>> getAdjacent(GVertex<V> v) {
+        LinkedList<GVertex<V>> r = new LinkedList<>();
+        for( Edge<V, E> e:edges) {
             if (e.getHead().getInfo().equals(v.getInfo())) {
                 r.addLast(e.getTail());
             }
@@ -230,22 +227,21 @@ public class Graph<V, E> {
 //        }
 //        return r.toString();
 //    }
-    
     @XmlElement(name = "Vertex")
-    public SimpleLinkedList<GVertex<V>> getVertex() {
+    public LinkedList<GVertex<V>> getVertex() {
         return vertex;
     }
-    
+
     @XmlElement(name = "Edges")
-    public SimpleLinkedList<Edge<V, E>> getEdges() {
+    public LinkedList<Edge<V, E>> getEdges() {
         return edges;
     }
 
-    public void setEdges(SimpleLinkedList<Edge<V, E>> edges) {
+    public void setEdges(LinkedList<Edge<V, E>> edges) {
         this.edges = edges;
     }
 
-    public void setVertex(SimpleLinkedList<GVertex<V>> vertex) {
+    public void setVertex(LinkedList<GVertex<V>> vertex) {
         this.vertex = vertex;
     }
 
@@ -271,8 +267,8 @@ public class Graph<V, E> {
     private static final int MX = 6;
     private int px = 0;
     private final Point2D.Float df = new Point2D.Float(0, 0);
-    private SimpleLinkedList<GVertex<V>> vertex;
-    private SimpleLinkedList<Edge<V, E>> edges;
+    private LinkedList<GVertex<V>> vertex;
+    private LinkedList<Edge<V, E>> edges;
 //
 //    private static final int MAX_WAIT = 25;
 //    private boolean active = false;

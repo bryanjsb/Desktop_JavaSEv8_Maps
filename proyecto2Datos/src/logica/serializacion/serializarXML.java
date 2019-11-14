@@ -38,7 +38,7 @@ public class serializarXML<V, E> {
             // bean que quermos convertir a XML y un OutpuStream donde queramos que salga el XML,
             // en esta caso, la salida estándar. Podría ser un fichero o cualquier otro Stream.
             jaxbMarshaller.marshal(mapa, System.out);
-            jaxbMarshaller.marshal(mapa, new File(archivoPrueba));
+//            jaxbMarshaller.marshal(mapa, new File(archivoPrueba));
         } catch (JAXBException ex) {
             Logger.getLogger(serializarXML.class.getName()).log(Level.SEVERE, null, ex);
         }
