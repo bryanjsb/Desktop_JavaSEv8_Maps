@@ -6,7 +6,6 @@
 package logica.graphs.Floyd;
 
 import lists.Iterator;
-import lists.List;
 import lists.SimpleLinkedList;
 import logica.graphs.GVertex;
 
@@ -16,9 +15,9 @@ import logica.graphs.GVertex;
  */
 public class coleccionCamino<V, E> {
 
-    private List<camino<V, E>> caminosPosibles;
+    private SimpleLinkedList<camino<V, E>> caminosPosibles;
 
-    public coleccionCamino(List<camino<V, E>> caminosPosibles) {
+    public coleccionCamino(SimpleLinkedList<camino<V, E>> caminosPosibles) {
         this.caminosPosibles = caminosPosibles;
     }
 
@@ -39,12 +38,12 @@ public class coleccionCamino<V, E> {
     }
 
     public void addLast(GVertex<V> verticeInicio, GVertex<V> verticeDestino,
-            E peso, List<GVertex<V>> ruta) {
+            E peso, SimpleLinkedList<GVertex<V>> ruta) {
         addLast(new camino<V, E>(verticeInicio, verticeDestino, peso, ruta));
 
     }
 
-    public List<camino<V, E>> getCaminosPosibles() {
+    public SimpleLinkedList<camino<V, E>> getCaminosPosibles() {
         return caminosPosibles;
     }
 

@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import lists.Iterator;
-import lists.List;
+import lists.SimpleLinkedList;
 import logica.graphs.Floyd.camino;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
@@ -98,7 +98,7 @@ float b = rand.nextFloat();
             @Override
             public void run() {
                 GVertex<V> v0 = pathStart;
-                List<GVertex<V>> vs = caminoRepartidor.getRuta();
+                SimpleLinkedList<GVertex<V>> vs = caminoRepartidor.getRuta();
 
                 Iterator<GVertex<V>> i = vs.getIterator();
                 while (i.hasNext()) {

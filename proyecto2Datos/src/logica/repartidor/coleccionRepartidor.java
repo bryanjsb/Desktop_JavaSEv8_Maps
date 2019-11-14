@@ -8,7 +8,6 @@ package logica.repartidor;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import lists.Iterator;
-import lists.List;
 import lists.SimpleLinkedList;
 
 /**
@@ -17,9 +16,9 @@ import lists.SimpleLinkedList;
  */
 public class coleccionRepartidor<V, E> {
 
-    List<repartidor<V, E>> coleccionRepartidor;
+    SimpleLinkedList<repartidor<V, E>> coleccionRepartidor;
 
-    public List<repartidor<V, E>> getColeccionRepartidor() {
+    public SimpleLinkedList<repartidor<V, E>> getColeccionRepartidor() {
         return coleccionRepartidor;
     }
 

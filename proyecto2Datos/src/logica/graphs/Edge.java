@@ -12,8 +12,8 @@ import javax.xml.bind.annotation.XmlType;
  * @param <E>
  */
 
-@XmlRootElement(name="Edge")
-@XmlType(propOrder = {"info","tail","head"})
+//@XmlRootElement(name="Edge")
+//@XmlType(propOrder = {"info","tail","head"})
 public class Edge<V, E> {
 
     public Edge(GVertex<V> tail, GVertex<V> head, E info) {

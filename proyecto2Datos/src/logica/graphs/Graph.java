@@ -5,7 +5,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import lists.Iterator;
-import lists.List;
 import lists.SimpleLinkedList;
 
 /**
@@ -15,15 +14,15 @@ import lists.SimpleLinkedList;
  * @param <E>
  */
 
-@XmlRootElement(name="Graph")
-@XmlType(propOrder = {"vertex","edges"})
+//@XmlRootElement(name="Graph")
+//@XmlType(propOrder = {"vertex","edges"})
 public class Graph<V, E> {
 
     public Graph() {
         this(new SimpleLinkedList<>(), new SimpleLinkedList<>());
     }
 
-    public Graph(List<GVertex<V>> vertices, List<Edge<V, E>> edges) {
+    public Graph(SimpleLinkedList<GVertex<V>> vertices, SimpleLinkedList<Edge<V, E>> edges) {
         this.vertex = vertices;
         this.edges = edges;
     }
@@ -41,8 +40,8 @@ public class Graph<V, E> {
         return r;
     }
 
-    public List<GVertex<V>> getAdjacent(GVertex<V> v) {
-        List<GVertex<V>> r = new SimpleLinkedList<>();
+    public SimpleLinkedList<GVertex<V>> getAdjacent(GVertex<V> v) {
+        SimpleLinkedList<GVertex<V>> r = new SimpleLinkedList<>();
         Iterator<Edge<V, E>> i = edges.getIterator();
         while (i.hasNext()) {
             Edge<V, E> e = i.getNext();
@@ -233,20 +232,20 @@ public class Graph<V, E> {
 //    }
     
     @XmlElement(name = "Vertex")
-    public List<GVertex<V>> getVertex() {
+    public SimpleLinkedList<GVertex<V>> getVertex() {
         return vertex;
     }
     
     @XmlElement(name = "Edges")
-    public List<Edge<V, E>> getEdges() {
+    public SimpleLinkedList<Edge<V, E>> getEdges() {
         return edges;
     }
 
-    public void setEdges(List<Edge<V, E>> edges) {
+    public void setEdges(SimpleLinkedList<Edge<V, E>> edges) {
         this.edges = edges;
     }
 
-    public void setVertex(List<GVertex<V>> vertex) {
+    public void setVertex(SimpleLinkedList<GVertex<V>> vertex) {
         this.vertex = vertex;
     }
 
@@ -272,8 +271,8 @@ public class Graph<V, E> {
     private static final int MX = 6;
     private int px = 0;
     private final Point2D.Float df = new Point2D.Float(0, 0);
-    private List<GVertex<V>> vertex;
-    private List<Edge<V, E>> edges;
+    private SimpleLinkedList<GVertex<V>> vertex;
+    private SimpleLinkedList<Edge<V, E>> edges;
 //
 //    private static final int MAX_WAIT = 25;
 //    private boolean active = false;

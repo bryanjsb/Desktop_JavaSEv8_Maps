@@ -5,7 +5,7 @@
  */
 package logica.graphs.Floyd;
 
-import lists.List;
+import lists.SimpleLinkedList;
 import logica.graphs.GVertex;
 
 /**
@@ -18,9 +18,9 @@ public class camino<V, E> {
     GVertex<V> verticeInicio;
     GVertex<V> verticeDestino;
     E peso;
-    List<GVertex<V>> ruta;
+    SimpleLinkedList<GVertex<V>> ruta;
 
-    public camino(GVertex<V> verticeInicio, GVertex<V> verticeDestino, E peso, List<GVertex<V>> ruta) {
+    public camino(GVertex<V> verticeInicio, GVertex<V> verticeDestino, E peso, SimpleLinkedList<GVertex<V>> ruta) {
         this.verticeInicio = verticeInicio;
         this.verticeDestino = verticeDestino;
         this.peso = peso;
@@ -55,11 +55,11 @@ public class camino<V, E> {
         this.peso = peso;
     }
 
-    public List<GVertex<V>> getRuta() {
+    public SimpleLinkedList<GVertex<V>> getRuta() {
         return ruta;
     }
 
-    public void setRuta(List<GVertex<V>> ruta) {
+    public void setRuta(SimpleLinkedList<GVertex<V>> ruta) {
         this.ruta = ruta;
     }
 

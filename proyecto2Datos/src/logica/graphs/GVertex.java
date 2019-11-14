@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlType;
  * @author Bryan
  * @param <V>
  */
-@XmlRootElement(name="GVertex")
-@XmlType(propOrder = {"info","posicion"})
+//@XmlRootElement(name="GVertex")
+//@XmlType(propOrder = {"info","posicion"})
 public class GVertex<V> {
 
     public GVertex(V info, Point2D.Float position) {
