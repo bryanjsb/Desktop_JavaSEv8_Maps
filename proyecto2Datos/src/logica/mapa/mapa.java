@@ -18,7 +18,6 @@ import java.awt.geom.Point2D;
 import java.util.Observable;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import lists.Iterator;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
 import logica.graphs.Floyd.coleccionCamino;
@@ -109,12 +108,15 @@ public class mapa<V, E> {
 
     public void add(repartidor repartidor) {
         if (repartidor != null) {
+             System.out.println(repartidor);
             colRepartidor.add(repartidor);
+            repartidor.init();
         }
     }
 
     public void add(String id, V inicio, V destino) {
         repartidor<V, E> ptr = new repartidor<>(id, this.caminosPosibles.buscarRuta(inicio, destino));
+        System.out.println(ptr);
         this.colRepartidor.add(ptr);
         ptr.init();
     }

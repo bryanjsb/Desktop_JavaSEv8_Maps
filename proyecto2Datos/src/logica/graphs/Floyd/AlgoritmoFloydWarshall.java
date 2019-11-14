@@ -65,7 +65,7 @@ public class AlgoritmoFloydWarshall<V, E> {
         List<GVertex<V>> listaRuta = new SimpleLinkedList<>();
 
         for (int i = 0; i < next.length; i++) {
-            for (int j = 0; j <= i; j++) {
+            for (int j = 0; j <next.length; j++) {
                 if (i != j) {
                     int u = i + 1;
                     int v = j + 1;

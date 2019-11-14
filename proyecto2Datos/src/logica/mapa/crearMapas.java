@@ -121,7 +121,7 @@ public class crearMapas<V, E> {
 
         mapita.add(23, 16, 7.8);
         mapita.add(16, 9, 1.5);
-        mapita.add(9, 2, 2.2);
+        mapita.add(2, 9, 2.2);
 
         mapita.add(29, 22, 2.1);
         mapita.add(22, 15, 4.1);
