@@ -17,12 +17,12 @@ public class crearRepartidor {
 
     public static void crearRepartidores(coleccionCamino caminosPosibles, mapa mapa) {
 
-//        camino ptrCamino = null;
-//        repartidor ptr = null;
-//        ptrCamino = caminosPosibles.buscarRuta("2", "7");
-//        ptr = new repartidor("001", ptrCamino);
-//        mapa.add(ptr);
-//
+        camino ptrCamino = null;
+        repartidor ptr = null;
+        ptrCamino = caminosPosibles.buscarRuta("1", "41");
+        ptr = new repartidor("001", ptrCamino);
+        mapa.add(ptr);
+
 //        ptrCamino = caminosPosibles.buscarRuta("23", "35");
 //        ptr = new repartidor("002", ptrCamino);
 //        mapa.add(ptr);
