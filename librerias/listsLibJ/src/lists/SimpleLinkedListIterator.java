@@ -1,5 +1,7 @@
 package lists;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  *
  * ©, 2019, Georges Alfaro S.
@@ -19,6 +21,7 @@ class SimpleLinkedListIterator<T> implements Iterator {
         return current != null;
     }
 
+//    @XmlElement
     @Override
     public T getNext() {
         T r = null;

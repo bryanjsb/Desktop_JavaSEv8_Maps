@@ -1,5 +1,8 @@
 package lists;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * ©, 2019, Georges Alfaro S.
@@ -8,6 +11,8 @@ package lists;
  * @version 1.0.1
  * @since 2019-08-12
  */
+
+//@XmlRootElement
 public class SimpleLinkedList<T> extends AbstractList<T> {
 
     public SimpleLinkedList() {
@@ -79,6 +84,7 @@ public class SimpleLinkedList<T> extends AbstractList<T> {
         return r;
     }
 
+    @XmlElement
     @Override
     public T get(int position) {
         if (position < count) {

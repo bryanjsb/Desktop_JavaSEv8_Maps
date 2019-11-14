@@ -1,5 +1,7 @@
 package lists;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  *
  * ©, 2019, Georges Alfaro S.
@@ -17,8 +19,10 @@ public interface List<T> {
 
     void clear();
 
+    @XmlElement
     T getFirst();
 
+    @XmlElement
     T getLast();
 
     void addFirst(T x);
@@ -30,7 +34,8 @@ public interface List<T> {
     T removeFirst();
 
     T removeLast();
-
+    
+    @XmlElement
     T get(int position);
 
     Iterator<T> getIterator();
