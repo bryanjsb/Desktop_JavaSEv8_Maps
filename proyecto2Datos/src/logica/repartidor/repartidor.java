@@ -89,7 +89,10 @@ float b = rand.nextFloat();
     }
 
     public void init() {
+        
+        if(caminoRepartidor.getRuta()!=null){
         init(caminoRepartidor.getVerticeInicio());
+        }
     }
 
     public void init(GVertex<V> pathStart) {
@@ -131,6 +134,7 @@ float b = rand.nextFloat();
 
         Graphics2D g = (Graphics2D) bg;
 
+        if(this.caminoRepartidor.getRuta()!=null){
                 Iterator<GVertex<V>> i = this.caminoRepartidor.getRuta().iterator();
                 GVertex<V> tail = i.next();
         while (i.hasNext()) {
@@ -177,6 +181,7 @@ float b = rand.nextFloat();
         
         g.drawImage(fin, (int)caminoRepartidor.getVerticeDestino().getPosition().x,
                    (int) caminoRepartidor.getVerticeDestino().getPosition().y, null);
+        }
     }
 
     public void update(Observable obs, Object evt) {

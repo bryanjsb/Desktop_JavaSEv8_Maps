@@ -6,6 +6,7 @@
 package logica.graphs.Floyd;
 
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import logica.graphs.GVertex;
 
 /**
@@ -47,16 +48,23 @@ public class coleccionCamino<V, E> {
     }
 
     public camino<V, E> buscarRuta(V inicio, V llegada) {
-        camino ptr = null;
-       
+        camino<V, E> ptr = null;
+       boolean exito=false;
         for(camino<V,E> i:caminosPosibles){
         
             ptr = i;
             if (ptr.verticeDestino.getInfo().toString().equals(llegada)
                     && ptr.verticeInicio.getInfo().toString().equals(inicio)) {
+                exito=true;
                 break;
             }
         }
+        
+        if(!exito){
+             JOptionPane.showMessageDialog(null,"intente con otro rango");
+             ptr=new camino<>();
+        }
+       
         
         return ptr;
     }

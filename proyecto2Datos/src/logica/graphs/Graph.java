@@ -3,9 +3,6 @@ package logica.graphs;
 import java.awt.geom.Point2D;
 import java.util.LinkedList;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 /**
  *
  * @author Bryan
