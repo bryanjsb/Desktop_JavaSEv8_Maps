@@ -47,8 +47,8 @@ public class crearRepartidor {
         ptr = new repartidor("007", ptrCamino);
         mapa.add(ptr);
 
-//        ptrCamino = caminosPosibles.buscarRuta("30", "2");
-//        ptr = new repartidor("008", ptrCamino);
-//        mapa.add(ptr);
+        ptrCamino = caminosPosibles.buscarRuta("30", "2");
+        ptr = new repartidor("008", ptrCamino);
+        mapa.add(ptr);
     }
 }
