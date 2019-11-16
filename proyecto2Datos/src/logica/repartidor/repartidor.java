@@ -27,40 +27,38 @@ public class repartidor<V, E> {
     private String ubicacionParcialImagen;
     private final int cantidadImagen = 4;
     private Color color;
-     Image bkgnd=null;
-     Image ini;
-     Image fin;
-    
-    
+    Image bkgnd = null;
+    Image ini;
+    Image fin;
+
     public repartidor(String identificador, camino<V, E> caminoRepartidor) {
         this.identificador = identificador;
         this.caminoRepartidor = caminoRepartidor;
         Random r = new Random();
         int valorDado = r.nextInt(cantidadImagen) + 1;
-        ubicacionParcialImagen = "/ima/imaRepartidor/repartidor" + valorDado + ".png";         
+        ubicacionParcialImagen = "/ima/imaRepartidor/repartidor" + valorDado + ".png";
         iniciarImagen();
-        color=colorRepartidor();       
+        color = colorRepartidor();
     }
-    
-    private void iniciarImagen(){
-  
-    
-           try {
-                bkgnd = ImageIO.read(getClass().getResourceAsStream(ubicacionParcialImagen));
-                ini= ImageIO.read(getClass().getResourceAsStream("/ima/inicio.png"));
-                fin= ImageIO.read(getClass().getResourceAsStream("/ima/final.png"));
-            } catch (IOException ex) {
-                Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
-            }
-          
-           
+
+    private void iniciarImagen() {
+
+        try {
+            bkgnd = ImageIO.read(getClass().getResourceAsStream(ubicacionParcialImagen));
+            ini = ImageIO.read(getClass().getResourceAsStream("/ima/inicio.png"));
+            fin = ImageIO.read(getClass().getResourceAsStream("/ima/final.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-    private Color colorRepartidor(){
+
+    private Color colorRepartidor() {
         Random rand = new Random();
-    float r = rand.nextFloat();
-float g = rand.nextFloat();
-float b = rand.nextFloat();
-    return new Color(r,g,b);
+        float r = rand.nextFloat();
+        float g = rand.nextFloat();
+        float b = rand.nextFloat();
+        return new Color(r, g, b);
     }
 
     public repartidor() {
@@ -89,9 +87,9 @@ float b = rand.nextFloat();
     }
 
     public void init() {
-        
-        if(caminoRepartidor.getRuta()!=null){
-        init(caminoRepartidor.getVerticeInicio());
+
+        if (caminoRepartidor.getRuta() != null) {
+            init(caminoRepartidor.getVerticeInicio());
         }
     }
 
@@ -103,7 +101,7 @@ float b = rand.nextFloat();
                 GVertex<V> v0 = pathStart;
                 LinkedList<GVertex<V>> vs = caminoRepartidor.getRuta();
 
-                for (GVertex<V> i:vs) {
+                for (GVertex<V> i : vs) {
 
                     p0 = v0.getPosition();
 
@@ -134,23 +132,23 @@ float b = rand.nextFloat();
 
         Graphics2D g = (Graphics2D) bg;
 
-        if(this.caminoRepartidor.getRuta()!=null){
-                Iterator<GVertex<V>> i = this.caminoRepartidor.getRuta().iterator();
-                GVertex<V> tail = i.next();
-        while (i.hasNext()) {
-            
-            GVertex<V> head = i.next();
-        /*dibuja el trazo que une cada vertice*/
-            g.setStroke(TRAZO_BASE);
-            g.setColor(color.brighter());
-            g.drawLine(
-                    (int) tail.getPosition().x,
-                    (int) tail.getPosition().y,
-                    (int) head.getPosition().x,
-                    (int) head.getPosition().y
-            );
+        if (this.caminoRepartidor.getRuta() != null) {
+            Iterator<GVertex<V>> i = this.caminoRepartidor.getRuta().iterator();
+            GVertex<V> tail = i.next();
+            while (i.hasNext()) {
 
-        /*Dibuja una linea al centro del trazo que une cada vertice*/
+                GVertex<V> head = i.next();
+                /*dibuja el trazo que une cada vertice*/
+                g.setStroke(TRAZO_BASE);
+                g.setColor(color.brighter());
+                g.drawLine(
+                        (int) tail.getPosition().x,
+                        (int) tail.getPosition().y,
+                        (int) head.getPosition().x,
+                        (int) head.getPosition().y
+                );
+
+                /*Dibuja una linea al centro del trazo que une cada vertice*/
 //            g.setStroke(new BasicStroke(1f));
 //            g.setColor(Color.BLACK);
 //           g.drawLine(
@@ -160,27 +158,24 @@ float b = rand.nextFloat();
 //                    (int) head.getPosition().y
 //            );
 //           
-           tail=head;
-        }
-        if (p0 != null) {
-            g.setStroke(TRAZO_MARCADOR);
-            g.setColor(color);
+                tail = head;
+            }
+            if (p0 != null) {
+                g.setStroke(TRAZO_MARCADOR);
+                g.setColor(color);
 
-           
-         
+                g.drawString(this.identificador, (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
+                        (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2));
+                g.drawImage(bkgnd, (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
+                        (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2), null);
 
-            g.drawString(this.identificador, (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
-                    (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2));
-            g.drawImage(bkgnd, (int) ((p0.x + t * (p1.x - p0.x)) - S1 / 2),
-                    (int) ((p0.y + t * (p1.y - p0.y)) - S1 / 2), null);
+            }
 
-        }
-        
-         g.drawImage(ini, (int)caminoRepartidor.getVerticeInicio().getPosition().x,
-                   (int) caminoRepartidor.getVerticeInicio().getPosition().y, null);
-        
-        g.drawImage(fin, (int)caminoRepartidor.getVerticeDestino().getPosition().x,
-                   (int) caminoRepartidor.getVerticeDestino().getPosition().y, null);
+            g.drawImage(ini, (int) caminoRepartidor.getVerticeInicio().getPosition().x,
+                    (int) caminoRepartidor.getVerticeInicio().getPosition().y, null);
+
+            g.drawImage(fin, (int) caminoRepartidor.getVerticeDestino().getPosition().x,
+                    (int) caminoRepartidor.getVerticeDestino().getPosition().y, null);
         }
     }
 

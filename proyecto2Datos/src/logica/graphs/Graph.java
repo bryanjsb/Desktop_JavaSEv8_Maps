@@ -3,6 +3,7 @@ package logica.graphs;
 import java.awt.geom.Point2D;
 import java.util.LinkedList;
 import javax.xml.bind.annotation.XmlElement;
+
 /**
  *
  * @author Bryan
@@ -37,7 +38,7 @@ public class Graph<V, E> {
 
     public LinkedList<GVertex<V>> getAdjacent(GVertex<V> v) {
         LinkedList<GVertex<V>> r = new LinkedList<>();
-        for( Edge<V, E> e:edges) {
+        for (Edge<V, E> e : edges) {
             if (e.getHead().getInfo().equals(v.getInfo())) {
                 r.addLast(e.getTail());
             }

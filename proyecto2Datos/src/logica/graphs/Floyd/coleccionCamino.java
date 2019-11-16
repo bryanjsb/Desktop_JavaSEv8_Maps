@@ -49,34 +49,33 @@ public class coleccionCamino<V, E> {
 
     public camino<V, E> buscarRuta(V inicio, V llegada) {
         camino<V, E> ptr = null;
-       boolean exito=false;
-        for(camino<V,E> i:caminosPosibles){
-        
+        boolean exito = false;
+        for (camino<V, E> i : caminosPosibles) {
+
             ptr = i;
             if (ptr.verticeDestino.getInfo().toString().equals(llegada)
                     && ptr.verticeInicio.getInfo().toString().equals(inicio)) {
-                exito=true;
+                exito = true;
                 break;
             }
         }
-        
-        if(!exito){
-             JOptionPane.showMessageDialog(null,"intente con otro rango");
-             ptr=new camino<>();
+
+        if (!exito) {
+            JOptionPane.showMessageDialog(null, "intente con otro rango");
+            ptr = new camino<>();
         }
-       
-        
+
         return ptr;
     }
 
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        
-         for(camino<V,E> i:caminosPosibles){
+
+        for (camino<V, E> i : caminosPosibles) {
             s.append(String.format("%s%n", i.toString()));
-         }     
-         
+        }
+
         return s.toString();
     }
 

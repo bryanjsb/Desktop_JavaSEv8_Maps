@@ -59,14 +59,14 @@ public class serializarXML<V, E> {
     }
 
     public mapa<V, E> cargar(mapa<V, E> mapa, String s) throws FileNotFoundException, JAXBException {
-        
+
         String archivoPrueba = "./" + s + ".xml";
 
-        InputStream entrada =  new FileInputStream(archivoPrueba);
+        InputStream entrada = new FileInputStream(archivoPrueba);
         JAXBContext context = JAXBContext.newInstance(mapa.class);
         Unmarshaller mar = context.createUnmarshaller();
         mapa map = (mapa) mar.unmarshal(entrada);
-        
+
         return map;
     }
 

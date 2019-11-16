@@ -27,14 +27,13 @@ public class coleccionRepartidor<V, E> {
     }
 
     public void add(repartidor<V, E> repartidor) {
-        
+
         if (repartidor != null) {
             coleccionRepartidor.addLast(repartidor);
+        } else {
+            System.err.printf("Excepción: no se puede agregar");
         }
-        else{
-        System.err.printf("Excepción: no se puede agregar");         
-        }
-        
+
     }
 
     public void init() {

@@ -38,6 +38,7 @@ import logica.serializacion.serializarXML;
  * @param <E>
  */
 @XmlRootElement(name = "mapa")
+//@XmlType(propOrder = {"ima","Graph"})
 public class mapa<V, E> {
 
     private Graph<V, E> grafo;
@@ -260,20 +261,20 @@ public class mapa<V, E> {
 
     public boolean guardarMapa(String s) {
         serializarXML guardar = new serializarXML();
-        return guardar.guardar(this,s);
+        return guardar.guardar(this, s);
     }
 
-    public mapa<V,E> cargarMapa(String s){
-    serializarXML cargar = new serializarXML();
-    
-    mapa<V,E> map=null;
+    public mapa<V, E> cargarMapa(String s) {
+        serializarXML cargar = new serializarXML();
+
+        mapa<V, E> map = null;
         try {
-            map= cargar.cargar(this,s);
+            map = cargar.cargar(this, s);
         } catch (FileNotFoundException | JAXBException ex) {
             Logger.getLogger(mapa.class.getName()).log(Level.SEVERE, null, ex);
         }
         return map;
-        
+
     }
     private static final float[] DASHES = {4f, 4f};
 //    private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);

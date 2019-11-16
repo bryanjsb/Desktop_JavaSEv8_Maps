@@ -275,11 +275,11 @@ public class VentanaPrincipal<V, E> extends JFrame {
     }//GEN-LAST:event_jButtonEmpezarRutaActionPerformed
 
     private void jButtonGuardarMapaHerediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarMapaHerediaActionPerformed
-//        g.guardarMapa("heredia");
+        g.guardarMapa("heredia");
     }//GEN-LAST:event_jButtonGuardarMapaHerediaActionPerformed
 
     private void jMenuItemMapCartagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapCartagoActionPerformed
-        g=g.cargarMapa("cartago");
+        g = g.cargarMapa("cartago");
     }//GEN-LAST:event_jMenuItemMapCartagoActionPerformed
 
     private void jMenuItemMapSanJoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapSanJoseActionPerformed

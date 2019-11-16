@@ -63,7 +63,7 @@ public class AlgoritmoFloydWarshall<V, E> {
         LinkedList<GVertex<V>> listaRuta = new LinkedList<>();
 
         for (int i = 0; i < next.length; i++) {
-            for (int j = 0; j <next.length; j++) {
+            for (int j = 0; j < next.length; j++) {
                 if (i != j) {
                     int u = i + 1;
                     int v = j + 1;
@@ -79,13 +79,12 @@ public class AlgoritmoFloydWarshall<V, E> {
                             listaRuta.addFirst(g.getVertex(u));
                         } while (u != v);
 
-                       
                         LinkedList<GVertex<V>> camino = new LinkedList<>();
 
-                        for(GVertex<V> a:listaRuta){
-                        camino.addLast((GVertex) a);
+                        for (GVertex<V> a : listaRuta) {
+                            camino.addLast((GVertex) a);
                         }
-                      
+
                         caminosPosibles.addLast(vInicio, vDestino, peso, camino);
 
                         listaRuta.clear();
