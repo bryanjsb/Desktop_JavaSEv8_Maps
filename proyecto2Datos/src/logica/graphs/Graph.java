@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlElement;
  * @param <E>
  */
 //@XmlRootElement(name="Graph")
-//@XmlType(propOrder = {"vertex","edges"})
 public class Graph<V, E> {
 
     public Graph() {
@@ -224,12 +223,12 @@ public class Graph<V, E> {
 //        }
 //        return r.toString();
 //    }
-    @XmlElement(name = "Vertex")
+    @XmlElement//(name = "Vertex")
     public LinkedList<GVertex<V>> getVertex() {
         return vertex;
     }
 
-    @XmlElement(name = "Edges")
+    @XmlElement//(name = "Edges")
     public LinkedList<Edge<V, E>> getEdges() {
         return edges;
     }

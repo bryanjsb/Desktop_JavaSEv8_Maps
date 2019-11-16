@@ -15,7 +15,11 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.geom.Point2D;
+import java.io.FileNotFoundException;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
@@ -34,7 +38,6 @@ import logica.serializacion.serializarXML;
  * @param <E>
  */
 @XmlRootElement(name = "mapa")
-//@XmlType(propOrder = {"ima","Graph"})
 public class mapa<V, E> {
 
     private Graph<V, E> grafo;
@@ -75,7 +78,7 @@ public class mapa<V, E> {
     public String getUbicacionImagen() {
         return ubicacionImagen;
     }
-    
+
     @XmlElement(name = "Graph")
     public Graph<V, E> getGrafo() {
         return grafo;
@@ -107,7 +110,7 @@ public class mapa<V, E> {
 
     public void add(repartidor repartidor) {
         if (repartidor != null) {
-             System.out.println(repartidor);
+            System.out.println(repartidor);
             colRepartidor.add(repartidor);
             repartidor.init();
         }
@@ -142,11 +145,9 @@ public class mapa<V, E> {
 //    public boolean isActive() {
 //        return active;
 //    }
-
 //    public void setActive(boolean active) {
 //        this.active = active;
 //    }
-
     public void init() {
         calcularRutasMinimas();
         crearRepartidores();
@@ -232,7 +233,7 @@ public class mapa<V, E> {
         g.setStroke(TRAZO_VERTICE);
 //        Iterator<GVertex<V>> j = grafo.getVertex().getIterator();
 //        while (j.hasNext()) {
-            for(GVertex<V> v:grafo.getVertex()){
+        for (GVertex<V> v : grafo.getVertex()) {
 //            GVertex<V> v = j.getNext();
 
 //            g.setColor(Color.GRAY);
@@ -257,11 +258,23 @@ public class mapa<V, E> {
         throw new UnsupportedOperationException();
     }
 
-    public boolean guardarMapa() {
+    public boolean guardarMapa(String s) {
         serializarXML guardar = new serializarXML();
-        return guardar.guardar(this);
+        return guardar.guardar(this,s);
     }
+
+    public mapa<V,E> cargarMapa(String s){
+    serializarXML cargar = new serializarXML();
     
+    mapa<V,E> map=null;
+        try {
+            map= cargar.cargar(this,s);
+        } catch (FileNotFoundException | JAXBException ex) {
+            Logger.getLogger(mapa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return map;
+        
+    }
     private static final float[] DASHES = {4f, 4f};
 //    private static final Stroke TRAZO_MARCADOR = new BasicStroke(8f);
 //    private Point2D.Float p0;

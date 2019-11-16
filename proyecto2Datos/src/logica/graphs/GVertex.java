@@ -23,7 +23,7 @@ public class GVertex<V> {
         this(info, new Point2D.Float(0f, 0f));
     }
 
-    @XmlElement(name = "info")
+    @XmlElement//(name = "info")
     public V getInfo() {
         return info;
     }
@@ -33,7 +33,7 @@ public class GVertex<V> {
         this.info = info;
     }
 
-    @XmlElement(name = "posicion")
+    @XmlElement//(name = "posicion")
     public Point2D.Float getPosition() {
         return position;
     }

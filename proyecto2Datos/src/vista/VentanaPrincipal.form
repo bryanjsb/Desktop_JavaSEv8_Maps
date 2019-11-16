@@ -21,11 +21,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cargar Mapa Cartago"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemMapCartagoActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMapSJ">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMapSanJose">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cargar Mapa San Jose"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemMapSanJoseActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -89,7 +95,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="568" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="572" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -109,16 +115,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButtonEmpezarRuta" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldIdRepatidor" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldPuntoInicio" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldPuntoDestino" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jButtonGuardarMapa" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jButtonEmpezarRuta" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIdRepatidor" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldPuntoInicio" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldPuntoDestino" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jButtonGuardarMapaHeredia" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jButtonGuardarMapaCartago" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jButtonGuardarMapaSanJose" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -145,8 +151,12 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="jButtonEmpezarRuta" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                  <Component id="jButtonGuardarMapa" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="116" max="32767" attributes="0"/>
+                  <Component id="jButtonGuardarMapaHeredia" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButtonGuardarMapaCartago" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jButtonGuardarMapaSanJose" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -181,12 +191,28 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEmpezarRutaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonGuardarMapa">
+        <Component class="javax.swing.JButton" name="jButtonGuardarMapaHeredia">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Guardar Mapa"/>
+            <Property name="text" type="java.lang.String" value="Heredia"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarMapaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarMapaHerediaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonGuardarMapaCartago">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cartago"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarMapaCartagoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonGuardarMapaSanJose">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="San Jose"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarMapaSanJoseActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

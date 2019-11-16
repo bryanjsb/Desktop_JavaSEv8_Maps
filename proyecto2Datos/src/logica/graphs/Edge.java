@@ -22,17 +22,17 @@ public class Edge<V, E> {
         this.info = info;
     }
 
-      @XmlElement(name = "info")
+      @XmlElement//(name = "info")
     public E getInfo() {
         return info;
     }
     
-    @XmlElement(name = "tail")
+    @XmlElement//(name = "tail")
     public GVertex<V> getTail() {
         return tail;
     }
 
-    @XmlElement(name = "head")
+    @XmlElement//(name = "head")
     public GVertex<V> getHead() {
         return head;
     }

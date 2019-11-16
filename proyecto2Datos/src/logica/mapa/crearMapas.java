@@ -12,7 +12,7 @@ public class crearMapas<V, E> {
      *
      * @return
      */
-    public static mapa posicionarNodosMapaI() {
+    public static mapa mapaHeredia() {
 
         mapa<Integer, Double> mapita = new mapa();
         mapita.add(1, new Point2D.Float(98, 80));
@@ -133,7 +133,7 @@ public class crearMapas<V, E> {
 
     }
 
-    public static mapa posicionarNodosMapaII() {
+    public static mapa mapaCartago() {
 
         mapa<Integer, Double> mapita = new mapa();
        mapita.add(1, new Point2D.Float(10, 210));
@@ -246,7 +246,7 @@ public class crearMapas<V, E> {
 
     }
     
-    public static mapa posicionarNodosMapaIII() { /*<Integer, Double>*/
+    public static mapa mapaSanJose() { /*<Integer, Double>*/
         mapa<Integer, Double> mapita = new mapa();
         
         mapita.add(1, new Point2D.Float(70, 50));

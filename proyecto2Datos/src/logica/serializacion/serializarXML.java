@@ -6,6 +6,11 @@
 package logica.serializacion;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
@@ -22,9 +27,9 @@ import logica.mapa.mapa;
  */
 public class serializarXML<V, E> {
 
-    public boolean guardar(mapa<V, E> mapa) {
+    public boolean guardar(mapa<V, E> mapa, String s) {
         boolean exito = false;
-        String archivoPrueba = "/archivoXML/mapa1.xml";
+        String r = "./" + s + ".xml";
         try {
             // Instanciamos el contexto, indicando la clase que será el RootElement.
             JAXBContext jaxbContext = JAXBContext.newInstance(mapa.class);
@@ -38,7 +43,14 @@ public class serializarXML<V, E> {
             // bean que quermos convertir a XML y un OutpuStream donde queramos que salga el XML,
             // en esta caso, la salida estándar. Podría ser un fichero o cualquier otro Stream.
             jaxbMarshaller.marshal(mapa, System.out);
-//            jaxbMarshaller.marshal(mapa, new File(archivoPrueba));
+
+            OutputStream salida = null;
+            try {
+                salida = new FileOutputStream(r);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(serializarXML.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jaxbMarshaller.marshal(mapa, salida);
         } catch (JAXBException ex) {
             Logger.getLogger(serializarXML.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -46,25 +58,16 @@ public class serializarXML<V, E> {
         return exito;
     }
 
-    public boolean cargar() {
-        boolean exito = false;
-        String archivoPrueba = "/archivoXML/mapa1.xml";
-        try {
-            File f = new File(archivoPrueba);
-            if (f.exists()) {
-                JAXBContext ctx = JAXBContext.newInstance(mapa.class);
-                Unmarshaller mrs = ctx.createUnmarshaller();
-                mapa map = (mapa) mrs.unmarshal(f);
-                System.out.println(map);
-                exito = true;
-            } else {
-                System.err.printf("No existe el archivo de prueba: '%s'%n", archivoPrueba);
-            }
-        } catch (JAXBException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }
+    public mapa<V, E> cargar(mapa<V, E> mapa, String s) throws FileNotFoundException, JAXBException {
+        
+        String archivoPrueba = "./" + s + ".xml";
 
-        return exito;
+        InputStream entrada =  new FileInputStream(archivoPrueba);
+        JAXBContext context = JAXBContext.newInstance(mapa.class);
+        Unmarshaller mar = context.createUnmarshaller();
+        mapa map = (mapa) mar.unmarshal(entrada);
+        
+        return map;
     }
 
 }
