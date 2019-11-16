@@ -113,8 +113,14 @@ public class repartidor<V, E> {
 //                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
 //                    System.out.printf("v(%s): %s%n", v1.getInfo(), p1);
                     t = 0.0;
+                    
+                    float dx = p1.x - p0.x;
+                    float dy = p1.y - p0.y;
+                    double dm = Math.sqrt(dx * dx + dy * dy);
+                    double dt = DR / dm;
+                    
                     while (t <= 1.0) {
-                        t += DT;
+                        t += dt;
                         try {
                             Thread.sleep(MAX_WAIT);
                         } catch (InterruptedException ex) {
@@ -193,4 +199,6 @@ public class repartidor<V, E> {
     private static final int S1 = 56;
     private static final int MAX_WAIT = 25;
     private static final double DT = 0.035;
+    
+    private static final double DR = 4.0;
 }
