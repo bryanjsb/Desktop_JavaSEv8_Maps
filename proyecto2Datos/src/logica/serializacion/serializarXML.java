@@ -27,8 +27,8 @@ import logica.mapa.mapa;
  */
 public class serializarXML<V, E> {
 
-    public boolean guardar(mapa<V, E> mapa, String s) {
-        boolean exito = false;
+    public void guardar(mapa<V, E> mapa, String s) {
+        
         String r = "./" + s + ".xml";
         try {
             // Instanciamos el contexto, indicando la clase que será el RootElement.
@@ -55,10 +55,10 @@ public class serializarXML<V, E> {
             Logger.getLogger(serializarXML.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return exito;
+       
     }
 
-    public mapa<V, E> cargar(mapa<V, E> mapa, String s) throws FileNotFoundException, JAXBException {
+    /*public static mapa<V, E> cargar(mapa<V, E> mapa, String s) throws FileNotFoundException, JAXBException {
 
         String archivoPrueba = "./" + s + ".xml";
 
@@ -68,6 +68,6 @@ public class serializarXML<V, E> {
         mapa map = (mapa) mar.unmarshal(entrada);
 
         return map;
-    }
+    }*/
 
 }

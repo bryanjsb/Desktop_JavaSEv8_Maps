@@ -8,16 +8,22 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import logica.controller.controller;
 import logica.mapa.mapa;
 
-public class GraphPanel extends JPanel implements Observer {
+public class GraphPanel<V,E> extends JPanel  {
 
     private static final int MAX_WAIT = 35;
     private Thread runner;
-    private final mapa g;
     private Image bkgnd = null;
 
-    public GraphPanel(mapa g) {
+     private final controller<V,E> g;
+
+    /**
+     *
+     * @param g
+     */
+    public GraphPanel(controller<V,E> g) {
         this.g = g;
         configurar();
     }
@@ -67,9 +73,6 @@ public class GraphPanel extends JPanel implements Observer {
         g.paint(bg, null);
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        repaint();
-    }
+    
 
 }

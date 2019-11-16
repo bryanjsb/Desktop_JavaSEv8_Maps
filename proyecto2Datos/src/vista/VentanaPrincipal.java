@@ -9,8 +9,11 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JFrame;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import logica.controller.controller;
 import logica.mapa.crearMapas;
 import logica.mapa.mapa;
 
@@ -18,7 +21,7 @@ import logica.mapa.mapa;
  *
  * @author Bryan
  */
-public class VentanaPrincipal<V, E> extends JFrame {
+public class VentanaPrincipal<V, E> extends JFrame implements Observer{
 
     /**
      * Creates new form ventana1
@@ -26,10 +29,17 @@ public class VentanaPrincipal<V, E> extends JFrame {
      * @param titulo
      * @param g
      */
-    public VentanaPrincipal(String titulo, mapa<V, E> g)
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        this.jPanelVistaMapa.repaint();
+    }
+    
+    public VentanaPrincipal(String titulo, controller<V, E> g)
             throws HeadlessException {
         super(titulo);
-        this.g = this.inicializar();
+        control=new controller<>();
+        control.setMapa(inicializar());
         initComponents();
         configurar();
     }
@@ -52,7 +62,7 @@ public class VentanaPrincipal<V, E> extends JFrame {
 
             @Override
             public void windowClosing(WindowEvent e) {
-//                g.setActive(false);
+//                control.setActive(false);
                 System.exit(0);
             }
 
@@ -61,10 +71,11 @@ public class VentanaPrincipal<V, E> extends JFrame {
 
     public void init() {
         setVisible(true);
+        control.registrar(this);
         GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
         ptr.init();
-        g.init();
-        System.out.println(g);
+        control.init();
+        System.out.println(control);
     }
 
     public final mapa<V, E> inicializar() {
@@ -83,7 +94,7 @@ public class VentanaPrincipal<V, E> extends JFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        jPanelVistaMapa = new GraphPanel(g);
+        jPanelVistaMapa = new GraphPanel(control);
         jPanelVistaOpcion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -164,13 +175,12 @@ public class VentanaPrincipal<V, E> extends JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelVistaOpcionLayout.createSequentialGroup()
                         .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelVistaOpcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButtonEmpezarRuta)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jTextFieldIdRepatidor)
-                                .addComponent(jTextFieldPuntoInicio)
-                                .addComponent(jTextFieldPuntoDestino))
+                            .addComponent(jButtonEmpezarRuta)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextFieldIdRepatidor)
+                            .addComponent(jTextFieldPuntoInicio)
+                            .addComponent(jTextFieldPuntoDestino)
                             .addComponent(jButtonGuardarMapaHeredia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonGuardarMapaCartago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonGuardarMapaSanJose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -258,7 +268,7 @@ public class VentanaPrincipal<V, E> extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemMapHerediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapHerediaActionPerformed
-        g.cargarMapa("heredia");
+        control.cargarMapa("heredia");
 
     }//GEN-LAST:event_jMenuItemMapHerediaActionPerformed
 
@@ -267,7 +277,7 @@ public class VentanaPrincipal<V, E> extends JFrame {
         V inicio = (V) this.jTextFieldPuntoInicio.getText();
         V destino = (V) this.jTextFieldPuntoDestino.getText();
 
-        g.add(id, inicio, destino);
+        control.add(id, inicio, destino);
 
         this.jTextFieldIdRepatidor.setName("");
         this.jTextFieldPuntoInicio.setName("");
@@ -275,23 +285,23 @@ public class VentanaPrincipal<V, E> extends JFrame {
     }//GEN-LAST:event_jButtonEmpezarRutaActionPerformed
 
     private void jButtonGuardarMapaHerediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarMapaHerediaActionPerformed
-        g.guardarMapa("heredia");
+        control.guardarMapa("heredia");
     }//GEN-LAST:event_jButtonGuardarMapaHerediaActionPerformed
 
     private void jMenuItemMapCartagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapCartagoActionPerformed
-        g = g.cargarMapa("cartago");
+        control.cargarMapa("cartago");
     }//GEN-LAST:event_jMenuItemMapCartagoActionPerformed
 
     private void jMenuItemMapSanJoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapSanJoseActionPerformed
-        g.cargarMapa("sanjose");
+        control.cargarMapa("sanjose");
     }//GEN-LAST:event_jMenuItemMapSanJoseActionPerformed
 
     private void jButtonGuardarMapaSanJoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarMapaSanJoseActionPerformed
-//        g.guardarMapa("sanjose");
+//        control.guardarMapa("sanjose");
     }//GEN-LAST:event_jButtonGuardarMapaSanJoseActionPerformed
 
     private void jButtonGuardarMapaCartagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarMapaCartagoActionPerformed
-//        g.guardarMapa("cartago");
+//        control.guardarMapa("cartago");
     }//GEN-LAST:event_jButtonGuardarMapaCartagoActionPerformed
 
     /**
@@ -319,5 +329,5 @@ public class VentanaPrincipal<V, E> extends JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
-    private mapa<V, E> g;
+    private controller<V,E> control;
 }

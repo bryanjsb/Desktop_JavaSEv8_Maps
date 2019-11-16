@@ -18,6 +18,9 @@ public class Edge<V, E> {
         this.info = info;
     }
 
+    public Edge(){
+        this(null,null,null);
+    }
     
 //    @XmlAnyElement(lax = true)
     @XmlElement//(name = "info")

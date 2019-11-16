@@ -16,6 +16,10 @@ public class GVertex<V> {
         this.info = info;
         this.position = position;
     }
+    
+    public GVertex() {
+        this(null);
+    }
 
     public GVertex(V info) {
         this(info, new Point2D.Float(0f, 0f));

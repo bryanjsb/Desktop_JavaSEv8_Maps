@@ -15,11 +15,15 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.geom.Point2D;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
@@ -259,20 +263,19 @@ public class mapa<V, E> {
         throw new UnsupportedOperationException();
     }
 
-    public boolean guardarMapa(String s) {
+    public void guardarMapa(String s) {
         serializarXML guardar = new serializarXML();
-        return guardar.guardar(this, s);
+        guardar.guardar(this, s);
     }
 
-    public mapa<V, E> cargarMapa(String s) {
-        serializarXML cargar = new serializarXML();
+    public static mapa cargarMapa(String s) throws FileNotFoundException, JAXBException {
+         String archivoPrueba = "./" + s + ".xml";
 
-        mapa<V, E> map = null;
-        try {
-            map = cargar.cargar(this, s);
-        } catch (FileNotFoundException | JAXBException ex) {
-            Logger.getLogger(mapa.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        InputStream entrada = new FileInputStream(archivoPrueba);
+        JAXBContext context = JAXBContext.newInstance(mapa.class);
+        Unmarshaller mar = context.createUnmarshaller();
+        mapa map = (mapa) mar.unmarshal(entrada);
+
         return map;
 
     }
