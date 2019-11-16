@@ -56,6 +56,7 @@ public class controller<V,E> {
       
       public void init(){
           model.init();
+          System.out.println(this);
       }
       
       public void add(String id, V inicio, V destino){

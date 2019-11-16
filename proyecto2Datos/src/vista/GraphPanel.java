@@ -4,12 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import logica.controller.controller;
-import logica.mapa.mapa;
 
 public class GraphPanel<V,E> extends JPanel  {
 

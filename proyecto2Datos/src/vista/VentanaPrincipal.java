@@ -75,7 +75,7 @@ public class VentanaPrincipal<V, E> extends JFrame implements Observer{
         GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
         ptr.init();
         control.init();
-        System.out.println(control);
+        
     }
 
     public final mapa<V, E> inicializar() {
@@ -269,7 +269,13 @@ public class VentanaPrincipal<V, E> extends JFrame implements Observer{
 
     private void jMenuItemMapHerediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapHerediaActionPerformed
         control.cargarMapa("heredia");
-
+        control.init();
+        
+        GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
+        ptr.insertarImagen(control.getUbicacionImagen());
+        
+        ptr.init();
+     
     }//GEN-LAST:event_jMenuItemMapHerediaActionPerformed
 
     private void jButtonEmpezarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarRutaActionPerformed
@@ -290,10 +296,22 @@ public class VentanaPrincipal<V, E> extends JFrame implements Observer{
 
     private void jMenuItemMapCartagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapCartagoActionPerformed
         control.cargarMapa("cartago");
+         control.init();
+        
+        GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
+        ptr.insertarImagen(control.getUbicacionImagen());
+        
+        ptr.init();
     }//GEN-LAST:event_jMenuItemMapCartagoActionPerformed
 
     private void jMenuItemMapSanJoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapSanJoseActionPerformed
         control.cargarMapa("sanjose");
+         control.init();
+        
+        GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
+        ptr.insertarImagen(control.getUbicacionImagen());
+        
+        ptr.init();
     }//GEN-LAST:event_jMenuItemMapSanJoseActionPerformed
 
     private void jButtonGuardarMapaSanJoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarMapaSanJoseActionPerformed
