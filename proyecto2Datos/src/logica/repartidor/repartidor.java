@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import logica.graphs.Edge;
-import logica.graphs.Dijkstra.camino;
+import logica.graphs.floyd.camino;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
 

@@ -5,7 +5,7 @@
  */
 package logica.repartidor;
 
-import logica.graphs.Dijkstra.coleccionCamino;
+import logica.graphs.floyd.coleccionCamino;
 import logica.mapa.mapa;
 
 /**

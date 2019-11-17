@@ -26,8 +26,8 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import logica.graphs.Edge;
-import logica.graphs.Dijkstra.AlgoritmoDijkstra;
-import logica.graphs.Dijkstra.coleccionCamino;
+import logica.graphs.floyd.AlgoritmoFloyd;
+import logica.graphs.floyd.coleccionCamino;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
 import logica.repartidor.coleccionRepartidor;
@@ -166,8 +166,8 @@ public class mapa<V, E> {
 
     private void calcularRutasMinimas() {
 //        this.caminosPosibles.limpiarLista();
-        AlgoritmoDijkstra<V, E> floyd = new AlgoritmoDijkstra();
-        this.caminosPosibles = floyd.algoritmoDijkstra(grafo);
+        AlgoritmoFloyd<V, E> floyd = new AlgoritmoFloyd();
+        this.caminosPosibles = floyd.algoritmoFloyd(grafo);
     }
 
 //    public boolean isActive() {
