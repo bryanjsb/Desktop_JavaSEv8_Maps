@@ -6,13 +6,13 @@ import logica.graphs.Edge;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
 
-public class AlgoritmoFloydWarshall<V, E> {
+public class AlgoritmoDijkstra<V, E> {
 
-    public AlgoritmoFloydWarshall() {
+    public AlgoritmoDijkstra() {
 
     }
 
-    public coleccionCamino<V, E> algoritmoFloydWarshall(Graph<V, E> g) {
+    public coleccionCamino<V, E> algoritmoDijkstra(Graph<V, E> g) {
         LinkedList<Edge<V, E>> edge = g.getEdges();
         int numAristas = edge.size();
 
@@ -22,10 +22,10 @@ public class AlgoritmoFloydWarshall<V, E> {
             pesos[i][1] = edge.get(i).getTail().getInfo();
             pesos[i][2] = edge.get(i).getInfo();
         }
-        return floydWarshall(pesos, numAristas, g);
+        return dijkstra(pesos, numAristas, g);
     }
 
-    coleccionCamino<V, E> floydWarshall(Object[][] pesos, int numVertices, Graph<V, E> g) {
+    coleccionCamino<V, E> dijkstra(Object[][] pesos, int numVertices, Graph<V, E> g) {
         double[][] dist = new double[numVertices][numVertices];
         for (double[] row : dist) {
             Arrays.fill(row, Double.POSITIVE_INFINITY);

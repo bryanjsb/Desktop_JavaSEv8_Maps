@@ -21,7 +21,7 @@ import logica.mapa.mapa;
  *
  * @author Bryan
  */
-public class VentanaPrincipal<V, E> extends JFrame implements Observer{
+public class VentanaPrincipal<V, E> extends JFrame implements Observer {
 
     /**
      * Creates new form ventana1
@@ -29,16 +29,15 @@ public class VentanaPrincipal<V, E> extends JFrame implements Observer{
      * @param titulo
      * @param g
      */
-    
     @Override
     public void update(Observable o, Object arg) {
         this.jPanelVistaMapa.repaint();
     }
-    
+
     public VentanaPrincipal(String titulo, controller<V, E> g)
             throws HeadlessException {
         super(titulo);
-        control=new controller<>();
+        control = new controller<>();
         control.setMapa(inicializar());
         initComponents();
         configurar();
@@ -75,7 +74,7 @@ public class VentanaPrincipal<V, E> extends JFrame implements Observer{
         GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
         ptr.init();
         control.init();
-        
+
     }
 
     public final mapa<V, E> inicializar() {
@@ -270,12 +269,12 @@ public class VentanaPrincipal<V, E> extends JFrame implements Observer{
     private void jMenuItemMapHerediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapHerediaActionPerformed
         control.cargarMapa("heredia");
         control.init();
-        
+
         GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
         ptr.insertarImagen(control.getUbicacionImagen());
-        
+
         ptr.init();
-     
+
     }//GEN-LAST:event_jMenuItemMapHerediaActionPerformed
 
     private void jButtonEmpezarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarRutaActionPerformed
@@ -296,21 +295,21 @@ public class VentanaPrincipal<V, E> extends JFrame implements Observer{
 
     private void jMenuItemMapCartagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapCartagoActionPerformed
         control.cargarMapa("cartago");
-         control.init();
-        
+        control.init();
+
         GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
         ptr.insertarImagen(control.getUbicacionImagen());
-        
+
         ptr.init();
     }//GEN-LAST:event_jMenuItemMapCartagoActionPerformed
 
     private void jMenuItemMapSanJoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMapSanJoseActionPerformed
         control.cargarMapa("sanjose");
-         control.init();
-        
+        control.init();
+
         GraphPanel ptr = (GraphPanel) this.jPanelVistaMapa;
         ptr.insertarImagen(control.getUbicacionImagen());
-        
+
         ptr.init();
     }//GEN-LAST:event_jMenuItemMapSanJoseActionPerformed
 
@@ -347,5 +346,5 @@ public class VentanaPrincipal<V, E> extends JFrame implements Observer{
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
-    private controller<V,E> control;
+    private controller<V, E> control;
 }

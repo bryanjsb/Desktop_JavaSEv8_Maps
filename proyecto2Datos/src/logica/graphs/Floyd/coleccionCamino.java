@@ -68,9 +68,10 @@ public class coleccionCamino<V, E> {
         return ptr;
     }
 
-    public void limpiarLista(){
+    public void limpiarLista() {
         caminosPosibles.clear();
     }
+
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();

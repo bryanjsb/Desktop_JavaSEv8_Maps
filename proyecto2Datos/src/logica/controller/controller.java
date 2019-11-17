@@ -17,58 +17,57 @@ import logica.mapa.model;
  * @param <V>
  * @param <E>
  */
-public class controller<V,E> {
-    
-    
-    private model<V, E>  model;
+public class controller<V, E> {
+
+    private model<V, E> model;
 
     public controller(model<V, E> model) {
         this.model = model;
     }
-    
+
     public controller() {
-       this(new model<V,E>());
+        this(new model<V, E>());
     }
-    
-    public void registrar(Observer o){
+
+    public void registrar(Observer o) {
         this.model.addObserver(o);
     }
-    
-     public void setMapa(mapa<V, E> mapa){
+
+    public void setMapa(mapa<V, E> mapa) {
         this.model.setMapa(mapa);
     }
-     
-     public void guardarMapa(String s){
-         model.guardarMapa(s);
-     }
-    
-     public void cargarMapa(String s) {
-         model.cargarMapa(s);
-     }
-     
-      public void setImagen(String s){
-      model.setImagen(s);
-      }
-      
-      public String getUbicacionImagen(){
-          return model.getUbicacionImagen();
-      }
-      
-      public void init(){
-          model.init();
-          System.out.println(this);
-      }
-      
-      public void add(String id, V inicio, V destino){
-          model.add(id, inicio, destino);
-      }
-      
-      public void paint(Graphics bg, Rectangle bounds){
-          model.paint(bg, bounds);
-      }
-      
-       @Override
-    public String toString(){
+
+    public void guardarMapa(String s) {
+        model.guardarMapa(s);
+    }
+
+    public void cargarMapa(String s) {
+        model.cargarMapa(s);
+    }
+
+    public void setImagen(String s) {
+        model.setImagen(s);
+    }
+
+    public String getUbicacionImagen() {
+        return model.getUbicacionImagen();
+    }
+
+    public void init() {
+        model.init();
+        System.out.println(this);
+    }
+
+    public void add(String id, V inicio, V destino) {
+        model.add(id, inicio, destino);
+    }
+
+    public void paint(Graphics bg, Rectangle bounds) {
+        model.paint(bg, bounds);
+    }
+
+    @Override
+    public String toString() {
         return model.toString();
     }
 }

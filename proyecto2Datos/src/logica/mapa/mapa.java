@@ -18,13 +18,15 @@ import java.awt.geom.Point2D;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Random;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import logica.graphs.Edge;
-import logica.graphs.Floyd.AlgoritmoFloydWarshall;
+import logica.graphs.Floyd.AlgoritmoDijkstra;
 import logica.graphs.Floyd.coleccionCamino;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
@@ -55,6 +57,7 @@ public class mapa<V, E> {
 
     public mapa(Graph<V, E> grafo) {
         this.grafo = grafo;
+        aumentarPesos();
         this.caminosPosibles = new coleccionCamino();
         colRepartidor = new coleccionRepartidor();
         ubicacionImagen = "";
@@ -77,10 +80,10 @@ public class mapa<V, E> {
         this.ubicacionImagen = ubicacionImagen;
     }
 
-    public Edge<V,E> getEdge(V v1,V v2){
+    public Edge<V, E> getEdge(V v1, V v2) {
         return grafo.getEdge(v1, v2);
     }
-    
+
     @XmlElement(name = "ima")
     public String getUbicacionImagen() {
         return ubicacionImagen;
@@ -123,7 +126,7 @@ public class mapa<V, E> {
             repartidor.aumentarPesos(grafo);
             this.calcularRutasMinimas();
         }
-        
+
     }
 
     public void add(String id, V inicio, V destino) {
@@ -133,6 +136,18 @@ public class mapa<V, E> {
         ptr.init();
         ptr.aumentarPesos(grafo);
         this.calcularRutasMinimas();
+    }
+
+    private void aumentarPesos() {
+
+        for (Iterator<Edge<V, E>> it = this.grafo.getEdges().iterator(); it.hasNext();) {
+            Edge e = it.next();
+            double peso = new Random().nextInt(74) + 10;
+            peso += new Random().nextDouble();
+            String num = String.format("%.2f", peso);
+            e.setInfo((num));
+        }
+
     }
 
     private void crearRepartidores() {
@@ -151,8 +166,8 @@ public class mapa<V, E> {
 
     private void calcularRutasMinimas() {
 //        this.caminosPosibles.limpiarLista();
-        AlgoritmoFloydWarshall<V, E> floyd = new AlgoritmoFloydWarshall();
-        this.caminosPosibles = floyd.algoritmoFloydWarshall(grafo);
+        AlgoritmoDijkstra<V, E> floyd = new AlgoritmoDijkstra();
+        this.caminosPosibles = floyd.algoritmoDijkstra(grafo);
     }
 
 //    public boolean isActive() {
@@ -273,7 +288,7 @@ public class mapa<V, E> {
     }
 
     public static mapa cargarMapa(String s) throws FileNotFoundException, JAXBException {
-         String archivoPrueba = "./" + s + ".xml";
+        String archivoPrueba = "./" + s + ".xml";
 
         InputStream entrada = new FileInputStream(archivoPrueba);
         JAXBContext context = JAXBContext.newInstance(mapa.class);

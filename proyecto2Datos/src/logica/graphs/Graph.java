@@ -49,25 +49,21 @@ public class Graph<V, E> {
         return r;
     }
 
-    public Edge<V,E> getEdge(V v1,V v2){
-    Edge<V,E> ptr=null;
-    
-    for(Edge<V,E> i:this.edges){
-    
-        if(i.getTail().getInfo().equals(v1)
-                &&i.getHead().getInfo().equals(v2)){
-        
-            ptr=i;
+    public Edge<V, E> getEdge(V v1, V v2) {
+        Edge<V, E> ptr = null;
+
+        for (Edge<V, E> i : this.edges) {
+
+            if (i.getTail().getInfo().equals(v1)
+                    && i.getHead().getInfo().equals(v2)) {
+
+                ptr = i;
+            }
         }
+
+        return ptr;
     }
-    
-    
-    
-    
-    
-    return ptr;
-    }
-    
+
     public void add(V v, Point2D.Float position) {
         vertex.addLast(new GVertex<>(v, position));
     }

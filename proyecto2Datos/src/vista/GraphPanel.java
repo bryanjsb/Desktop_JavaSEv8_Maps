@@ -8,19 +8,19 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import logica.controller.controller;
 
-public class GraphPanel<V,E> extends JPanel  {
+public class GraphPanel<V, E> extends JPanel {
 
     private static final int MAX_WAIT = 35;
     private Thread runner;
     private Image bkgnd = null;
 
-     private final controller<V,E> g;
+    private final controller<V, E> g;
 
     /**
      *
      * @param g
      */
-    public GraphPanel(controller<V,E> g) {
+    public GraphPanel(controller<V, E> g) {
         this.g = g;
         configurar();
     }
@@ -69,7 +69,5 @@ public class GraphPanel<V,E> extends JPanel  {
         }
         g.paint(bg, null);
     }
-
-    
 
 }

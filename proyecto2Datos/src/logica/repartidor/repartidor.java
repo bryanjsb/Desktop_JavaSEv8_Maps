@@ -41,28 +41,32 @@ public class repartidor<V, E> {
         iniciarImagen();
         color = colorRepartidor();
     }
-    
-    public void aumentarPesos(Graph<V, E> grafo){
-     
+
+    public void aumentarPesos(Graph<V, E> grafo) {
+
+        if (this.caminoRepartidor.getRuta() != null) {
             Iterator<GVertex<V>> i = this.caminoRepartidor.getRuta().iterator();
             GVertex<V> primero = i.next();
-            GVertex<V> siguiente=null;
+            GVertex<V> siguiente = null;
             while (i.hasNext()) {
-            siguiente = i.next();
-            
-            Edge ed=grafo.getEdge(primero.getInfo(), siguiente.getInfo());
-            
-            if(ed!=null){
-                double peso=new Random().nextInt(74)+10;
-                peso+=new Random().nextDouble();
-                String num = String.format("%.2f",peso );
-                ed.setInfo((num));
-                System.out.println(ed);
-            }
+                siguiente = i.next();
+
+                Edge ed = grafo.getEdge(primero.getInfo(), siguiente.getInfo());
+
+                if (ed != null) {
+                    double peso = 
+                            new Random().nextInt(100) +1+
+                            Double.parseDouble(ed.getInfo().toString());
+                    peso += new Random().nextDouble();
+                    String num = String.format("%.2f", peso);
+                    ed.setInfo((num));
+                    System.out.println(ed);
+                }
 //            if(siguiente!=null){
-            primero=siguiente;
+                primero = siguiente;
 //            }else{break;}
             }
+        }
     }
 
     private void iniciarImagen() {
@@ -137,12 +141,12 @@ public class repartidor<V, E> {
 //                    System.out.printf("v(%s): %s%n", v0.getInfo(), p0);
 //                    System.out.printf("v(%s): %s%n", v1.getInfo(), p1);
                     t = 0.0;
-                    
+
                     float dx = p1.x - p0.x;
                     float dy = p1.y - p0.y;
                     double dm = Math.sqrt(dx * dx + dy * dy);
                     double dt = DR / dm;
-                    
+
                     while (t <= 1.0) {
                         t += dt;
                         try {
@@ -223,6 +227,6 @@ public class repartidor<V, E> {
     private static final int S1 = 56;
     private static final int MAX_WAIT = 25;
     private static final double DT = 0.035;
-    
+
     private static final double DR = 4.0;
 }

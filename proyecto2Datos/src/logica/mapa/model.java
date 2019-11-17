@@ -29,11 +29,11 @@ public class model<V, E> extends Observable {
         this(new mapa<V, E>());
     }
 
-    public void setMapa(mapa<V, E> mapa){
+    public void setMapa(mapa<V, E> mapa) {
         this.mapa = mapa;
         refrescar();
     }
-    
+
     private void refrescar() {
         setChanged();
         notifyObservers();
@@ -45,36 +45,36 @@ public class model<V, E> extends Observable {
 
     public void cargarMapa(String s) {
         try {
-            mapa=mapa.cargarMapa(s);
+            mapa = mapa.cargarMapa(s);
         } catch (FileNotFoundException | JAXBException ex) {
             Logger.getLogger(model.class.getName()).log(Level.SEVERE, null, ex);
         }
         refrescar();
     }
-    
-    public void setImagen(String s){
+
+    public void setImagen(String s) {
         mapa.setUbicacionImagen(s);
     }
-    
-    public String getUbicacionImagen(){
+
+    public String getUbicacionImagen() {
         return mapa.getUbicacionImagen();
     }
-    
-    public void init(){
+
+    public void init() {
         mapa.init();
         refrescar();
     }
-    
-    public void add(String id, V inicio, V destino){
+
+    public void add(String id, V inicio, V destino) {
         mapa.add(id, inicio, destino);
     }
-    
-    public void paint(Graphics bg, Rectangle bounds){
-    mapa.paint(bg, bounds);
+
+    public void paint(Graphics bg, Rectangle bounds) {
+        mapa.paint(bg, bounds);
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return mapa.toString();
     }
 }

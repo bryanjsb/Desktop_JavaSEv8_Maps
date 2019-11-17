@@ -16,7 +16,7 @@ public class GVertex<V> {
         this.info = info;
         this.position = position;
     }
-    
+
     public GVertex() {
         this(null);
     }
