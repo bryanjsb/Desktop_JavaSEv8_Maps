@@ -1,4 +1,4 @@
-package logica.graphs.Floyd;
+package logica.graphs.Dijkstra;
 
 import java.util.Arrays;
 import java.util.LinkedList;

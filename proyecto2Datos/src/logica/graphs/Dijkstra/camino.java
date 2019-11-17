@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.graphs.Floyd;
+package logica.graphs.Dijkstra;
 
 import java.util.LinkedList;
 import logica.graphs.GVertex;
