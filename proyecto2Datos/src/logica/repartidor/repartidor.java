@@ -16,6 +16,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import logica.graphs.Edge;
 import logica.graphs.Floyd.camino;
 import logica.graphs.GVertex;
 import logica.graphs.Graph;
@@ -39,6 +40,29 @@ public class repartidor<V, E> {
         ubicacionParcialImagen = "/ima/imaRepartidor/repartidor" + valorDado + ".png";
         iniciarImagen();
         color = colorRepartidor();
+    }
+    
+    public void aumentarPesos(Graph<V, E> grafo){
+     
+            Iterator<GVertex<V>> i = this.caminoRepartidor.getRuta().iterator();
+            GVertex<V> primero = i.next();
+            GVertex<V> siguiente=null;
+            while (i.hasNext()) {
+            siguiente = i.next();
+            
+            Edge ed=grafo.getEdge(primero.getInfo(), siguiente.getInfo());
+            
+            if(ed!=null){
+                double peso=new Random().nextInt(74)+10;
+                peso+=new Random().nextDouble();
+                String num = String.format("%.2f",peso );
+                ed.setInfo((num));
+                System.out.println(ed);
+            }
+//            if(siguiente!=null){
+            primero=siguiente;
+//            }else{break;}
+            }
     }
 
     private void iniciarImagen() {

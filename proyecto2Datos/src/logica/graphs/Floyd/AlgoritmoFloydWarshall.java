@@ -32,7 +32,7 @@ public class AlgoritmoFloydWarshall<V, E> {
         }
 
         for (Object[] w : pesos) {
-            dist[(int) w[0] - 1][(int) w[1] - 1] = (double) w[2];
+            dist[(int) w[0] - 1][(int) w[1] - 1] = Double.parseDouble(w[2].toString());
         }
 
         int[][] next = new int[numVertices][numVertices];

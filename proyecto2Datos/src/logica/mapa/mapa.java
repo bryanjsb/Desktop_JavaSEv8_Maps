@@ -18,14 +18,12 @@ import java.awt.geom.Point2D;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Observable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import logica.graphs.Edge;
 import logica.graphs.Floyd.AlgoritmoFloydWarshall;
 import logica.graphs.Floyd.coleccionCamino;
 import logica.graphs.GVertex;
@@ -79,6 +77,10 @@ public class mapa<V, E> {
         this.ubicacionImagen = ubicacionImagen;
     }
 
+    public Edge<V,E> getEdge(V v1,V v2){
+        return grafo.getEdge(v1, v2);
+    }
+    
     @XmlElement(name = "ima")
     public String getUbicacionImagen() {
         return ubicacionImagen;
@@ -118,7 +120,10 @@ public class mapa<V, E> {
             System.out.println(repartidor);
             colRepartidor.add(repartidor);
             repartidor.init();
+            repartidor.aumentarPesos(grafo);
+            this.calcularRutasMinimas();
         }
+        
     }
 
     public void add(String id, V inicio, V destino) {
@@ -126,6 +131,8 @@ public class mapa<V, E> {
         System.out.println(ptr);
         this.colRepartidor.add(ptr);
         ptr.init();
+        ptr.aumentarPesos(grafo);
+        this.calcularRutasMinimas();
     }
 
     private void crearRepartidores() {
@@ -143,6 +150,7 @@ public class mapa<V, E> {
     }
 
     private void calcularRutasMinimas() {
+//        this.caminosPosibles.limpiarLista();
         AlgoritmoFloydWarshall<V, E> floyd = new AlgoritmoFloydWarshall();
         this.caminosPosibles = floyd.algoritmoFloydWarshall(grafo);
     }
@@ -257,10 +265,6 @@ public class mapa<V, E> {
         }
 //        }
         colRepartidor.paint(bg, bounds);
-    }
-
-    public void update(Observable obs, Object evt) {
-        throw new UnsupportedOperationException();
     }
 
     public void guardarMapa(String s) {
